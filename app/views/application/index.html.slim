@@ -1,0 +1,25 @@
+section id="todoapp" ng-controller="MainCtrl as todo"
+  header id="header"
+    h1
+      SIMPLE TODO LISTS
+    h4
+      FROM RUBY GARAGE
+
+  section id="main" class="main"
+    ul id="todo-list"
+      li ng-repeat="project in todo.projects"
+        div class="view"
+          label
+            | {{project.name}}
+
+  div ng-click="visible = true" ng-hide="visible" class="btn-add-project"
+    = link_to 'Add TODO List', '', class: "add-project"
+  form id="new-project" ng-submit="todo.addProject()" ng-show="visible"
+    div class="form-group"
+      input type="text" id="input-new-project" placeholder="Start typing here to create a new Todo list..." ng-model="todo.project.name"
+
+    button type="submit" class="btn btn-primary create-btn" ng-click="visible = false"
+      | Create
+    div ng-click="visible = false"
+      = link_to '', class: "cancel-project"
+        = image_tag("cross.png", class: "cancel-project")

@@ -18,12 +18,65 @@ h1, h4 {
 	text-align: center;
 }
 
-form#todo-form {
-	width: 180px;
+form#new-project {
 	margin: 0 auto;
+	position: relative;
+	transition: all linear 0.5s;
 }
 
 ul#todo-list {
 	max-width: 180px;
 	margin: 0 auto;
 }
+
+.cancel-project {
+  width: 15px;
+  position: absolute;
+  top: 15px;
+  left: 250px;
+}
+
+.add-project {
+	border-radius: 3px;
+  background-image: url("buttonbottom.jpg");
+  border: 1px solid #335583;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 13px 29px 13px 50px;
+}
+
+.btn-add-project {
+	width: 190px;
+	margin: 40px auto;
+	transition: all linear 0.5s;
+}
+
+#input-new-project {
+  width: 400px;
+  height: 30px;
+  border: 2px solid #335583;
+  border-radius: 5px 0 0 5px;
+  padding: 1px 2px 2px 15px;
+	margin-top: 40px;
+}
+
+div.form-group {
+	display: inline;
+}
+
+.create-btn {
+	cursor: pointer;
+	display: inline;
+  padding: 0.8em;
+  border: 1px solid #335583;
+  border-radius: 0 3px 3px 0;
+  background-image: url("buttonbottom1.jpg");
+  border: 1px solid #335583;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: -6px;
+}
+
+
