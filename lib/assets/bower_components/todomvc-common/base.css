@@ -1,0 +1,29 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 1.4em;
+	background-image: url(background.png); /* Путь к фоновому рисунку */
+  background-repeat: repeat;
+	color: #4d4d4d;
+	width: 550px;
+	margin: 0 auto;
+}
+
+h1, h4 {
+	text-align: center;
+}
+
+form#todo-form {
+	width: 180px;
+	margin: 0 auto;
+}
+
+ul#todo-list {
+	max-width: 180px;
+	margin: 0 auto;
+}
