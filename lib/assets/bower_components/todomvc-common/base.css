@@ -25,12 +25,13 @@ form#new-project {
 }
 
 ul#todo-list {
-	max-width: 700px;
-	margin: 0 auto;
+	/*max-width: 700px;*/
+  margin: 0 auto;
   list-style-type: none;
+  margin-bottom: 40px;
 }
 
-ul#todo-list li {
+ul#todo-list li.the-whole-project {
   border-radius: 2px 2px 0 0;
   border: 1px solid #335583;
   background-image: url("panel.jpg");
@@ -43,11 +44,15 @@ ul#todo-list li {
 }
 
 .the-whole-project {
-  margin-bottom: 40px;
 }
 
 .project-name {
   display: inline;
+}
+
+.p-project-name {
+  margin: 0 auto;
+  margin-bottom: 1.3em;
 }
 
 .view-project-options {
@@ -67,6 +72,122 @@ ul#todo-list li {
 .input-edit-project {
   width: 22em;
 }
+
+.plus-picture {
+  float: left;
+  height: 1em;
+  width: 1em;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+#new-task {
+  float: left;
+  position: relative;
+}
+
+#new-task-form {
+  background-color: #cfcfcf;
+  border: 1px solid #cfcfcf;
+  height: 4em;
+}
+
+#input-new-task {
+  resize: none;
+  width: 25em;
+  height: 2em;
+  margin-top: 1em;
+  padding-left: 1em;
+  border-top: 2px solid #9A8A8A;
+  border-bottom: none;
+  margin-left: 1.5em;
+}
+
+.add-task {
+  color: white;
+  font-weight: bold;
+  width: 7em;
+  border-radius: 0 6px 6px 0;
+  background: linear-gradient(to bottom, #8cc3a6, #508767);
+  border: 1px solid #4e7f61;
+  cursor: pointer;
+  padding: 0.5em;
+  margin-top: 1em;
+  position: absolute;
+}
+
+.list-of-tasks {
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #cfcfcf;
+  background-color: white;
+}
+
+ul#task-title {
+  list-style-type: none;
+  height: 4em;
+  padding: 0;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+ul#task-title:hover {
+  cursor: pointer;
+  background-color: #fcfed5;
+}
+
+ul#task-title:last-child:hover {
+    cursor: pointer;
+    background-color: #fcfed5;
+    border-radius: 0 0 20px 20px;
+}
+
+ul#task-title:last-child {
+  border: none;
+}
+
+.completed {
+  height: 4em;
+  width: 3.5em;
+  float: left;
+  border-right: 1px solid #cfcfcf;
+}
+
+.task {
+  float: left;
+  list-style-type: none;
+  width: 23em;
+  height: 3em;
+  margin-left: 3px;
+  border-left: 1px solid #cfcfcf;
+  border-right: 1px solid #cfcfcf;
+  padding-top: 1em;
+  padding-left: 1em;
+}
+
+.action-stuff {
+  float: left;
+  height: 4em;
+}
+
+.btn-for-task {
+  float: left;
+    margin-left: 0.1em;
+    margin-top: 1em;
+}
+
+.btn-for-task:first-child {
+  margin-left: 0.6em;
+}
+
+.view-task-options {
+
+}
+
+
+
+
+
+
+
 
 
 

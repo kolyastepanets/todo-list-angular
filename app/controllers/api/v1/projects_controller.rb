@@ -5,7 +5,7 @@ module Api
       respond_to :json
 
       def index
-        respond_with(Project.all.order("id ASC"))
+        respond_with(:api, :v1, @projects = Project.all.order("id ASC"), include: 'tasks')
       end
 
       def create
@@ -28,7 +28,7 @@ module Api
         end
 
         def project_params
-          params.require(:project).permit(:name)
+          params.require(:project).permit(:name, :tasks)
         end
     end
   end
