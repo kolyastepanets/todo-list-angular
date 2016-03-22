@@ -21,16 +21,12 @@ app.controller('MainCtrl', ['Project', function(Project){
     });
   };
 
-  this.delProject = function(project){
+  this.delProject = function(project, index){
     var confirmation = confirm('Are you sure?');
 
     if (confirmation) {
-      Project.remove({id: project.id}, function(resource){
-        var indexOf = todo.projects.indexOf(project);
-        if (indexOf !== -1){
-          todo.projects.splice(indexOf, 1);
-        };
-      });
+      Project.delete({id: project.id});
+      todo.projects.splice(index, 1);
     };
   };
 }]);

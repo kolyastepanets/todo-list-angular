@@ -23,7 +23,7 @@ section id="todoapp" ng-controller="MainCtrl as todo"
         div class="view-project-options" ng-show="optionsProject"
           div class="btn-for-project" ng-click="editProject = true"
             = image_tag("edit.jpg")
-          div class="btn-for-project" ng-click="todo.delProject(project)"
+          div class="btn-for-project" ng-click="todo.delProject(project, $index)"
             = image_tag("delete.jpg")
 
   div ng-click="visible = true" ng-hide="visible" class="btn-add-project"
