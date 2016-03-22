@@ -5,15 +5,30 @@ section id="todoapp" ng-controller="MainCtrl as todo"
     h4
       FROM RUBY GARAGE
 
-  section id="main" class="main"
+  div.all-project-stuff
     ul id="todo-list"
-      li ng-repeat="project in todo.projects"
-        div class="view"
-          label
-            | {{project.name}}
+      li ng-repeat="project in todo.projects" class="the-whole-project" ng-mouseover="editProject === true ? optionsProject = false : optionsProject = true" ng-mouseleave="optionsProject = false"
+        div class="edit-project" ng-show="editProject"
+          form ng-submit="todo.updateProject(project)" class="edit-project-form"
+            input type="text" ng-model="project.name" class="input-edit-project"
+            button type="submit" class="btn" ng-click="editProject = false"
+              | Update
+          div class="cancel-update" ng-click="editProject = false"
+            button
+              | Cancel
+
+        div class="project-name" ng-hide="editProject"
+          | {{project.name}}
+
+        div class="view-project-options" ng-show="optionsProject"
+          div class="btn-for-project" ng-click="editProject = true"
+            = image_tag("edit.jpg")
+          div class="btn-for-project" ng-click="todo.delProject(project)"
+            = image_tag("delete.jpg")
 
   div ng-click="visible = true" ng-hide="visible" class="btn-add-project"
     = link_to 'Add TODO List', '', class: "add-project"
+
   form id="new-project" ng-submit="todo.addProject()" ng-show="visible"
     div class="form-group"
       input type="text" id="input-new-project" placeholder="Start typing here to create a new Todo list..." ng-model="todo.project.name"

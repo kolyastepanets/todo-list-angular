@@ -15,6 +15,24 @@ app.controller('MainCtrl', ['Project', function(Project){
       todo.project = {};
     });
   };
+
+  this.updateProject = function(project){
+    Project.update({id: project.id, name: project.name}, function(resource){
+    });
+  };
+
+  this.delProject = function(project){
+    var confirmation = confirm('Are you sure?');
+
+    if (confirmation) {
+      Project.remove({id: project.id}, function(resource){
+        var indexOf = todo.projects.indexOf(project);
+        if (indexOf !== -1){
+          todo.projects.splice(indexOf, 1);
+        };
+      });
+    };
+  };
 }]);
 
 app.factory('Project', ['$resource', function($resource){
