@@ -1,0 +1,349 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background-image: url(background.png); /* Путь к фоновому рисунку */
+  background-repeat: repeat;
+  color: #4d4d4d;
+  width: 550px;
+  margin: 0 auto;
+  position: relative;
+}
+
+h1, h4 {
+  text-align: center;
+}
+
+form#new-project {
+  margin-left: 3em;
+  position: relative;
+  margin-bottom: 7em;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+form#new-project.ng-hide {
+  opacity: 0;
+}
+
+ul#todo-list {
+  padding: 0;
+  margin: 0 auto;
+  list-style-type: none;
+  margin-bottom: 40px;
+}
+
+ul#todo-list li.the-whole-project {
+  border-radius: 2px 2px 0 0;
+  border: 1px solid #335583;
+  background-image: url("panel.jpg");
+  height: 50px;
+  padding-left: 55px;
+  padding-top: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+
+.the-whole-project {
+}
+
+.project-name {
+  display: inline;
+  -webkit-transition: top linear 0.001s;
+  transition: all linear 0.001s;
+}
+
+.project-name.ng-hide {
+  opacity: 0;
+}
+
+.p-project-name {
+  margin: 0 auto;
+  margin-bottom: 1.3em;
+}
+
+.view-project-options {
+  display: inline;
+  float: right;
+  margin-right: 1.5em;
+}
+
+.btn-for-project {
+  display: inline;
+}
+
+.btn-update-project {
+  border-radius: 0 5px 5px 0;
+}
+
+.edit-project-form, .cancel-update {
+  display: inline;
+}
+
+.edit-project {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.1s;
+}
+
+.edit-project.ng-hide {
+  opacity: 0;
+}
+
+.edit-project-group {
+  margin-top: -0.5em;
+}
+
+input.form-control.input-edit-project {
+  width: 22em;
+}
+
+.plus-picture {
+  float: left;
+  height: 1em;
+  width: 1em;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+#new-task {
+  float: left;
+  position: relative;
+}
+
+#new-task-form {
+  background-color: #cfcfcf;
+  border: 1px solid #cfcfcf;
+  height: 4em;
+}
+
+#input-new-task {
+  resize: none;
+  width: 27.5em;
+  height: 2.5em;
+  margin-top: 0.5em;
+  padding-left: 1em;
+  border-top: 2px solid #9A8A8A;
+  border-bottom: none;
+  margin-left: 1.5em;
+  position: initial;
+}
+
+.add-task {
+  color: white;
+  font-weight: bold;
+  width: 7em;
+  border-radius: 0 6px 6px 0;
+  background: linear-gradient(to bottom, #8cc3a6, #508767);
+  border: 1px solid #4e7f61;
+  cursor: pointer;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+.add-task-div {
+  position: initial;
+}
+
+.input-for-task {
+
+}
+
+.list-of-tasks {
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #cfcfcf;
+  background-color: white;
+}
+
+ul#task-title {
+  list-style-type: none;
+  height: 4em;
+  padding: 0;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+ul#task-title:hover {
+  cursor: pointer;
+  background-color: #fcfed5;
+}
+
+ul#task-title:last-child:hover {
+    cursor: pointer;
+    background-color: #fcfed5;
+    border-radius: 0 0 20px 20px;
+}
+
+ul#task-title:last-child {
+  border: none;
+}
+
+.completed {
+  height: 4em;
+  width: 3.5em;
+  float: left;
+  border-right: 1px solid #cfcfcf;
+}
+
+.task {
+  float: left;
+  list-style-type: none;
+  width: 27em;
+  height: 4em;
+  margin-left: 3px;
+  border-left: 1px solid #cfcfcf;
+  border-right: 1px solid #cfcfcf;
+  padding-top: 1em;
+  padding-left: 1em;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+
+.task.completed {
+  color: #a9a9a9;
+  text-decoration: line-through;
+
+}
+
+.action-stuff {
+  float: left;
+  height: 4em;
+}
+
+.btn-for-task {
+  float: left;
+  margin-left: 0.1em;
+  margin-top: 1em;
+}
+
+.btn-for-task:first-child {
+  margin-left: 0.6em;
+}
+
+#complete-checkbox {
+  margin-left: 1.5em;
+  margin-top: 1.5em;
+}
+
+.edit-task {
+  background-color: #fcfed5;
+  min-height: 10em;
+  min-width: 43em;
+  position: absolute;
+  margin-left: -2em;
+  border-radius: 7px;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+.input-edit-task {
+  margin: 1em 0 1em 1em;
+}
+
+.edit-task.ng-hide {
+  opacity: 0;
+}
+
+.cancel-task {
+  width: 15px;
+  position: absolute;
+  right: 0.3em;
+  top: 0.3em;
+}
+
+input.form-control.input-edit-task {
+  width: 12em;
+}
+
+.update-name-task {
+  margin-top: 1em;
+  border-radius: 0 5px 5px 0;
+}
+
+
+
+
+
+
+
+
+
+
+.cancel-project {
+  width: 15px;
+  position: absolute;
+  top: 15px;
+  left: 16.5em;
+}
+
+.add-project {
+  border-radius: 3px;
+  background-image: url("buttonbottom.jpg");
+  border: 1px solid #335583;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 13px 29px 13px 50px;
+}
+
+a.add-project:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-add-project {
+  width: 13.5em;
+  margin: 40px auto;
+  margin-left: 15em;
+  margin-top: 5em;
+  margin-bottom: 10em;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+
+.btn-add-project.ng-hide {
+  opacity: 0;
+}
+
+#input-new-project {
+  width: 27em;
+  height: 3em;
+  border: 2px solid #335583;
+  border-radius: 5px 0 0 5px;
+  padding: 1px 2px 2px 15px;
+  margin-top: 3em;
+}
+
+div.form-group {
+  display: inline;
+}
+
+.create-btn {
+  cursor: pointer;
+  display: inline;
+  /* padding: 15px; */
+  border: 1px solid #335583;
+  border-radius: 0 6px 6px 0;
+  background-image: url("buttonbottom1.jpg");
+  border: 1px solid #335583;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+}
+
+
+
+.form-control {
+    padding: 6px 12px;
+    color: #555555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

@@ -1,4 +1,4 @@
-app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap']);
+app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap', 'angularModalService']);
 
 app.config(['$httpProvider', function($httpProvider){
   $httpProvider.defaults.headers.common['X-CSRF-Token'] =
@@ -14,7 +14,6 @@ app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
       $scope.newProject = {};
     });
   };
-
 
   $scope.updateProject = function(project){
     Project.update({id: project.id, name: project.name}, function(resource){
@@ -38,6 +37,11 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
     task = Task.save({title: $scope.newTask.title, project_id: project.id});
       $scope.project.tasks.push(task);
       $scope.newTask = {};
+  };
+
+  $scope.updateTask = function(project, task){
+    Task.update({project_id: project.id, id: task.id, title: task.title}, function(resource){
+    });
   };
 
   $scope.delTask = function(id, index){
@@ -68,3 +72,5 @@ app.factory('Task', ['$resource', function($resource){
     }
   );
 }]);
+
+

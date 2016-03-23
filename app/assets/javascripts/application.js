@@ -6,4 +6,5 @@
 //= require angular-animate
 //= require angular-strap
 //= require angular-resource
+//= require angular-modal-service/dst/angular-modal-service.min.js
 //= require_tree .

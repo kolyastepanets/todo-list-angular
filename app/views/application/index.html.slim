@@ -9,13 +9,14 @@ section id="todoapp" ng-controller="ProjectCtrl"
     ul id="todo-list" ng-repeat="project in projects"
       li class="the-whole-project" ng-mouseover="editProject === true ? optionsProject = false : optionsProject = true" ng-mouseleave="optionsProject = false"
         div class="edit-project" ng-show="editProject"
-          form ng-submit="updateProject(project)" class="edit-project-form"
-            input type="text" ng-model="project.name" class="input-edit-project"
-            button type="submit" class="btn" ng-click="editProject = false"
-              | Update
-          div class="cancel-update" ng-click="editProject = false"
-            button
-              | Cancel
+          .input-group.edit-project-group
+            form ng-submit="updateProject(project)" class="edit-project-form"
+              input type="text" ng-model="project.name" class="form-control input-edit-project"
+              button type="submit" class="btn btn-default btn-update-project" ng-click="editProject = false"
+                | Update
+            div class="cancel-update" ng-click="editProject = false"
+              button class="btn btn-default"
+                | Cancel
 
         div class="project-name" ng-hide="editProject"
           | {{project.name}}
@@ -30,14 +31,15 @@ section id="todoapp" ng-controller="ProjectCtrl"
         .plus-picture
           = image_tag "plus.png"
         form id="new-task-form" ng-submit="addTask(project)"
-          input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newTask.title"
-          button type="submit" class="add-task"
-            | Add Task
+          .input-group.add-task-div
+            input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newTask.title" class="form-control input-for-task"
+            button type="submit" class="add-task"
+              | Add Task
 
       div.list-of-tasks ng-controller="TaskCtrl"
         ul id="task-title" ng-repeat="task in project.tasks | orderBy: 'created_at' " ng-mouseover="editTask === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
           .completed
-            input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" class="completed-checkbox"
+            input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" id="complete-checkbox"
           li class="task" ng-class="{completed: task.completed}"
             | {{task.title | limitTo:50 }}
           .action-stuff
@@ -46,29 +48,31 @@ section id="todoapp" ng-controller="ProjectCtrl"
                 = image_tag("up-down.png")
               div class="btn-for-task" ng-click="editTask = true"
                 = image_tag("edit-task.png")
-              / div class="btn-for-task" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal"
-              /   = image_tag("edit-task.png")
               div class="btn-for-task" ng-click="delTask(task.id, $index)" ng-model="task.destroy"
                 = image_tag("delete-task.png")
 
           div class="edit-task" ng-show="editTask"
-            form ng-submit="updateTask(project)" class="edit-task-form"
-              input type="text" ng-model="task.title" class="input-edit-task"
-              button type="submit" class="btn" ng-click="editTask = false"
-                | Update
-            div class="cancel-update" ng-click="editTask = false"
-              button
-                | Cancel
+            .input-group
+              form ng-submit="updateTask(project, task)" class="edit-task-form"
+                input type="text" ng-model="task.title" class="form-control input-edit-task"
+                button type="submit" class="btn btn-primary update-name-task" ng-click="editTask = false"
+                  | Update
+                p
+                  | "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              div class="cancel-update" ng-click="editTask = false"
+                = link_to '', class: "cancel-task"
+                  = image_tag("cross.png", class: "cancel-task")
 
   div ng-click="visible = true" ng-hide="visible" class="btn-add-project"
     = link_to 'Add TODO List', '', class: "add-project"
 
   form id="new-project" ng-submit="addProject()" ng-show="visible"
     div class="form-group"
-      input type="text" id="input-new-project" placeholder="Start typing here to create a new Todo list..." ng-model="newProject.name"
+      .input-group
+        input type="text" id="input-new-project" placeholder="Start typing here to create a new Todo list..." ng-model="newProject.name"
 
-    button type="submit" class="btn btn-primary create-btn" ng-click="visible = false"
-      | Create
+        button type="submit" class="btn btn-primary create-btn" ng-click="visible = false"
+         | Create
     div ng-click="visible = false"
       = link_to '', class: "cancel-project"
         = image_tag("cross.png", class: "cancel-project")
