@@ -2,11 +2,15 @@ module Api
   module V1
     class TasksController < ApplicationController
       before_action :load_project
-      before_action :load_task, only: :destroy
+      before_action :load_task, only: [:update, :destroy]
       respond_to :json
 
       def create
         respond_with(:api, :v1, @project, @project.tasks.create(task_params))
+      end
+
+      def update
+        respond_with(:api, :v1, @task.update(task_params))
       end
 
       def destroy
@@ -24,7 +28,7 @@ module Api
         end
 
         def task_params
-          params.require(:task).permit(:title, :position, :project_id)
+          params.require(:task).permit(:title, :position, :project_id, :completed)
         end
     end
   end

@@ -35,16 +35,19 @@ section id="todoapp" ng-controller="ProjectCtrl"
             | Add Task
 
       div.list-of-tasks ng-controller="TaskCtrl"
-        ul id="task-title" ng-repeat="task in project.tasks" ng-mouseover="editTask === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
+        ul id="task-title" ng-repeat="task in project.tasks | orderBy: 'created_at' " ng-mouseover="editTask === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
           .completed
-          li class="task"
-            | {{task.title}}
+            input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" class="completed-checkbox"
+          li class="task" ng-class="{completed: task.completed}"
+            | {{task.title | limitTo:50 }}
           .action-stuff
             div class="view-task-options" ng-show="optionsTask"
               div class="btn-for-task"
                 = image_tag("up-down.png")
               div class="btn-for-task" ng-click="editTask = true"
                 = image_tag("edit-task.png")
+              / div class="btn-for-task" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal"
+              /   = image_tag("edit-task.png")
               div class="btn-for-task" ng-click="delTask(task.id, $index)" ng-model="task.destroy"
                 = image_tag("delete-task.png")
 

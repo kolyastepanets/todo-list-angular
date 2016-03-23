@@ -1,4 +1,4 @@
-app = angular.module('app', ['ngResource']);
+app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap']);
 
 app.config(['$httpProvider', function($httpProvider){
   $httpProvider.defaults.headers.common['X-CSRF-Token'] =
@@ -11,7 +11,7 @@ app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
   $scope.addProject = function(){
     Project.save({project: $scope.newProject}, function(resource){
       $scope.projects.push(resource);
-      $scope.project = {};
+      $scope.newProject = {};
     });
   };
 
@@ -32,8 +32,10 @@ app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
 }]);
 
 app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
+  $scope.project.tasks = $scope.project.tasks || [];
+
   $scope.addTask = function(project){
-    task = Task.save({title: $scope.newTask.title, project_id: project.id})
+    task = Task.save({title: $scope.newTask.title, project_id: project.id});
       $scope.project.tasks.push(task);
       $scope.newTask = {};
   };
@@ -42,6 +44,10 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
     Task.delete({id: id, project_id: $scope.project.id});
     $scope.project.tasks.splice(index, 1);
   };
+
+  $scope.completeTask = function(project, task){
+    Task.update({project_id: project.id, id: task.id}, {completed: task.completed}
+  )};
 
 }]);
 

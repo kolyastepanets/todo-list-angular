@@ -21,11 +21,17 @@ h1, h4 {
 form#new-project {
 	margin-left: 3em;
 	position: relative;
-  margin-bottom: 4em;
+  margin-bottom: 7em;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+form#new-project.ng-hide {
+  opacity: 0;
 }
 
 ul#todo-list {
-	/*max-width: 700px;*/
+  padding: 0;
   margin: 0 auto;
   list-style-type: none;
   margin-bottom: 40px;
@@ -48,6 +54,12 @@ ul#todo-list li.the-whole-project {
 
 .project-name {
   display: inline;
+  -webkit-transition: top linear 0.001s;
+  transition: all linear 0.001s;
+}
+
+.project-name.ng-hide {
+  opacity: 0;
 }
 
 .p-project-name {
@@ -67,6 +79,15 @@ ul#todo-list li.the-whole-project {
 
 .edit-project-form, .cancel-update {
   display: inline;
+}
+
+.edit-project {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.1s;
+}
+
+.edit-project.ng-hide {
+  opacity: 0;
 }
 
 .input-edit-project {
@@ -154,13 +175,21 @@ ul#task-title:last-child {
 .task {
   float: left;
   list-style-type: none;
-  width: 23em;
+  width: 26em;
   height: 3em;
   margin-left: 3px;
   border-left: 1px solid #cfcfcf;
   border-right: 1px solid #cfcfcf;
   padding-top: 1em;
   padding-left: 1em;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+
+.task.completed {
+  color: #a9a9a9;
+  text-decoration: line-through;
+
 }
 
 .action-stuff {
@@ -170,18 +199,33 @@ ul#task-title:last-child {
 
 .btn-for-task {
   float: left;
-    margin-left: 0.1em;
-    margin-top: 1em;
+  margin-left: 0.1em;
+  margin-top: 1em;
 }
 
 .btn-for-task:first-child {
   margin-left: 0.6em;
 }
 
-.view-task-options {
-
+.completed-checkbox {
+  margin-left: 1.5em;
+  margin-top: 1.5em;
 }
 
+.edit-task {
+  background-color: #fcfed5;
+  min-height: 10em;
+  min-width: 43em;
+  position: absolute;
+  margin-left: -2em;
+  border-radius: 7px;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+.edit-task.ng-hide {
+  opacity: 0;
+}
 
 
 
@@ -212,10 +256,17 @@ ul#task-title:last-child {
 }
 
 .btn-add-project {
-	width: 14em;
-	margin: 40px auto;
+  width: 13.5em;
+  margin: 40px auto;
   margin-left: 15em;
   margin-top: 5em;
+  margin-bottom: 10em;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+
+.btn-add-project.ng-hide {
+  opacity: 0;
 }
 
 #input-new-project {
@@ -251,3 +302,33 @@ div.form-group {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sample-show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+
+.sample-show-hide {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity:0;
+}

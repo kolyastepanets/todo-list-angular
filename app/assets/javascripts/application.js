@@ -3,5 +3,7 @@
 //= require turbolinks
 //= require angular
 //= require angular-route
+//= require angular-animate
+//= require angular-strap
 //= require angular-resource
 //= require_tree .
