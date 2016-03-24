@@ -8,7 +8,8 @@
       "todomvc-common": "latest",
       "angular-strap": "latest",
       "angular-animate": "latest",
-      "angular-modal-service": "latest"
+      "angular-modal-service": "latest",
+      "angular-bootstrap": "latest"
       // "threex"      : "git@github.com:rharriso/threex.git",
       // "gsvpano.js"  : "https://github.com/rharriso/GSVPano.js/blob/master/src/GSVPano.js"
     }

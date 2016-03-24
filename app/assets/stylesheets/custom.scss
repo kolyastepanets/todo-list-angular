@@ -206,7 +206,22 @@ ul#task-title:last-child {
   transition: color 0.4s;
 }
 
-.task.completed {
+.task-title, .end-date-inline {
+  display: inline;
+}
+
+.end-date-inline {
+  float: right;
+  margin-right: 1em;
+  color: red;
+}
+
+.end-date-inline.complete {
+  color: #a9a9a9;
+  text-decoration: line-through;
+}
+
+.task.complete {
   color: #a9a9a9;
   text-decoration: line-through;
 
@@ -243,8 +258,23 @@ ul#task-title:last-child {
   transition: all linear 0.5s;
 }
 
-.input-edit-task {
+.edit-task-form {
+  float: left;
+  width: 17em;
+}
+
+.input-date-form {
+  float: left;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+textarea.form-control.input-edit-task {
   margin: 1em 0 1em 1em;
+  /*resize: both*/
+  resize: none;
+  width: 17em;
+  min-height: 16.5em;
 }
 
 .edit-task.ng-hide {
@@ -258,13 +288,31 @@ ul#task-title:last-child {
   top: 0.3em;
 }
 
-input.form-control.input-edit-task {
-  width: 12em;
+.form-control.input-edit-task {
+  width: 10em;
+  /*resize: vertical;*/
 }
 
 .update-name-task {
-  margin-top: 1em;
-  border-radius: 0 5px 5px 0;
+      margin-left: 1em;
+    width: 38.5em;
+}
+
+.update-date-task {
+}
+
+.updating-task {
+  margin-left: 2em;
+}
+
+.updating-date {
+    width: 15em;
+    margin-left: 24em;
+    margin-top: -48px;
+}
+
+.glyphicon.glyphicon-calendar {
+  margin-top: -1px;
 }
 
 
@@ -301,7 +349,7 @@ a.add-project:hover {
 .btn-add-project {
   width: 13.5em;
   margin: 40px auto;
-  margin-left: 15em;
+  margin-left: 14em;
   margin-top: 5em;
   margin-bottom: 10em;
   -webkit-transition: all linear 0.2s;

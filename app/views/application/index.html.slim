@@ -39,29 +39,33 @@ section id="todoapp" ng-controller="ProjectCtrl"
       div.list-of-tasks ng-controller="TaskCtrl"
         ul id="task-title" ng-repeat="task in project.tasks | orderBy: 'created_at' " ng-mouseover="editTask === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
           .completed
-            input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" id="complete-checkbox"
-          li class="task" ng-class="{completed: task.completed}"
-            | {{task.title | limitTo:50 }}
+            input type="checkbox" ng-model="task.completed" ng-click="updateTask(project, task)" id="complete-checkbox"
+          li class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
+            p.task-title
+              | {{ task.title | limitTo:50 }}
+            p.end-date-inline ng-class="{complete: task.completed}"
+              | {{ task.end_date | date: "dd MMMM, yyyy" }}
           .action-stuff
             div class="view-task-options" ng-show="optionsTask"
               div class="btn-for-task"
                 = image_tag("up-down.png")
               div class="btn-for-task" ng-click="editTask = true"
                 = image_tag("edit-task.png")
-              div class="btn-for-task" ng-click="delTask(task.id, $index)" ng-model="task.destroy"
+              div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy"
                 = image_tag("delete-task.png")
 
           div class="edit-task" ng-show="editTask"
-            .input-group
-              form ng-submit="updateTask(project, task)" class="edit-task-form"
-                input type="text" ng-model="task.title" class="form-control input-edit-task"
+            form ng-submit="updateTask(project, task)" class="edit-task-form"
+              .input-group
+                textarea ng-model="task.title" class="form-control input-edit-task"
+                uib-datepicker ng-model="task.end_date" datepicker-options="dateOptions" class="input-date-form"
+
                 button type="submit" class="btn btn-primary update-name-task" ng-click="editTask = false"
-                  | Update
-                p
-                  | "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-              div class="cancel-update" ng-click="editTask = false"
-                = link_to '', class: "cancel-task"
-                  = image_tag("cross.png", class: "cancel-task")
+                  | Update task
+
+            div class="cancel-update" ng-click="editTask = false"
+              = link_to '', class: "cancel-task"
+                = image_tag("cross.png", class: "cancel-task")
 
   div ng-click="visible = true" ng-hide="visible" class="btn-add-project"
     = link_to 'Add TODO List', '', class: "add-project"

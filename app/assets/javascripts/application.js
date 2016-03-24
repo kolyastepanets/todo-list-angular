@@ -7,4 +7,5 @@
 //= require angular-strap
 //= require angular-resource
 //= require angular-modal-service/dst/angular-modal-service.min.js
+//= require angular-bootstrap
 //= require_tree .

@@ -1,4 +1,4 @@
-app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap', 'angularModalService']);
+app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap', 'angularModalService', 'ui.bootstrap']);
 
 app.config(['$httpProvider', function($httpProvider){
   $httpProvider.defaults.headers.common['X-CSRF-Token'] =
@@ -40,18 +40,29 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
   };
 
   $scope.updateTask = function(project, task){
-    Task.update({project_id: project.id, id: task.id, title: task.title}, function(resource){
+    Task.update({project_id: project.id,
+                 id: task.id,
+                 title: task.title,
+                 completed: task.completed,
+                 end_date: task.end_date + "T03:00:00.000Z"}, function(resource){
     });
   };
 
-  $scope.delTask = function(id, index){
-    Task.delete({id: id, project_id: $scope.project.id});
-    $scope.project.tasks.splice(index, 1);
+  $scope.delTask = function(task, project){
+    var index = project.tasks.indexOf(task)
+    Task.remove({id: task.id, project_id: project.id}, function(resource){
+      if (index !== -1){
+        project.tasks.splice(index, 1);
+      };
+    });
   };
 
-  $scope.completeTask = function(project, task){
-    Task.update({project_id: project.id, id: task.id}, {completed: task.completed}
-  )};
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.format = 'dd MMMM, yyyy';
 
 }]);
 
@@ -73,4 +84,29 @@ app.factory('Task', ['$resource', function($resource){
   );
 }]);
 
+// app.controller('DatepickerCtrl', function ($scope) {
+//   $scope.today = function() {
+//     $scope.end_date = new Date();
+//   };
+//   $scope.today();
 
+//   // Disable weekend selection
+//   function disabled(data) {
+//     var date = data.date,
+//       mode = data.mode;
+//     return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+//   }
+
+//   $scope.open2 = function() {
+//     $scope.popup2.opened = true;
+//   };
+
+//   $scope.setDate = function(year, month, day) {
+//     $scope.end_date = new Date(year, month, day);
+//   };
+
+//   $scope.popup2 = {
+//     opened: false
+//   };
+
+// });
