@@ -59,10 +59,41 @@ div id="todoapp" ng-controller="ProjectCtrl"
               form ng-submit="updateTask(project, task)" class="edit-task-form"
                 .input-group
                   textarea ng-model="task.title" class="form-control input-edit-task"
-                  uib-datepicker ng-model="task.end_date" datepicker-options="dateOptions" class="input-date-form"
 
                   button type="submit" class="btn btn-primary update-name-task" ng-click="editTask = false"
                     | Update task
+
+              form ng-submit="updateDate(project, task)" class="edit-task-form"
+                uib-datepicker ng-model="task.end_date" datepicker-options="dateOptions" class="input-date-form"
+                button type="submit" class="btn btn-primary update-date-task" ng-click="editTask = false"
+                  | Update date
+
+              div style="clear:both;"
+              .comments ng-controller="CommentCtrl"
+                h3.comment-title
+                  | Comments
+                ul.list-of-comments
+                  li ng-repeat="comment in task.comments"
+                    div.content-of-comment
+                      div.content
+                        p.text-content
+                          | {{ comment.content }}
+                        div class="btn-for-delete-comment" ng-click="delComment(comment, task)" ng-model="comment.destroy"
+                          = image_tag("delete-comment.png")
+
+                      div style="clear:both;"
+
+                      p.date-and-time-comment
+                        | {{ comment.created_at | date: "MMM d, y HH:mm "}}
+
+
+                form id="new-comment-form" ng-submit="addComment(task)"
+                  .input-group
+                    input type="text" id="input-new-task" placeholder="Start typing here to create a comment..." ng-model="newComment.content" class="form-control input-for-task" required="true"
+                    button type="button" class="btn btn-primary upload-file"
+                      | Upload file
+                    button type="submit" class="btn btn-primary add-comment-btn"
+                      | Add Comment
 
               div class="cancel-update" ng-click="editTask = false"
                 = link_to '', class: "cancel-task"

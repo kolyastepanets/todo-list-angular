@@ -34,14 +34,14 @@ form#new-project.ng-hide {
   opacity: 0;
 }
 
-ul#todo-list {
+#todo-list {
   padding: 0;
   margin: 0 auto;
   list-style-type: none;
   margin-bottom: 40px;
 }
 
-ul#todo-list li.the-whole-project {
+#todo-list li.the-whole-project {
   border-radius: 2px 2px 0 0;
   border: 1px solid #335583;
   background-image: url("panel.jpg");
@@ -165,25 +165,25 @@ input.form-control.input-edit-project {
   background-color: white;
 }
 
-ul#task-title {
+#task-title {
   list-style-type: none;
   height: 4em;
   padding: 0;
   border-bottom: 1px solid #cfcfcf;
 }
 
-ul#task-title:hover {
+#task-title:hover {
   cursor: pointer;
   background-color: #fcfed5;
 }
 
-ul#task-title:last-child:hover {
+#task-title:last-child:hover {
     cursor: pointer;
     background-color: #fcfed5;
     border-radius: 0 0 20px 20px;
 }
 
-ul#task-title:last-child {
+#task-title:last-child {
   border: none;
 }
 
@@ -260,11 +260,14 @@ ul#task-title:last-child {
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
   margin-top: 4em;
+  margin-bottom: 10em;
+  cursor: default;
 }
 
 .edit-task-form {
   float: left;
-  width: 17em;
+  margin-bottom: 2em;
+  width: 19em;
 }
 
 .input-date-form {
@@ -297,7 +300,13 @@ textarea.form-control.input-edit-task {
 
 .update-name-task {
   margin-left: 1em;
-  width: 38.5em;
+  width: 17em;
+}
+
+.update-date-task {
+margin-left: 2em;
+    margin-top: 1em;
+    width: 19.5em;
 }
 
 .updating-task {
@@ -313,6 +322,88 @@ textarea.form-control.input-edit-task {
 .glyphicon.glyphicon-calendar {
   margin-top: -1px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.comment-title {
+  margin-left: 1em;
+  border-bottom: 1px solid black;
+  margin-right: 1em;
+  margin-bottom: 0;
+  padding-bottom: 0.3em;
+}
+
+.content {
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.list-of-comments {
+  list-style-type: none;
+}
+
+.content-of-comment {
+  border-bottom: 1px solid gray;
+  margin-right: 2.5em;
+}
+
+.date-and-time-comment {
+  margin-left: 37em;
+  color: gray;
+  font-size: 11px;
+  margin-bottom: 0.5em;
+}
+
+#new-comment-form {
+  width: 30em;
+  margin-left: 1em;
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+
+.upload-file {
+  margin-left: 1.5em;
+  margin-top: 1em;
+}
+
+.add-comment-btn {
+  margin-left: 13em;
+  margin-top: 1em;
+}
+
+.btn-for-delete-comment {
+  float: right;
+  margin-top: -0.5em;
+  cursor: pointer;
+}
+
+.text-content {
+    float: left;
+    width: 34em;
+    text-align: justify;
+}
+
+
+
+
+
+
 
 
 

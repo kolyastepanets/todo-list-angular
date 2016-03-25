@@ -37,6 +37,7 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
     task = Task.save({title: $scope.newTask.title, project_id: project.id});
       $scope.project.tasks.push(task);
       $scope.newTask = {};
+      console.log(task);
   };
 
   $scope.updateTask = function(project, task){
@@ -44,6 +45,13 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
                  id: task.id,
                  title: task.title,
                  completed: task.completed,
+                 end_date: task.end_date + "T03:00:00.000Z"}, function(resource){
+    });
+  };
+
+  $scope.updateDate = function(project, task){
+    Task.update({project_id: project.id,
+                 id: task.id,
                  end_date: task.end_date + "T03:00:00.000Z"}, function(resource){
     });
   };
@@ -56,19 +64,6 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
       };
     });
   };
-
-  // $scope.sortableOptions = { stop: function(){
-  //   tasks = $scope.project.tasks
-  //   tasks.map(task) function(){
-  //     index = $scope.project.tasks.indexOf(task)
-  //     Task.update
-  //       id: task.id
-  //       task:
-  //         position: index
-  //       project_id: $scope.project.id
-  //   };
-  //   };
-  // };
 
   $scope.dateOptions = {
     formatYear: 'yy',
@@ -94,6 +89,29 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
 
 }]);
 
+app.controller('CommentCtrl', ["$scope", 'Comment', function($scope, Comment){
+  // $scope.task.comments = $scope.task.comments || [];
+
+  $scope.addComment = function(task){
+    comment = Comment.save({content: $scope.newComment.content, task_id: task.id});
+      $scope.task.comments.push(comment);
+      $scope.newComment = {};
+      console.log(comment);
+  };
+
+  $scope.delComment = function(comment, task){
+    var index = task.comments.indexOf(comment)
+    Comment.remove({id: comment.id, task_id: task.id}, function(resource){
+      if (index !== -1){
+        task.comments.splice(index, 1);
+      };
+    });
+  };
+
+}]);
+
+
+
 app.factory('Project', ['$resource', function($resource){
   return $resource('/api/v1/projects/:id', { id: '@id' },
     {
@@ -112,3 +130,11 @@ app.factory('Task', ['$resource', function($resource){
   );
 }]);
 
+app.factory('Comment', ['$resource', function($resource){
+  return $resource('/api/v1/tasks/:task_id/comments/:id', { task_id: '@task_id', id: '@id' },
+    {
+      'update':  { method: 'PATCH' },
+      'destroy': { method: 'DELETE' }
+    }
+  );
+}]);

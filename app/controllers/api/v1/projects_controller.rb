@@ -5,7 +5,7 @@ module Api
       respond_to :json
 
       def index
-        respond_with(:api, :v1, @projects = Project.all.order("id ASC"), include: 'tasks')
+        respond_with(:api, :v1, @projects = Project.all.order("id ASC"), include: { tasks: { include: 'comments'} })
       end
 
       def create
