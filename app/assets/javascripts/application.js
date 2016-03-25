@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require angular
@@ -8,4 +9,5 @@
 //= require angular-resource
 //= require angular-modal-service/dst/angular-modal-service.min.js
 //= require angular-bootstrap
+//= require angular-ui-sortable
 //= require_tree .

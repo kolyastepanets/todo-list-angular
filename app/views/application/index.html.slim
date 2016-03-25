@@ -1,4 +1,4 @@
-section id="todoapp" ng-controller="ProjectCtrl"
+div id="todoapp" ng-controller="ProjectCtrl"
   header id="header"
     h1
       SIMPLE TODO LISTS
@@ -32,40 +32,41 @@ section id="todoapp" ng-controller="ProjectCtrl"
           = image_tag "plus.png"
         form id="new-task-form" ng-submit="addTask(project)"
           .input-group.add-task-div
-            input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newTask.title" class="form-control input-for-task"
+            input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newTask.title" class="form-control input-for-task" required="true"
             button type="submit" class="add-task"
               | Add Task
 
       div.list-of-tasks ng-controller="TaskCtrl"
-        ul id="task-title" ng-repeat="task in project.tasks | orderBy: 'created_at' " ng-mouseover="editTask === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
-          .completed
-            input type="checkbox" ng-model="task.completed" ng-click="updateTask(project, task)" id="complete-checkbox"
-          li class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
-            p.task-title
-              | {{ task.title | limitTo:50 }}
-            p.end-date-inline ng-class="{complete: task.completed}"
-              | {{ task.end_date | date: "dd MMMM, yyyy" }}
-          .action-stuff
-            div class="view-task-options" ng-show="optionsTask"
-              div class="btn-for-task"
-                = image_tag("up-down.png")
-              div class="btn-for-task" ng-click="editTask = true"
-                = image_tag("edit-task.png")
-              div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy"
-                = image_tag("delete-task.png")
+        div ui-sortable="sortableOptions" ng-model="project.tasks"
+          ul id="task-title" ng-repeat="task in project.tasks" ng-mouseover="editTask === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
+            .completed
+              input type="checkbox" ng-model="task.completed" ng-click="updateTask(project, task)" id="complete-checkbox"
+            li class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
+              p.task-title
+                | {{ task.title | limitTo:50 }}
+              p.end-date-inline ng-class="{complete: task.completed}"
+                | {{ task.end_date | date: "dd MMMM, yyyy" }}
+            .action-stuff
+              div class="view-task-options" ng-show="optionsTask"
+                div class="btn-for-task"
+                  = image_tag("up-down.png")
+                div class="btn-for-task" ng-click="editTask = true"
+                  = image_tag("edit-task.png")
+                div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy"
+                  = image_tag("delete-task.png")
 
-          div class="edit-task" ng-show="editTask"
-            form ng-submit="updateTask(project, task)" class="edit-task-form"
-              .input-group
-                textarea ng-model="task.title" class="form-control input-edit-task"
-                uib-datepicker ng-model="task.end_date" datepicker-options="dateOptions" class="input-date-form"
+            div class="edit-task" ng-show="editTask"
+              form ng-submit="updateTask(project, task)" class="edit-task-form"
+                .input-group
+                  textarea ng-model="task.title" class="form-control input-edit-task"
+                  uib-datepicker ng-model="task.end_date" datepicker-options="dateOptions" class="input-date-form"
 
-                button type="submit" class="btn btn-primary update-name-task" ng-click="editTask = false"
-                  | Update task
+                  button type="submit" class="btn btn-primary update-name-task" ng-click="editTask = false"
+                    | Update task
 
-            div class="cancel-update" ng-click="editTask = false"
-              = link_to '', class: "cancel-task"
-                = image_tag("cross.png", class: "cancel-task")
+              div class="cancel-update" ng-click="editTask = false"
+                = link_to '', class: "cancel-task"
+                  = image_tag("cross.png", class: "cancel-task")
 
   div ng-click="visible = true" ng-hide="visible" class="btn-add-project"
     = link_to 'Add TODO List', '', class: "add-project"

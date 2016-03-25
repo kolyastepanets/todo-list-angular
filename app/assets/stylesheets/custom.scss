@@ -90,6 +90,8 @@ ul#todo-list li.the-whole-project {
 }
 
 .edit-project {
+  float: left;
+  width: 28em;
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.1s;
 }
@@ -103,7 +105,7 @@ ul#todo-list li.the-whole-project {
 }
 
 input.form-control.input-edit-project {
-  width: 22em;
+  width: 17em;
 }
 
 .plus-picture {
@@ -239,7 +241,8 @@ ul#task-title:last-child {
 }
 
 .btn-for-task:first-child {
-  margin-left: 0.6em;
+  margin-left: 0.5em;
+  cursor: move;
 }
 
 #complete-checkbox {
@@ -256,6 +259,7 @@ ul#task-title:last-child {
   border-radius: 7px;
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
+  margin-top: 4em;
 }
 
 .edit-task-form {
@@ -271,7 +275,6 @@ ul#task-title:last-child {
 
 textarea.form-control.input-edit-task {
   margin: 1em 0 1em 1em;
-  /*resize: both*/
   resize: none;
   width: 17em;
   min-height: 16.5em;
@@ -290,15 +293,11 @@ textarea.form-control.input-edit-task {
 
 .form-control.input-edit-task {
   width: 10em;
-  /*resize: vertical;*/
 }
 
 .update-name-task {
-      margin-left: 1em;
-    width: 38.5em;
-}
-
-.update-date-task {
+  margin-left: 1em;
+  width: 38.5em;
 }
 
 .updating-task {
@@ -306,9 +305,9 @@ textarea.form-control.input-edit-task {
 }
 
 .updating-date {
-    width: 15em;
-    margin-left: 24em;
-    margin-top: -48px;
+  width: 15em;
+  margin-left: 24em;
+  margin-top: -48px;
 }
 
 .glyphicon.glyphicon-calendar {
@@ -349,7 +348,7 @@ a.add-project:hover {
 .btn-add-project {
   width: 13.5em;
   margin: 40px auto;
-  margin-left: 14em;
+  margin-left: 13em;
   margin-top: 5em;
   margin-bottom: 10em;
   -webkit-transition: all linear 0.2s;
@@ -387,11 +386,10 @@ div.form-group {
   padding: 10px;
 }
 
-
-
 .form-control {
     padding: 6px 12px;
     color: #555555;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+

@@ -1,4 +1,4 @@
-app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap', 'angularModalService', 'ui.bootstrap']);
+app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap', 'angularModalService', 'ui.bootstrap', 'ui.sortable']);
 
 app.config(['$httpProvider', function($httpProvider){
   $httpProvider.defaults.headers.common['X-CSRF-Token'] =
@@ -57,12 +57,40 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
     });
   };
 
+  // $scope.sortableOptions = { stop: function(){
+  //   tasks = $scope.project.tasks
+  //   tasks.map(task) function(){
+  //     index = $scope.project.tasks.indexOf(task)
+  //     Task.update
+  //       id: task.id
+  //       task:
+  //         position: index
+  //       project_id: $scope.project.id
+  //   };
+  //   };
+  // };
+
   $scope.dateOptions = {
     formatYear: 'yy',
     startingDay: 1
   };
 
   $scope.format = 'dd MMMM, yyyy';
+
+  $scope.sortableOptions = {
+    stop: function (e, ui) {
+      $scope.project.tasks.map(function(task){
+        index = $scope.project.tasks.indexOf(task)
+        // debugger
+        Task.update({id: task.id,
+                     position: index,
+                     project_id: $scope.project.id})
+        // console.log('updated!');
+        console.log(task);
+      });
+    },
+    axis: 'y'
+  };
 
 }]);
 
@@ -84,29 +112,3 @@ app.factory('Task', ['$resource', function($resource){
   );
 }]);
 
-// app.controller('DatepickerCtrl', function ($scope) {
-//   $scope.today = function() {
-//     $scope.end_date = new Date();
-//   };
-//   $scope.today();
-
-//   // Disable weekend selection
-//   function disabled(data) {
-//     var date = data.date,
-//       mode = data.mode;
-//     return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-//   }
-
-//   $scope.open2 = function() {
-//     $scope.popup2.opened = true;
-//   };
-
-//   $scope.setDate = function(year, month, day) {
-//     $scope.end_date = new Date(year, month, day);
-//   };
-
-//   $scope.popup2 = {
-//     opened: false
-//   };
-
-// });
