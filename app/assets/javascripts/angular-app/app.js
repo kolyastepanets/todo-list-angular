@@ -7,6 +7,7 @@ app.config(['$httpProvider', function($httpProvider){
 
 app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
   $scope.projects = Project.query();
+  $scope.projectData = {};
 
   $scope.addProject = function(){
     Project.save({project: $scope.newProject}, function(resource){
@@ -15,8 +16,13 @@ app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
     });
   };
 
-  $scope.updateProject = function(project){
-    Project.update({id: project.id, name: project.name}, function(resource){
+  $scope.updateProject = function(project, projectData){
+    project.name = projectData.name;
+    Project.update({id: project.id,
+                    name: projectData.name}, function(resource){
+      project.editProject = !project.editProject
+        console.log(projectData.name);
+        console.log(project.name);
     });
   };
 
@@ -28,10 +34,18 @@ app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
       $scope.projects.splice(index, 1);
     };
   };
+
+  $scope.showEditProject = function(project) {
+    $scope.projectData.name = project.name;
+    project.editProject = !project.editProject;
+  };
+
+
 }]);
 
 app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
   $scope.project.tasks = $scope.project.tasks || [];
+  $scope.taskData = {};
 
   $scope.addTask = function(project){
     task = Task.save({title: $scope.newTask.title, project_id: project.id});
@@ -40,20 +54,29 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
       console.log(task);
   };
 
-  $scope.updateTask = function(project, task){
+  $scope.updateTask = function(project, task, taskData){
     Task.update({project_id: project.id,
                  id: task.id,
-                 title: task.title,
                  completed: task.completed,
                  end_date: task.end_date + "T03:00:00.000Z"}, function(resource){
     });
   };
 
-  $scope.updateDate = function(project, task){
+  $scope.updateTitle = function(project, task, taskData){
+    task.title = taskData.title;
+    Task.update({project_id: project.id,
+                 id: task.id,
+                 title: taskData.title});
+    task.showEdit = !task.showEdit;
+  };
+
+  $scope.updateDate = function(project, task, taskData){
+    task.end_date = taskData.end_date;
     Task.update({project_id: project.id,
                  id: task.id,
                  end_date: task.end_date + "T03:00:00.000Z"}, function(resource){
     });
+    task.showEdit = !task.showEdit;
   };
 
   $scope.delTask = function(task, project){
@@ -80,18 +103,20 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
         Task.update({id: task.id,
                      position: index,
                      project_id: $scope.project.id})
-        // console.log('updated!');
         console.log(task);
       });
     },
     axis: 'y'
   };
 
+  $scope.showForm = function(task){
+    $scope.taskData.title = task.title;
+    task.showEdit = !task.showEdit;
+  };
+
 }]);
 
 app.controller('CommentCtrl', ["$scope", 'Comment', function($scope, Comment){
-  // $scope.task.comments = $scope.task.comments || [];
-
   $scope.addComment = function(task){
     comment = Comment.save({content: $scope.newComment.content, task_id: task.id});
       $scope.task.comments.push(comment);
@@ -133,7 +158,6 @@ app.factory('Task', ['$resource', function($resource){
 app.factory('Comment', ['$resource', function($resource){
   return $resource('/api/v1/tasks/:task_id/comments/:id', { task_id: '@task_id', id: '@id' },
     {
-      'update':  { method: 'PATCH' },
       'destroy': { method: 'DELETE' }
     }
   );
