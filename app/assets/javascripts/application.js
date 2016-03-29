@@ -7,7 +7,7 @@
 //= require angular-animate
 //= require angular-strap
 //= require angular-resource
-//= require angular-modal-service/dst/angular-modal-service.min.js
 //= require angular-bootstrap
 //= require angular-ui-sortable
+//= require ng-file-upload
 //= require_tree .

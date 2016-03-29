@@ -1,4 +1,4 @@
-app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap', 'angularModalService', 'ui.bootstrap', 'ui.sortable']);
+app = angular.module('app', ['ngResource', 'ngAnimate', 'mgcrea.ngStrap', 'ui.bootstrap', 'ui.sortable', 'ngFileUpload']);
 
 app.config(['$httpProvider', function($httpProvider){
   $httpProvider.defaults.headers.common['X-CSRF-Token'] =
@@ -135,11 +135,30 @@ app.controller('CommentCtrl', ["$scope", 'Comment', function($scope, Comment){
 
 }]);
 
+app.controller('AttachmentCtrl', ['$scope', 'Upload', function ($scope, Upload) {
+  $scope.getCommentId = function(comment){
+    var file = $scope.newFile;
+    $scope.uploadFile = function(file){
+      Upload.upload({
+        url: 'api/v1/comments/' + $scope.comment.id + '/attachments/',
+        method: 'POST',
+        file: $scope.newFile
+      }).success(function(data){
+        comment.attachments.push(data);
+        $scope.newFile = {};
+      });
+    }
+  }
+
+  $scope.showFileForm = false;
+
+}]);
 
 
 app.factory('Project', ['$resource', function($resource){
   return $resource('/api/v1/projects/:id', { id: '@id' },
     {
+      'query': { method: "GET", isArray: true },
       'update':  { method: 'PATCH' },
       'destroy': { method: 'DELETE' }
     }
@@ -159,6 +178,14 @@ app.factory('Comment', ['$resource', function($resource){
   return $resource('/api/v1/tasks/:task_id/comments/:id', { task_id: '@task_id', id: '@id' },
     {
       'destroy': { method: 'DELETE' }
+    }
+  );
+}]);
+
+app.factory('Attachment', ['$resource', function($resource){
+  return $resource('/api/v1/comments/:comment_id/attachments/:id', { comment_id: '@comment_id', id: '@id' },
+    {
+      'update': { method: 'PATCH' }
     }
   );
 }]);

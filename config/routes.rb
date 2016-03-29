@@ -8,8 +8,12 @@ Rails.application.routes.draw do
         resources :tasks
       end
 
-      resources :tasks do
-        resources :comments
+      resources :tasks, only: [] do
+        resources :comments, only: [:create, :destroy]
+      end
+
+      resources :comments, only: [] do
+        resources :attachments, only: [:create, :destroy]
       end
     end
   end

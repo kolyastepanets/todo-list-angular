@@ -74,9 +74,9 @@ div id="todoapp" ng-controller="ProjectCtrl"
                   | Comments
                 ul.list-of-comments
                   li ng-repeat="comment in task.comments"
-                    div.content-of-comment
+                    div.content-of-comment ng-controller="AttachmentCtrl"
                       div.content
-                        p.text-content
+                        p.text-content ng-init="getCommentId(comment)"
                           | {{ comment.content }}
                         div class="btn-for-delete-comment" ng-click="delComment(comment, task)" ng-model="comment.destroy"
                           = image_tag("delete-comment.png")
@@ -84,18 +84,23 @@ div id="todoapp" ng-controller="ProjectCtrl"
                       div style="clear:both;"
 
                       div.link-and-date-comment
-                        p.link
-                          | link_to bla bla bla bla bla
+                        p.link ng-repeat="attach in comment.attachments"
+                          = link_to '{{attach.file_identifier}}', "{{attach.file.file.url}}"
 
                         p.date-and-time-comment
                           | {{ comment.created_at | date: "MMM d, y HH:mm "}}
 
+                      div.add-file-link ng-click="showFileForm = !showFileForm"
+                        | Add file
+                      form class="form-for-attachment" ng-show="showFileForm"
+                        .input-group
+                          input type="file" ngf-select="true" ng-model="newFile.file" class="input-upload-file"
+                          button type="button" class="btn btn-default upload-file" ng-click="uploadFile(file); showFileForm = false"
+                            | Upload file
 
                 form id="new-comment-form" ng-submit="addComment(task)"
                   .input-group
                     input type="text" id="input-new-task" placeholder="Start typing here to create a comment..." ng-model="newComment.content" class="form-control input-for-task" required="true"
-                    button type="button" class="btn btn-primary upload-file"
-                      | Upload file
                     button type="submit" class="btn btn-primary add-comment-btn"
                       | Add Comment
 

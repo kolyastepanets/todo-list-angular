@@ -134,7 +134,7 @@ input.form-control.input-edit-project {
 
 #input-new-task {
   resize: none;
-  width: 27.5em;
+  width: 26.5em;
   height: 2.5em;
   margin-top: 0.5em;
   padding-left: 1em;
@@ -324,9 +324,9 @@ textarea.form-control.input-edit-task {
 }
 
 .update-date-task {
-margin-left: 2em;
-    margin-top: 1em;
-    width: 19.5em;
+  margin-left: 2em;
+  margin-top: 1em;
+  width: 19.5em;
 }
 
 .updating-task {
@@ -381,38 +381,34 @@ margin-left: 2em;
 .content-of-comment {
   border-bottom: 1px solid gray;
   margin-right: 2.5em;
+  padding-bottom: 0.5em;
 }
 
 .link {
-  display: inline;
   font-size: 12px;
-  margin-left: 1em;
+  margin-left: 2em;
 }
 
 .date-and-time-comment {
   color: gray;
   font-size: 11px;
   margin-bottom: 0.5em;
-  display: inline;
-  float: right;
-  margin-right: 2em;
+  margin-left: 38em;
 }
 
 #new-comment-form {
-  width: 30em;
   margin-left: 1em;
   margin-top: 1em;
   margin-bottom: 3em;
 }
 
 .upload-file {
-  margin-left: 1.5em;
   margin-top: 1em;
 }
 
 .add-comment-btn {
-  margin-left: 13em;
-  margin-top: 1em;
+  border-radius: 0 5px 5px 0;
+  margin-top: 0.5em;
 }
 
 .btn-for-delete-comment {
@@ -426,6 +422,37 @@ margin-left: 2em;
   width: 34em;
   text-align: justify;
 }
+
+.form-for-attachment {
+  margin-left: 1em;
+  margin-top: 2em;
+  transition: .5s linear all;
+  height: 80px;
+  overflow: hidden;
+}
+
+.form-for-attachment.ng-hide {
+  height: 0;
+}
+
+.form-for-attachment.ng-hide-add,
+.form-for-attachment.ng-hide-remove, {
+  display: block!important;
+}
+
+.add-file-link {
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8em;
+  margin-left: 2em;
+  width: 4em;
+  margin-top: 2em;
+}
+
+
+
+
+
 
 
 

@@ -8,9 +8,9 @@
       "todomvc-common": "latest",
       "angular-strap": "latest",
       "angular-animate": "latest",
-      "angular-modal-service": "latest",
       "angular-bootstrap": "latest",
-      "angular-ui-sortable": "latest"
+      "angular-ui-sortable": "latest",
+      "ng-file-upload": "latest"
       // "threex"      : "git@github.com:rharriso/threex.git",
       // "gsvpano.js"  : "https://github.com/rharriso/GSVPano.js/blob/master/src/GSVPano.js"
     }
