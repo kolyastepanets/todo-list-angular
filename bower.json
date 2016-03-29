@@ -3,12 +3,13 @@
     "name": "bower-rails generated lib assets",
     "dependencies": {
       "angular": "latest",
-      "angular-route": "latest",
+      "angular-ui-router": "latest",
       "angular-resource": "latest",
       "angular-animate": "latest",
       "angular-bootstrap": "latest",
       "angular-ui-sortable": "latest",
-      "ng-file-upload": "latest"
+      "ng-file-upload": "latest",
+      "ng-token-auth": "latest"
       // "threex"      : "git@github.com:rharriso/threex.git",
       // "gsvpano.js"  : "https://github.com/rharriso/GSVPano.js/blob/master/src/GSVPano.js"
     }

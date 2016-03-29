@@ -1,6 +1,8 @@
 doctype html
 html
   head
+    meta content="text/html charset=UTF-8" http-equiv="Content-Type"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     title
       | TodoMvc
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
@@ -8,4 +10,4 @@ html
     = csrf_meta_tags
 
   body ng-app="app"
-    .div ng-view=""
+    .div ui-view=""
