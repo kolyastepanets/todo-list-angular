@@ -5,8 +5,6 @@
       "angular": "latest",
       "angular-route": "latest",
       "angular-resource": "latest",
-      "todomvc-common": "latest",
-      "angular-strap": "latest",
       "angular-animate": "latest",
       "angular-bootstrap": "latest",
       "angular-ui-sortable": "latest",

@@ -1,0 +1,25 @@
+.form-for-attachment {
+  margin-left: 1em;
+  margin-top: 2em;
+  transition: .5s linear all;
+  height: 80px;
+  overflow: hidden;
+}
+
+.form-for-attachment.ng-hide {
+  height: 0;
+}
+
+.form-for-attachment.ng-hide-add,
+.form-for-attachment.ng-hide-remove, {
+  display: block!important;
+}
+
+.add-file-link {
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8em;
+  margin-left: 2em;
+  width: 4em;
+  margin-top: 2em;
+}

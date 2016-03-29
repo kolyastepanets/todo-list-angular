@@ -15,6 +15,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem 'active_model_serializers'
+gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 
 group :development, :test do
   gem 'byebug'

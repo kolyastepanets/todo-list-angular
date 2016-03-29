@@ -1,0 +1,47 @@
+.task-stuff ng-controller="TaskCtrl"
+  .new-task
+    .plus-picture
+      = image_tag "plus.png"
+    form id="new-task-form" ng-submit="addTask(project)"
+      .input-group.add-task-div
+        input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newTask.title" class="form-control input-for-task" required="true"
+        button type="submit" class="add-task"
+          | Add Task
+
+  div.list-of-tasks
+    div ui-sortable="sortableOptions" ng-model="project.tasks"
+      ul id="task-title" ng-repeat="task in project.tasks" ng-mouseover="task.showEdit === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
+        .completed
+          input type="checkbox" ng-model="task.completed" ng-click="updateTask(project, task)" id="complete-checkbox"
+        li class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
+          p.task-title
+            | {{ task.title | limitTo:50 }}
+          p.end-date-inline ng-class="{complete: task.completed}"
+            | {{ task.end_date | date: "dd MMMM, yyyy" }}
+        .action-stuff
+          div class="view-task-options" ng-show="optionsTask"
+            div class="btn-for-task"
+              = image_tag("up-down.png")
+            div class="btn-for-task" ng-click="showForm(task)"
+              = image_tag("edit-task.png")
+            div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy"
+              = image_tag("delete-task.png")
+
+        div class="edit-task" ng-if="task.showEdit"
+          form ng-submit="updateTitle(project, task, taskData)" class="edit-task-form"
+            .input-group
+              textarea ng-model="taskData.title" class="form-control input-edit-task"
+
+              button type="submit" class="btn btn-primary update-name-task"
+                | Update task
+
+          form ng-submit="updateDate(project, task, taskData)" class="edit-task-form"
+            uib-datepicker ng-model="taskData.end_date" datepicker-options="dateOptions" class="input-date-form"
+            button type="submit" class="btn btn-primary update-date-task"
+              | Update date
+
+          div style="clear:both;"
+          .comments-stuff ng-include="'angular-app/comment/_comments.html'"
+
+          div class="cancel-update" ng-click="task.showEdit = false"
+            = image_tag("cross.png", class: "cancel-task")

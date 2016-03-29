@@ -1,0 +1,225 @@
+.plus-picture {
+  float: left;
+  height: 1em;
+  width: 1em;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+#new-task {
+  float: left;
+  position: relative;
+}
+
+#new-task-form {
+  background-color: #cfcfcf;
+  border: 1px solid #cfcfcf;
+  height: 4em;
+}
+
+#input-new-task {
+  resize: none;
+  width: 26.5em;
+  height: 2.5em;
+  margin-top: 0.5em;
+  padding-left: 1em;
+  border-top: 2px solid #9A8A8A;
+  border-bottom: none;
+  margin-left: 1.5em;
+  position: initial;
+}
+
+.add-task {
+  color: white;
+  font-weight: bold;
+  width: 7em;
+  border-radius: 0 6px 6px 0;
+  background: linear-gradient(to bottom, #8cc3a6, #508767);
+  border: 1px solid #4e7f61;
+  cursor: pointer;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+.add-task-div {
+  position: initial;
+}
+
+.list-of-tasks {
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #cfcfcf;
+  background-color: white;
+}
+
+#task-title {
+  list-style-type: none;
+  height: 4em;
+  padding: 0;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+#task-title:hover {
+  cursor: pointer;
+  background-color: #fcfed5;
+}
+
+#task-title:last-child:hover {
+  cursor: pointer;
+  background-color: #fcfed5;
+  border-radius: 0 0 20px 20px;
+}
+
+#task-title:last-child {
+  border: none;
+}
+
+.completed {
+  height: 4em;
+  width: 3.5em;
+  float: left;
+  border-right: 1px solid #cfcfcf;
+}
+
+.task {
+  float: left;
+  list-style-type: none;
+  width: 27em;
+  height: 4em;
+  margin-left: 3px;
+  border-left: 1px solid #cfcfcf;
+  border-right: 1px solid #cfcfcf;
+  padding-top: 1em;
+  padding-left: 1em;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+
+.task-title, .end-date-inline {
+  display: inline;
+}
+
+.end-date-inline {
+  float: right;
+  margin-right: 1em;
+  color: red;
+}
+
+.end-date-inline.complete {
+  color: #a9a9a9;
+  text-decoration: line-through;
+}
+
+.task.complete {
+  color: #a9a9a9;
+  text-decoration: line-through;
+
+}
+
+.action-stuff {
+  float: left;
+  height: 4em;
+}
+
+.btn-for-task {
+  float: left;
+  margin-left: 0.1em;
+  margin-top: 1em;
+}
+
+.btn-for-task:first-child {
+  margin-left: 0.5em;
+  cursor: move;
+}
+
+#complete-checkbox {
+  margin-left: 1.5em;
+  margin-top: 1.5em;
+}
+
+.edit-task {
+  background-color: #fcfed5;
+  min-height: 10em;
+  min-width: 43em;
+  position: absolute;
+  margin-left: -2em;
+  border-radius: 7px;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  margin-top: 4em;
+  margin-bottom: 10em;
+  cursor: default;
+}
+
+.edit-task.ng-enter, .edit-task.ng-leave {
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.edit-task.ng-enter,
+.edit-task.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.edit-task.ng-leave,
+.edit-task.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.edit-task-form {
+  float: left;
+  margin-bottom: 2em;
+  width: 19em;
+}
+
+.input-date-form {
+  float: left;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+textarea.form-control.input-edit-task {
+  margin: 1em 0 1em 1em;
+  resize: none;
+  width: 17em;
+  min-height: 16.5em;
+}
+
+.edit-task.ng-hide {
+  opacity: 0;
+}
+
+.cancel-task {
+  width: 15px;
+  position: absolute;
+  right: 0.3em;
+  top: 0.3em;
+  cursor: pointer;
+}
+
+.form-control.input-edit-task {
+  width: 10em;
+}
+
+.update-name-task {
+  margin-left: 1em;
+  width: 17em;
+}
+
+.update-date-task {
+  margin-left: 2em;
+  margin-top: 1em;
+  width: 19.5em;
+}
+
+.updating-task {
+  margin-left: 2em;
+}
+
+.updating-date {
+  width: 15em;
+  margin-left: 24em;
+  margin-top: -48px;
+}
+
+.glyphicon.glyphicon-calendar {
+  margin-top: -1px;
+}

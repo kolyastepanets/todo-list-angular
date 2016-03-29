@@ -1,0 +1,56 @@
+#todo-list {
+  padding: 0;
+  margin: 0 auto;
+  list-style-type: none;
+  margin-bottom: 40px;
+}
+
+#todo-list li.the-whole-project {
+  border-radius: 2px 2px 0 0;
+  border: 1px solid #335583;
+  background-image: url("panel.jpg");
+  height: 50px;
+  padding-left: 55px;
+  padding-top: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+
+.project-name {
+  float: left;
+}
+
+.view-project-options {
+  float: right;
+  margin-right: 1.5em;
+}
+
+.btn-for-project {
+  display: inline;
+}
+
+.btn-update-project {
+  border-radius: 0 5px 5px 0;
+}
+
+.edit-project-form, .cancel-update {
+  display: inline;
+}
+
+.edit-project {
+  float: left;
+  width: 27em;
+}
+
+.edit-project.ng-hide {
+  opacity: 0;
+}
+
+.edit-project-group {
+  margin-top: -0.5em;
+}
+
+input.form-control.input-edit-project {
+  width: 16em;
+}

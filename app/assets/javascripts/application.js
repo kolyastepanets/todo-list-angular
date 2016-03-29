@@ -5,9 +5,14 @@
 //= require angular
 //= require angular-route
 //= require angular-animate
-//= require angular-strap
 //= require angular-resource
 //= require angular-bootstrap
 //= require angular-ui-sortable
 //= require ng-file-upload
+//= require angular-rails-templates
+//= require main
+//= require_tree ./angular-app/attachment
+//= require_tree ./angular-app/comment
+//= require_tree ./angular-app/project
+//= require_tree ./angular-app/task
 //= require_tree .
