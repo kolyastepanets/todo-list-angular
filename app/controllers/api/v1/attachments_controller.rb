@@ -1,7 +1,8 @@
 module Api
   module V1
     class AttachmentsController < ApplicationController
-      before_action :load_comment
+      load_and_authorize_resource :comment
+      load_and_authorize_resource :attachment, through: :comment
       respond_to :json
 
       def create
@@ -9,10 +10,6 @@ module Api
       end
 
       private
-
-        def load_comment
-          @comment = Comment.find(params[:comment_id])
-        end
 
         def attachment_params
           params.require(:file).permit(:file, :format, :comment_id)

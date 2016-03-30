@@ -1,8 +1,8 @@
 module Api
   module V1
     class TasksController < ApplicationController
-      before_action :load_project
-      before_action :load_task, only: [:update, :destroy]
+      load_and_authorize_resource :project
+      load_and_authorize_resource :task, :through => :project
       respond_to :json
 
       def create
@@ -18,14 +18,6 @@ module Api
       end
 
       private
-
-        def load_task
-          @task = Task.find(params[:id])
-        end
-
-        def load_project
-          @project = Project.find(params[:project_id])
-        end
 
         def task_params
           params.require(:task).permit(:id, :title, :position, :project_id, :completed, :end_date)

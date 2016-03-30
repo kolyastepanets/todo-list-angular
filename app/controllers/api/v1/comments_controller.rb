@@ -1,12 +1,12 @@
 module Api
   module V1
     class CommentsController < ApplicationController
-      before_action :load_task
-      before_action :load_comment, only: [:destroy]
+      load_and_authorize_resource :task
+      load_and_authorize_resource :comment, :through => :task
       respond_to :json
 
       def create
-        respond_with(:api, :v1, @task, @task.comments.create(comments_params))
+        respond_with(:api, :v1, @task, @task.comments.create(comment_params))
       end
 
       def destroy
@@ -15,20 +15,8 @@ module Api
 
       private
 
-        def load_comment
-          @comment = Comment.find(params[:id])
-        end
-
-        def load_task
-          @task = Task.find(params[:task_id])
-        end
-
-        def load_project
-          @project = Project.find(params[:project_id])
-        end
-
-        def comments_params
-          params.require(:comment).permit(:id, :content, :task_id)
+        def comment_params
+          params.require(:comment).permit(:content)
         end
     end
   end

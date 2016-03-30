@@ -1,7 +1,7 @@
 module Api
   module V1
     class ProjectsController < ApplicationController
-      before_action :load_project, only: [:update, :destroy]
+      load_and_authorize_resource :project
       respond_to :json
 
       def index
@@ -21,10 +21,6 @@ module Api
       end
 
       private
-
-        def load_project
-          @project = Project.find(params[:id])
-        end
 
         def project_params
           params.require(:project).permit(:id, :name, :tasks)

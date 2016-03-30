@@ -21,6 +21,7 @@ gem 'devise_token_auth'
 gem 'omniauth'
 gem 'responders', '~> 2.0'
 gem 'omniauth-facebook'
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
   gem 'byebug'
