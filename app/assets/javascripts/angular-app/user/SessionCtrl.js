@@ -8,10 +8,9 @@ app.controller('SessionCtrl', ['$scope', '$state', '$auth',
       $scope.error = reason.errors[0];
     });
 
-    $scope.handleSignOutBtnClick = function() {
+    $scope.handleSignOutBtnClick   = function() {
       $auth.signOut()
         .then(function(resp) {
-          console.log($state);
           $state.go('sign_in');
         });
     };

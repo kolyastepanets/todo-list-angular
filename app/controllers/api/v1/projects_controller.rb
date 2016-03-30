@@ -5,7 +5,7 @@ module Api
       respond_to :json
 
       def index
-        respond_with(@projects = current_user.projects)
+        respond_with(:api, :v1, @projects = current_user.projects)
       end
 
       def create

@@ -1,4 +1,14 @@
-app.controller('RegistrationCtrl', ['$scope', '$auth',
-  function($scope, $auth) {
+app.controller('RegistrationCtrl', ['$scope', '$state', '$auth',
+  function($scope, $state, $auth) {
+    $scope.handleRegBtnClick = function() {
+      $auth.submitRegistration($scope.registrationForm)
+        .then(function() {
+          $auth.submitLogin({
+            email: $scope.registrationForm.email,
+            password: $scope.registrationForm.password
+          })
+          $state.go('/');
+        });
+    };
   }
 ]);

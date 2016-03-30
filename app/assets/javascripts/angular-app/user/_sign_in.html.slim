@@ -1,0 +1,17 @@
+form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}" class="sign-in-up-form"
+  div class="form-group"
+    label for="email"
+      | Email
+    input type="email" name="email" id="email" ng-model="loginForm.email" required="required" class="form-control email-input"
+
+  div class="form-group"
+    label for="password"
+      | Password
+    input type="password" name="password" id="password" ng-model="loginForm.password" required="required" class="form-control input-password"
+
+  button type="submit" class="btn btn-primary btn-sm"
+    | Sign in
+
+  div class="link-to-forms"
+    a ng-href="#/sign_up"
+      | Sign up

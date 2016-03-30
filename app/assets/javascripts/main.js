@@ -43,7 +43,7 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
 
       );
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("sign_in");
   }
 ]);
 
