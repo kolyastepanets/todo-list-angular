@@ -50,6 +50,6 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
 app.run(['$auth', '$state', function($auth, $state) {
   $auth.validateUser()
     .then(function(response) {
-      $state.go('');
+      $state.go('/');
     });
 }]);

@@ -17,6 +17,9 @@ gem 'carrierwave'
 gem 'active_model_serializers'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'responders', '~> 2.0'
 
 group :development, :test do
   gem 'byebug'

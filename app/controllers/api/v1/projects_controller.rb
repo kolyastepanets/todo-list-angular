@@ -5,13 +5,11 @@ module Api
       respond_to :json
 
       def index
-        respond_with(@projects = Project.all.order("id ASC"))
-        # respond_with(:api, :v1, @projects = Project.all.order("id ASC"), include: { tasks: { include: 'comments'} })
+        respond_with(@projects = current_user.projects)
       end
 
       def create
-        # respond_with Post.create(post_params.merge(user_id: current_user.id))
-        respond_with(:api, :v1, Project.create(project_params))
+        respond_with(:api, :v1, Project.create(project_params.merge(user: current_user)))
       end
 
       def update
