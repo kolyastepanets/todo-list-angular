@@ -1,4 +1,4 @@
-app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
+app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, toastr){
   $scope.project.tasks = $scope.project.tasks || [];
   $scope.taskData = {};
 
@@ -6,7 +6,6 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
     task = Task.save({title: $scope.newTask.title, project_id: project.id});
       $scope.project.tasks.push(task);
       $scope.newTask = {};
-      console.log(task);
   };
 
   $scope.updateTask = function(project, task, taskData){
@@ -23,6 +22,7 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
                  id: task.id,
                  title: taskData.title});
     task.showEdit = !task.showEdit;
+    toastr.success('Task updated successfully!');
   };
 
   $scope.updateDate = function(project, task, taskData){
@@ -32,6 +32,7 @@ app.controller('TaskCtrl', ["$scope", 'Task', function($scope, Task){
                  end_date: task.end_date + "T03:00:00.000Z"}, function(resource){
     });
     task.showEdit = !task.showEdit;
+    toastr.success('Date updated successfully!');
   };
 
   $scope.delTask = function(task, project){

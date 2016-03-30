@@ -12,6 +12,7 @@
 //= require angular-rails-templates
 //= require angular-cookie
 //= require ng-token-auth
+//= require angular-toastr
 //= require main
 //= require_tree ./angular-app/attachment
 //= require_tree ./angular-app/comment

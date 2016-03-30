@@ -6,7 +6,8 @@ app = angular.module('app',
        'ngFileUpload',
        'templates',
        'ui.router',
-       'ng-token-auth'
+       'ng-token-auth',
+       'toastr'
        ]);
 
 app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", function($stateProvider, $urlRouterProvider, $authProvider) {
@@ -50,6 +51,15 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", function($s
     });
   }
 ]);
+
+app.config(["toastrConfig", function(toastrConfig) {
+  angular.extend(toastrConfig, {
+    closeButton: true,
+    tapToDismiss: true,
+    timeOut: 15000,
+    positionClass: 'toast-top-left'
+  });
+}]);
 
 app.run(['$auth', '$state', function($auth, $state) {
   $auth.validateUser()
