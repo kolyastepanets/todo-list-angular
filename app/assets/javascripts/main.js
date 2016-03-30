@@ -9,7 +9,7 @@ app = angular.module('app',
        'ng-token-auth'
        ]);
 
-app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", function($stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider
       .state("/",
         {
@@ -44,6 +44,10 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
       );
 
     $urlRouterProvider.otherwise("sign_in");
+
+    $authProvider.configure({
+      apiUrl: ''
+    });
   }
 ]);
 

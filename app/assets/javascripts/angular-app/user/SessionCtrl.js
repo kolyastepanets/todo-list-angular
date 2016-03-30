@@ -8,6 +8,9 @@ app.controller('SessionCtrl', ['$scope', '$state', '$auth',
       $scope.error = reason.errors[0];
     });
 
+    $scope.$on('auth:oauth-registration', function(ev, user) {
+    });
+
     $scope.handleSignOutBtnClick   = function() {
       $auth.signOut()
         .then(function(resp) {

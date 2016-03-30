@@ -17,6 +17,10 @@ form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}"
   button type="submit" class="btn btn-primary btn-sm"
     | Register
 
-  div class="link-to-forms"
+div class="link-to-forms"
+  button class="btn btn-primary btn-sm" ng-click="authenticate('facebook')"
+    | Sign in with Facebook
+
+  div.link-sign-in-up
     a ng-href="#/sign_in"
       | Sign in

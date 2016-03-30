@@ -20,11 +20,13 @@ gem 'angular_rails_csrf'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'responders', '~> 2.0'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
 end
 
 group :development do

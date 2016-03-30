@@ -12,6 +12,10 @@ form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}" cla
   button type="submit" class="btn btn-primary btn-sm"
     | Sign in
 
-  div class="link-to-forms"
+div class="link-to-forms"
+  button class="btn btn-primary btn-sm" ng-click="authenticate('facebook')"
+    | Sign in with Facebook
+
+  div.link-sign-in-up
     a ng-href="#/sign_up"
-      | Sign up
+      | Register
