@@ -12,7 +12,7 @@ module Api
       private
 
         def attachment_params
-          params.require(:file).permit(:file, :format, :comment_id)
+          params.require(:file).permit(:file)
         end
     end
   end

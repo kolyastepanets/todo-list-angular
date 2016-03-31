@@ -14,7 +14,6 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
     before { get :index, format: :json }
 
     it "forbids to read projects" do
-      expect(controller).to receive(:current_ability).and_return(@ability)
       @ability.cannot :index, Project
       get :index, format: :json
       expect(response).to be_forbidden
@@ -32,8 +31,7 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
   describe "POST #create" do
     context 'saves project' do
       it 'saves new project' do
-        expect(controller).to receive(:current_ability).and_return(@ability)
-        post :create, project: attributes_for(:project, user_id: user.id), format: :json
+        post :create, project: attributes_for(:project), format: :json
         expect(assigns(:project)).to_not be_nil
       end
 
@@ -41,9 +39,8 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
 
     context "does not save project" do
       it "forbids to create project" do
-        expect(controller).to receive(:current_ability).and_return(@ability)
         @ability.cannot :create, Project
-        get :create, project: attributes_for(:project, user_id: user.id), format: :json
+        get :create, project: attributes_for(:project), format: :json
         expect(response).to be_forbidden
       end
 
@@ -51,7 +48,6 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
         expect(controller).to receive(:current_ability).and_return(@ability)
         expect{ post :create, project:
                                 attributes_for(:project,
-                                user_id: user.id,
                                 name: ''), format: :json }.to_not change(Project, :count)
       end
     end
@@ -62,6 +58,7 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
       it "updates successfully" do
         patch :update, id: project.id, project: attributes_for(:project, name: "new name"), format: :json
         project.reload
+        expect(assigns(:project)).to eq project
         expect(project.name).to eq "new name"
       end
     end
