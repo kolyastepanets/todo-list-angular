@@ -1,0 +1,56 @@
+<div id="todoapp" ng-controller="ProjectCtrl">
+  <div class="btn sign-out" ng-controller="SessionCtrl">
+    <button class="btn btn-danger" ng-click="handleSignOutBtnClick()">Sign out</button>
+  </div>
+  <div id="header">
+    <h1 class="head-title">
+      SIMPLE TODO LISTS
+    </h1>
+    <h4 class="sub-title">
+      FROM RUBY GARAGE
+    </h4>
+  </div>
+  <div class="all-project-stuff">
+    <ul id="todo-list" ng-repeat="project in projects">
+      <li class="the-whole-project" ng-mouseleave="optionsProject = false" ng-mouseover="project.editProject === true ? optionsProject = false : optionsProject = true">
+        <div class="edit-project" ng-if="project.editProject">
+          <div class="input-group edit-project-group">
+            <form class="edit-project-form" ng-submit="updateProject(project, projectData)">
+              <input autofocus="true" class="form-control input-edit-project" ng-model="projectData.name" type="text" /><button class="btn btn-default btn-update-project" type="submit">Update</button>
+            </form>
+            <div class="cancel-update" ng-click="project.editProject = false">
+              <button class="btn btn-default">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="project-name" ng-hide="project.editProject">
+          {{project.name}}
+        </div>
+        <div class="view-project-options" ng-show="optionsProject">
+          <div class="btn-for-project" ng-click="showEditProject(project)">
+            <img src="/assets/edit-c5fadb7721775151dfff0def532bfb359e55982385b03b1d98fa2d8bfbaee014.jpg" alt="Edit" />
+          </div>
+          <div class="btn-for-project" ng-click="delProject(project, $index)">
+            <img src="/assets/delete-13f16a4861241b402fbd4098f2a1897ca6b6ee28d21882cc177ea88f6c40c035.jpg" alt="Delete" />
+          </div>
+        </div>
+      </li>
+      <div class="task-partial" ng-include="&#39;angular-app/task/_tasks.html&#39;"></div>
+    </ul>
+  </div>
+  <div class="btn-add-project" ng-click="visible = true" ng-hide="visible">
+    <p class="add-project">
+      Add TODO List
+    </p>
+  </div>
+  <form id="new-project" ng-show="visible" ng-submit="addProject()">
+    <div class="form-group">
+      <div class="input-group">
+        <input id="input-new-project" ng-model="newProject.name" placeholder="Start typing here to create a new Todo list..." type="text" /><button class="btn btn-primary create-btn" ng-click="visible = false" type="submit">Create</button>
+      </div>
+    </div>
+    <div ng-click="visible = false">
+      <img class="cancel-project" src="/assets/cross-80788d09d4e9c7096aea078664cd0ddb573d291ec004619ea44628661bddaa24.png" alt="Cross" />
+    </div>
+  </form>
+</div>

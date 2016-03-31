@@ -41,4 +41,7 @@ group :test do
   gem "database_cleaner"
 end
 
-gem 'rails_12factor', group: :production
+group :production, :staging do
+  gem 'heroku_rails_deflate'
+  gem 'rails_12factor'
+end
