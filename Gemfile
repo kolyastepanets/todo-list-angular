@@ -38,6 +38,7 @@ end
 group :test do
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
   gem "codeclimate-test-reporter"
+  gem "database_cleaner"
 end
 
 gem 'rails_12factor', group: :production

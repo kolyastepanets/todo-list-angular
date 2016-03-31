@@ -1,4 +1,4 @@
-app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
+app.controller('ProjectCtrl', ['$scope', 'Project', 'toastr', function($scope, Project, toastr){
   $scope.projects = Project.query();
   $scope.projectData = {};
 
@@ -10,12 +10,14 @@ app.controller('ProjectCtrl', ['$scope', 'Project', function($scope, Project){
   };
 
   $scope.updateProject = function(project, projectData){
+    if ($scope.projectData.name === '') {
+      toastr.error('Project can\'t be blank.');
+      projectData.name = project.name;
+    }
     project.name = projectData.name;
     Project.update({id: project.id,
                     name: projectData.name}, function(resource){
       project.editProject = !project.editProject
-        console.log(projectData.name);
-        console.log(project.name);
     });
   };
 

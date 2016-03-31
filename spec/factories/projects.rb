@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :project do
     name "MyString"
-    user_id 1
+    user
   end
 end

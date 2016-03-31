@@ -23,7 +23,7 @@ module Api
       private
 
         def project_params
-          params.require(:project).permit(:id, :name, :tasks)
+          params.require(:project).permit(:name)
         end
     end
   end
