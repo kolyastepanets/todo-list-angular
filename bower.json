@@ -13,6 +13,9 @@
       "angular-toastr": "latest"
       // "threex"      : "git@github.com:rharriso/threex.git",
       // "gsvpano.js"  : "https://github.com/rharriso/GSVPano.js/blob/master/src/GSVPano.js"
+    },
+    "resolutions":{
+      "angular": "1.5.3"
     }
   },
   "vendor": {

@@ -56,6 +56,7 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
   $scope.format = 'dd MMMM, yyyy';
 
   $scope.sortableOptions = {
+    disabled: false,
     stop: function (e, ui) {
       $scope.project.tasks.map(function(task){
         index = $scope.project.tasks.indexOf(task)
@@ -63,15 +64,22 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
         Task.update({id: task.id,
                      position: index,
                      project_id: $scope.project.id})
-        console.log(task);
       });
     },
     axis: 'y'
   };
 
   $scope.showForm = function(task){
+
     $scope.taskData.title = task.title;
     task.showEdit = !task.showEdit;
-  };
+
+    angular.forEach($scope.project.tasks, function (eachTask) {
+      eachTask.showEdit = false;
+      if (task.showEdit === eachTask.showEdit) {
+        eachTask.showEdit = true;
+      }
+    });
+  }
 
 }]);

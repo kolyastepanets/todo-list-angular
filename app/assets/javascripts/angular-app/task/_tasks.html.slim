@@ -9,12 +9,12 @@
           | Add Task
 
   div.list-of-tasks
-    div ui-sortable="sortableOptions" ng-model="project.tasks"
-      ul id="task-title" ng-repeat="task in project.tasks" ng-mouseover="task.showEdit === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
+    ul ui-sortable="sortableOptions" ng-model="project.tasks" class="all-task-in-projects"
+      li class="task-title" ng-repeat="task in project.tasks" ng-mouseover="task.showEdit === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
         .completed
           input type="checkbox" ng-model="task.completed" ng-click="updateTask(project, task)" id="complete-checkbox"
-        li class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
-          p.task-title
+        div class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
+          p.text-task-title
             | {{ task.title | limitTo:50 }}
           p.end-date-inline ng-class="{complete: task.completed}"
             | {{ task.end_date | date: "dd MMMM, yyyy" }}
@@ -22,7 +22,7 @@
           div class="view-task-options" ng-show="optionsTask"
             div class="btn-for-task"
               = image_tag("up-down.png")
-            div class="btn-for-task" ng-click="showForm(task)"
+            div class="btn-for-task" ng-click="showForm(task); sortableOptions.disabled = !sortableOptions.disabled"
               = image_tag("edit-task.png")
             div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy"
               = image_tag("delete-task.png")
@@ -43,5 +43,5 @@
           div style="clear:both;"
           .comments-stuff ng-include="'angular-app/comment/_comments_and_attachments.html'"
 
-          div class="cancel-update" ng-click="task.showEdit = false"
+          div class="cancel-update" ng-click="task.showEdit = false; sortableOptions.disabled = false"
             = image_tag("cross.png", class: "cancel-task")

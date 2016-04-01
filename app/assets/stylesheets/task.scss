@@ -45,13 +45,17 @@
   position: initial;
 }
 
+.all-task-in-projects {
+  padding: 0;
+}
+
 .list-of-tasks {
   border-radius: 0 0 20px 20px;
   border: 1px solid #cfcfcf;
   background-color: white;
 }
 
-#task-title {
+.task-title {
   list-style-type: none;
   height: 4em;
   padding: 0;
@@ -59,18 +63,18 @@
   background-color: white;
 }
 
-#task-title:hover {
+.task-title:hover {
   cursor: pointer;
   background-color: #fcfed5;
 }
 
-#task-title:last-child:hover {
+.task-title:last-child:hover {
   cursor: pointer;
   background-color: #fcfed5;
   border-radius: 0 0 20px 20px;
 }
 
-#task-title:last-child {
+.task-title:last-child {
   border: none;
   border-radius: 0 0 20px 20px;
 }
@@ -80,6 +84,11 @@
   width: 3.5em;
   float: left;
   border-right: 1px solid #cfcfcf;
+}
+
+.task.complete {
+  color: #a9a9a9;
+  text-decoration: line-through;
 }
 
 .task {
@@ -96,7 +105,7 @@
   transition: color 0.4s;
 }
 
-.task-title, .end-date-inline {
+.text-task-title, .end-date-inline {
   display: inline;
 }
 
@@ -109,12 +118,6 @@
 .end-date-inline.complete {
   color: #a9a9a9;
   text-decoration: line-through;
-}
-
-.task.complete {
-  color: #a9a9a9;
-  text-decoration: line-through;
-
 }
 
 .action-stuff {

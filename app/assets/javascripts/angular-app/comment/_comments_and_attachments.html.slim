@@ -24,7 +24,7 @@
         form class="form-for-attachment" ng-show="showFileForm"
           .input-group
             input type="file" ngf-select="true" ng-model="newFile.file" class="input-upload-file"
-            button type="button" class="btn btn-default upload-file" ng-click="uploadFile(file); showFileForm = false"
+            button type="button" class="btn btn-primary upload-file" ng-click="uploadFile(file); showFileForm = false"
               | Upload file
 
   form id="new-comment-form" ng-submit="addComment(task)"
