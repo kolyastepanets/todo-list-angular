@@ -39,8 +39,6 @@ form#new-project {
   margin-left: 3em;
   position: relative;
   margin-bottom: 10em;
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
 }
 
 form#new-project.ng-hide {
@@ -77,8 +75,6 @@ a.add-project:hover {
   margin-left: 13em;
   margin-top: 5em;
   margin-bottom: 10em;
-  -webkit-transition: all linear 0.2s;
-  transition: all linear 0.2s;
 }
 
 .btn-add-project.ng-hide {
