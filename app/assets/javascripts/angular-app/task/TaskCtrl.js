@@ -3,40 +3,57 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
   $scope.taskData = {};
 
   $scope.addTask = function(project){
-    if ($scope.newTask === undefined) {
+    if ($scope.newTask === undefined || Object.keys($scope.newTask).length === 0) {
       toastr.error('Task can\'t be blank.');
+    } else {
+      task = Task.save({title: $scope.newTask.title, project_id: project.id});
+        $scope.project.tasks.push(task);
+        $scope.newTask = {};
     }
-    task = Task.save({title: $scope.newTask.title, project_id: project.id});
-      $scope.project.tasks.push(task);
-      $scope.newTask = {};
   };
 
-  $scope.updateTask = function(project, task, taskData){
+  $scope.completeTask = function(project, task, taskData){
     Task.update({project_id: project.id,
                  id: task.id,
-                 completed: task.completed,
-                 end_date: task.end_date + "T03:00:00.000Z"});
+                 completed: task.completed
+               });
   };
 
   $scope.updateTitle = function(project, task, taskData){
     if ($scope.taskData.title === '') {
       toastr.error('Task can\'t be blank.');
       taskData.title = task.title;
-    }
-    task.title = taskData.title;
-    Task.update({project_id: project.id,
-                 id: task.id,
-                 title: taskData.title});
-    task.showEdit = !task.showEdit;
+    } else {
+      task.title = taskData.title;
+      Task.update({project_id: project.id,
+                   id: task.id,
+                   title: taskData.title});
+      toastr.success('Task updated successfully!');
+      task.showEdit = !task.showEdit;
+    };
   };
 
   $scope.updateDate = function(project, task, taskData){
-    task.end_date = taskData.end_date;
+    if (taskData.end_date === undefined) {
+      task.showEdit = !task.showEdit;
+      toastr.warning('Date didn\'t change!');
+    } else {
+      task.end_date = taskData.end_date;
+      Task.update({project_id: project.id,
+                   id: task.id,
+                   end_date: task.end_date + "T03:00:00.000Z"});
+      task.showEdit = !task.showEdit;
+      toastr.success('Date changed successfully!');
+    }
+  };
+
+  $scope.deleteDate = function(project, task){
     Task.update({project_id: project.id,
-                 id: task.id,
-                 end_date: task.end_date + "T03:00:00.000Z"});
-    task.showEdit = !task.showEdit;
-    toastr.success('Date updated successfully!');
+                   id: task.id,
+                   end_date: null});
+      task.end_date = undefined;
+      task.showEdit = !task.showEdit;
+      toastr.success('Date deleted successfully!');
   };
 
   $scope.delTask = function(task, project){
@@ -46,6 +63,7 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
         project.tasks.splice(index, 1);
       };
     });
+    toastr.success('Task deleted successfully!');
   };
 
   $scope.dateOptions = {

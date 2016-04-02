@@ -6,10 +6,13 @@ app.controller('AttachmentCtrl', ['$scope', 'Upload', 'toastr', function ($scope
         method: 'POST',
         file: $scope.newFile
       }).success(function(data){
-        comment.attachments.push(data);
-        $scope.newFile = {};
-        toastr.success('File successfully uploaded!');
-      });
+          comment.attachments.push(data);
+          $scope.newFile = {};
+          toastr.success('File successfully uploaded!');
+          })
+        .error(function(){
+          toastr.warning('File wasn\'t uploaded!');
+        });
     }
   }
 

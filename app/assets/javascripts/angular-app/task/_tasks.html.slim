@@ -12,7 +12,7 @@
     ul ui-sortable="sortableOptions" ng-model="project.tasks" class="all-task-in-projects"
       li class="task-title" ng-repeat="task in project.tasks" ng-mouseover="task.showEdit === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
         .completed
-          input type="checkbox" ng-model="task.completed" ng-click="updateTask(project, task)" id="complete-checkbox"
+          input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" id="complete-checkbox"
         div class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
           p.text-task-title
             | {{ task.title | limitTo:50 }}
@@ -39,6 +39,9 @@
             uib-datepicker ng-model="taskData.end_date" datepicker-options="dateOptions" class="input-date-form"
             button type="submit" class="btn btn-primary update-date-task"
               | Update date
+
+          button type="submit" class="btn btn-danger delete-date-task" ng-click="deleteDate(project, task, taskData)"
+            | Remove date
 
           div style="clear:both;"
           .comments-stuff ng-include="'angular-app/comment/_comments_and_attachments.html'"

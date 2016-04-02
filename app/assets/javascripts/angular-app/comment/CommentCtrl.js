@@ -1,14 +1,13 @@
 app.controller('CommentCtrl', ["$scope", 'Comment', 'toastr', function($scope, Comment, toastr){
   $scope.addComment = function(task){
-    if ($scope.newComment === undefined) {
+    if ($scope.newComment === undefined || Object.keys($scope.newComment).length === 0) {
       toastr.error('Comment can\'t be blank.');
-    }
-    comment = Comment.save({content: $scope.newComment.content, task_id: task.id});
-      if (comment.content !== undefined) {
+    } else {
+      comment = Comment.save({content: $scope.newComment.content, task_id: task.id});
         $scope.task.comments.push(comment);
         $scope.newComment = {};
-        console.log(comment);
-      }
+        toastr.success('Comment successfully added!');
+    }
   };
 
   $scope.delComment = function(comment, task){
@@ -18,6 +17,7 @@ app.controller('CommentCtrl', ["$scope", 'Comment', 'toastr', function($scope, C
         task.comments.splice(index, 1);
       };
     });
+    toastr.success('Comment successfully removed!');
   };
 
 }]);

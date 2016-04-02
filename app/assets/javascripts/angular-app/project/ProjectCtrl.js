@@ -11,14 +11,17 @@ app.controller('ProjectCtrl', ['$scope', 'Project', 'toastr', function($scope, P
 
   $scope.updateProject = function(project, projectData){
     if ($scope.projectData.name === '') {
-      toastr.error('Project can\'t be blank.');
+      toastr.error('Todo list title can\'t be blank.');
       projectData.name = project.name;
-    }
-    project.name = projectData.name;
-    Project.update({id: project.id,
-                    name: projectData.name}, function(resource){
       project.editProject = !project.editProject
-    });
+    } else {
+      project.name = projectData.name;
+      Project.update({id: project.id,
+                      name: projectData.name}, function(resource){
+        project.editProject = !project.editProject
+      });
+      toastr.success('Todo list title successfully updated!');
+    }
   };
 
   $scope.delProject = function(project, index){

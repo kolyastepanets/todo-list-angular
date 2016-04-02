@@ -139,6 +139,7 @@
 #complete-checkbox {
   margin-left: 1.5em;
   margin-top: 1.5em;
+  cursor: pointer;
 }
 
 .edit-task {
@@ -208,7 +209,13 @@ textarea.form-control.input-edit-task {
 .update-date-task {
   margin-left: 2em;
   margin-top: 1em;
-  width: 19.5em;
+  width: 8.5em;
+}
+
+.delete-date-task {
+  margin-top: -8em;
+  margin-left: 13em;
+  width: 8.5em;
 }
 
 .updating-task {
