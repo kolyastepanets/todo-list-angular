@@ -5,15 +5,14 @@ feature 'delete task', %q{
 } do
 
   given(:user) { create(:user) }
-  given(:project) { create(:project, user: user) }
-  given(:task) { create(:task, project: project) }
+  given!(:project) { create(:project, user: user) }
+  given!(:task) { create(:task, project: project) }
 
   scenario 'delete task', js: true do
     sign_in(user)
 
-    task.reload
-    find(".task-title:first-child").trigger(:mouseover)
-    find(".btn-for-task:last-child").click
+    find(".task-title:first-child").hover
+    find("#destroy-task-#{task.id}").click
 
     expect(page).to have_content "Task deleted successfully!"
   end

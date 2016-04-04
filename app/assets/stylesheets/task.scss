@@ -68,6 +68,10 @@
   background-color: #fcfed5;
 }
 
+.task-title:hover .action-stuff{
+  display: block;
+}
+
 .task-title:last-child:hover {
   cursor: pointer;
   background-color: #fcfed5;
@@ -123,6 +127,7 @@
 .action-stuff {
   float: left;
   height: 4em;
+  display: none;
 }
 
 .btn-for-task {

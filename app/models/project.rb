@@ -5,4 +5,6 @@ class Project < ActiveRecord::Base
 
   validates :name, :user_id, presence: true
 
+  default_scope { order("created_at ASC") }
+
 end

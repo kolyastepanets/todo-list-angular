@@ -5,14 +5,14 @@ feature 'delete project', %q{
 } do
 
   given(:user) { create(:user) }
-  given(:project) { create(:project, user: user) }
+  given!(:project) { create(:project, user: user) }
 
   scenario 'delete project', js: true do
     sign_in(user)
 
-    project.reload
-    find(".the-whole-project").trigger(:mouseover)
-    find(".btn-for-project:last-child").click
+    find(".the-whole-project").hover
+    find("#project-btn-delete-#{project.id}").click
+    page.driver.browser.switch_to.alert.accept
 
     expect(page).to_not have_content project.name
   end

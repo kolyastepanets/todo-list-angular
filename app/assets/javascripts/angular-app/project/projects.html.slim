@@ -26,9 +26,9 @@ div id="todoapp" ng-controller="ProjectCtrl"
           | {{project.name | limitTo:40 }}
 
         div class="view-project-options" ng-show="optionsProject"
-          div class="btn-for-project" ng-click="showEditProject(project)"
+          div class="btn-for-project" ng-click="showEditProject(project)" id="project-btn-edit-{{project.id}}"
             = image_tag("edit.jpg")
-          div class="btn-for-project" ng-click="delProject(project, $index)"
+          div class="btn-for-project" ng-click="delProject(project, $index)" id="project-btn-delete-{{project.id}}"
             = image_tag("delete.jpg")
 
       .task-partial ng-include="'angular-app/task/_tasks.html'"

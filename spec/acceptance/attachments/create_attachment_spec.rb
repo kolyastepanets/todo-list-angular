@@ -7,14 +7,12 @@ feature 'create attachment', %q{
   given(:user) { create(:user) }
   given(:project) { create(:project, user: user) }
   given(:task) { create(:task, project: project) }
-  given(:comment) { create(:comment, task: task) }
+  given!(:comment) { create(:comment, task: task) }
 
   scenario 'create attachment', js: true do
     sign_in(user)
-
-    comment.reload
-    find(".task-title").trigger(:mouseover)
-    find(".btn-for-task.task-edit").click
+    find("#task-title-#{task.id}").hover
+    find("#task-edit-btn-#{task.id}").click
     find(".add-file-link").click
     attach_file 'file', "#{Rails.root}/spec/spec_helper.rb"
     click_on "Upload file"

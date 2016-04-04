@@ -10,7 +10,7 @@
 
   div.list-of-tasks
     ul ui-sortable="sortableOptions" ng-model="project.tasks" class="all-task-in-projects"
-      li class="task-title" ng-repeat="task in project.tasks" ng-mouseover="task.showEdit === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
+      li class="task-title" ng-repeat="task in project.tasks" id="task-title-{{task.id}}"
         .completed
           input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" id="complete-checkbox" name="completed"
         div class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
@@ -19,12 +19,12 @@
           p.end-date-inline ng-class="{complete: task.completed}"
             | {{ task.end_date | date: "dd MMMM, yyyy" }}
         .action-stuff
-          div class="view-task-options" ng-show="optionsTask"
+          div class="view-task-options" ng-hide="task.showEdit"
             div class="btn-for-task"
               = image_tag("up-down.png")
-            div class="btn-for-task task-edit" ng-click="showForm(task); sortableOptions.disabled = !sortableOptions.disabled"
+            div class="btn-for-task task-edit" ng-click="showForm(task); sortableOptions.disabled = !sortableOptions.disabled" id="task-edit-btn-{{task.id}}"
               = image_tag("edit-task.png")
-            div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy"
+            div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy" id="destroy-task-{{task.id}}"
               = image_tag("delete-task.png")
 
         div class="edit-task" ng-if="task.showEdit"

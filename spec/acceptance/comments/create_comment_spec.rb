@@ -12,9 +12,8 @@ feature 'create comment', %q{
   scenario 'create comment', js: true do
     sign_in(user)
 
-    task.reload
-    find(".task-title").trigger(:mouseover)
-    find(".btn-for-task.task-edit").click
+    find("#task-title-#{task.id}").hover
+    find("#task-edit-btn-#{task.id}").click
     fill_in "new_comment", with: 'new comment'
     click_on "Add Comment"
 

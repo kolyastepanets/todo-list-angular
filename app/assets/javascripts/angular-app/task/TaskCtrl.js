@@ -12,7 +12,8 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
           $scope.project.tasks.push(task);
           $scope.newTask = {};
       } else {
-        var lastIndex = $scope.project.tasks.lastIndexOf(task);
+        var lastTask = $scope.project.tasks.slice(-1)[0]
+        var lastIndex = $scope.project.tasks.lastIndexOf(lastTask);
         lastIndex = lastIndex + 1;
         task = Task.save({title: $scope.newTask.title, project_id: project.id, position: lastIndex});
           $scope.project.tasks.push(task);

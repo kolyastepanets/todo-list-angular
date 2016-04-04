@@ -6,15 +6,14 @@ feature 'update date', %q{
 } do
 
   given(:user) { create(:user) }
-  given(:project) { create(:project, user: user) }
-  given(:task) { create(:task, project: project) }
+  given!(:project) { create(:project, user: user) }
+  given!(:task) { create(:task, project: project) }
 
   scenario 'update date', js: true do
     sign_in(user)
 
-    task.reload
-    find(".task-title").trigger(:mouseover)
-    find(".btn-for-task.task-edit").click
+    find(".task-title:first-child").hover
+    find("#task-edit-btn-#{task.id}").click
     find(".uib-weeks:last-child").find(".uib-day.text-center:last-child").click
     click_on "Update date"
 

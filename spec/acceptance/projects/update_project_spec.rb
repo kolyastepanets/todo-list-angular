@@ -6,14 +6,13 @@ feature 'update project', %q{
 } do
 
   given(:user) { create(:user) }
-  given(:project) { create(:project, user: user) }
+  given!(:project) { create(:project, user: user) }
 
   scenario 'update project', js: true do
     sign_in(user)
 
-    project.reload
-    find(".the-whole-project").trigger(:mouseover)
-    find(".btn-for-project:first-child").click
+    find(".the-whole-project").hover
+    find("#project-btn-edit-#{project.id}").click
     fill_in "project_name", with: 'new project'
     click_on "Update"
 

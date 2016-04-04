@@ -8,14 +8,14 @@ feature 'delete comment', %q{
   given(:user) { create(:user) }
   given(:project) { create(:project, user: user) }
   given(:task) { create(:task, project: project) }
-  given(:comment) { create(:comment, task: task) }
+  given!(:comment) { create(:comment, task: task) }
 
   scenario 'delete comment', js: true do
     sign_in(user)
 
-    comment.reload
-    find(".task-title").trigger(:mouseover)
-    find(".btn-for-task.task-edit").click
+    find("#task-title-#{task.id}").hover
+    find("#task-edit-btn-#{task.id}").click
+    # save_and_open_page
     find(".btn-for-delete-comment").click
 
     expect(page).to have_content "Comment successfully removed!"

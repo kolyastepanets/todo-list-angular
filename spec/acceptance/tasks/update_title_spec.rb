@@ -6,15 +6,14 @@ feature 'update task', %q{
 } do
 
   given(:user) { create(:user) }
-  given(:project) { create(:project, user: user) }
-  given(:task) { create(:task, project: project) }
+  given!(:project) { create(:project, user: user) }
+  given!(:task) { create(:task, project: project) }
 
   scenario 'update task', js: true do
     sign_in(user)
 
-    task.reload
-    find(".task-title").trigger(:mouseover)
-    find(".btn-for-task.task-edit").click
+    find(".task-title:first-child").hover
+    find("#task-edit-btn-#{task.id}").click
     fill_in "task_title", with: 'new task'
     click_on "Update task"
 
