@@ -1,11 +1,9 @@
 module AcceptanceHelper
   def sign_in(user)
-    visit new_user_session_path
+    visit '/#/sign_in'
 
-      within(".panel-body")do
-        fill_in "user_email", with: user.email
-        fill_in "user_password", with: user.password
-        click_on 'Sign in'
-      end
+    fill_in "email", with: user.email
+    fill_in "password", with: user.password
+    click_on 'Sign in'
   end
 end

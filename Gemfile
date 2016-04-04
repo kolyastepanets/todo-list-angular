@@ -28,6 +28,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
+  gem "database_cleaner"
+  gem 'capybara'
+  gem 'launchy'
+  gem 'capybara-webkit'
 end
 
 group :development do
@@ -38,7 +42,6 @@ end
 group :test do
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
   gem "codeclimate-test-reporter"
-  gem "database_cleaner"
 end
 
 group :production, :staging do
