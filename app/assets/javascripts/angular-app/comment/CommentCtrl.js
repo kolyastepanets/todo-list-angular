@@ -4,9 +4,9 @@ app.controller('CommentCtrl', ["$scope", 'Comment', 'toastr', function($scope, C
       toastr.error('Comment can\'t be blank.');
     } else {
       comment = Comment.save({content: $scope.newComment.content, task_id: task.id});
-        $scope.task.comments.push(comment);
-        $scope.newComment = {};
-        toastr.success('Comment successfully added!');
+      $scope.task.comments.push(comment);
+      $scope.newComment = {};
+      toastr.success('Comment successfully added!');
     }
   };
 

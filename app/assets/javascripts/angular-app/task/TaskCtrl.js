@@ -88,15 +88,16 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
   };
 
   $scope.showForm = function(task){
-
     $scope.taskData.title = task.title;
     task.showEdit = !task.showEdit;
-
-    angular.forEach($scope.project.tasks, function (eachTask) {
-      eachTask.showEdit = false;
-      if (task.showEdit === eachTask.showEdit) {
-        eachTask.showEdit = true;
-      }
+    console.log(task.showEdit);
+    angular.forEach($scope.projects, function (eachProject) {
+      angular.forEach(eachProject.tasks, function (eachTask) {
+        eachTask.showEdit = false;
+        if (task.showEdit === eachTask.showEdit) {
+          eachTask.showEdit = true;
+        }
+      });
     });
   }
 
