@@ -6,9 +6,18 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
     if ($scope.newTask === undefined || Object.keys($scope.newTask).length === 0) {
       toastr.error('Task can\'t be blank.');
     } else {
-      task = Task.save({title: $scope.newTask.title, project_id: project.id});
-        $scope.project.tasks.push(task);
-        $scope.newTask = {};
+      if ($scope.project.tasks.length === 0) {
+        var lastIndex = 0;
+        task = Task.save({title: $scope.newTask.title, project_id: project.id, position: lastIndex});
+          $scope.project.tasks.push(task);
+          $scope.newTask = {};
+      } else {
+        var lastIndex = $scope.project.tasks.lastIndexOf(task);
+        lastIndex = lastIndex + 1;
+        task = Task.save({title: $scope.newTask.title, project_id: project.id, position: lastIndex});
+          $scope.project.tasks.push(task);
+          $scope.newTask = {};
+      }
     }
   };
 
@@ -17,6 +26,7 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
                  id: task.id,
                  completed: task.completed
                });
+      toastr.success('Task updated!');
   };
 
   $scope.updateTitle = function(project, task, taskData){
@@ -90,7 +100,6 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
   $scope.showForm = function(task){
     $scope.taskData.title = task.title;
     task.showEdit = !task.showEdit;
-    console.log(task.showEdit);
     angular.forEach($scope.projects, function (eachProject) {
       angular.forEach(eachProject.tasks, function (eachTask) {
         eachTask.showEdit = false;

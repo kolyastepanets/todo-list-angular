@@ -4,7 +4,7 @@
       = image_tag "plus.png"
     form id="new-task-form" ng-submit="addTask(project)"
       .input-group.add-task-div
-        input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newTask.title" class="form-control input-for-task"
+        input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newTask.title" class="form-control input-for-task" name="new_task"
         button type="submit" class="add-task"
           | Add Task
 
@@ -12,7 +12,7 @@
     ul ui-sortable="sortableOptions" ng-model="project.tasks" class="all-task-in-projects"
       li class="task-title" ng-repeat="task in project.tasks" ng-mouseover="task.showEdit === true ? optionsTask = false : optionsTask = true" ng-mouseleave="optionsTask = false"
         .completed
-          input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" id="complete-checkbox"
+          input type="checkbox" ng-model="task.completed" ng-click="completeTask(project, task)" id="complete-checkbox" name="completed"
         div class="task" ng-class="{complete: task.completed}" id="task-{{task.id}}"
           p.text-task-title
             | {{ task.title | limitTo:50 }}
@@ -22,7 +22,7 @@
           div class="view-task-options" ng-show="optionsTask"
             div class="btn-for-task"
               = image_tag("up-down.png")
-            div class="btn-for-task" ng-click="showForm(task); sortableOptions.disabled = !sortableOptions.disabled"
+            div class="btn-for-task task-edit" ng-click="showForm(task); sortableOptions.disabled = !sortableOptions.disabled"
               = image_tag("edit-task.png")
             div class="btn-for-task" ng-click="delTask(task, project)" ng-model="task.destroy"
               = image_tag("delete-task.png")
@@ -30,7 +30,7 @@
         div class="edit-task" ng-if="task.showEdit"
           form ng-submit="updateTitle(project, task, taskData)" class="edit-task-form"
             .input-group
-              textarea ng-model="taskData.title" class="form-control input-edit-task"
+              textarea ng-model="taskData.title" class="form-control input-edit-task" name="task_title"
 
               button type="submit" class="btn btn-primary update-name-task"
                 | Update task

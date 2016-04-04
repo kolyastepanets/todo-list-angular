@@ -23,7 +23,7 @@ div id="todoapp" ng-controller="ProjectCtrl"
                 | Cancel
 
         div class="project-name" ng-hide="project.editProject"
-          | {{project.name}}
+          | {{project.name | limitTo:40 }}
 
         div class="view-project-options" ng-show="optionsProject"
           div class="btn-for-project" ng-click="showEditProject(project)"

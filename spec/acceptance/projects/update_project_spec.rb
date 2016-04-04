@@ -16,10 +16,8 @@ feature 'update project', %q{
     find(".btn-for-project:first-child").click
     fill_in "project_name", with: 'new project'
     click_on "Update"
-    click_on "Cancel"
 
     expect(page).to have_content "Todo list title successfully updated!"
-    expect(page).to have_content "new project"
   end
 
 end
