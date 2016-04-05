@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
 
     namespace :v1 do
-      resources :projects do
-        resources :tasks
+      resources :projects, only: [:index, :create, :update, :destroy] do
+        resources :tasks, only: [:create, :update, :destroy]
       end
 
       resources :tasks, only: [] do
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
 
       resources :comments, only: [] do
-        resources :attachments, only: [:create, :destroy]
+        resources :attachments
       end
     end
   end

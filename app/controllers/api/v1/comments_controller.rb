@@ -2,7 +2,7 @@ module Api
   module V1
     class CommentsController < ApplicationController
       load_and_authorize_resource :task
-      load_and_authorize_resource :comment, :through => :task
+      load_and_authorize_resource :comment
       respond_to :json
 
       def create

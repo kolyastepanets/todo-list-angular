@@ -2,6 +2,7 @@ language: ruby
 addons:
   postgresql: "9.4"
 bundler_args: --without production
+gemfile: Gemfile
 before_install:
   - "echo 'gem: --no-document' > ~/.gemrc"
   - "echo '--colour' > ~/.rspec"

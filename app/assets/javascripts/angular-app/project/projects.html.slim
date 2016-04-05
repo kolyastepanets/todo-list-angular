@@ -11,7 +11,7 @@ div id="todoapp" ng-controller="ProjectCtrl"
 
   div.all-project-stuff
     ul id="todo-list" ng-repeat="project in projects"
-      li class="the-whole-project" ng-mouseover="project.editProject === true ? optionsProject = false : optionsProject = true" ng-mouseleave="optionsProject = false"
+      li class="the-whole-project"
         div class="edit-project" ng-if="project.editProject"
           .input-group.edit-project-group
             form ng-submit="updateProject(project, projectData)" class="edit-project-form"
@@ -25,7 +25,7 @@ div id="todoapp" ng-controller="ProjectCtrl"
         div class="project-name" ng-hide="project.editProject"
           | {{project.name | limitTo:40 }}
 
-        div class="view-project-options" ng-show="optionsProject"
+        div class="view-project-options" ng-hide="project.editProject"
           div class="btn-for-project" ng-click="showEditProject(project)" id="project-btn-edit-{{project.id}}"
             = image_tag("edit.jpg")
           div class="btn-for-project" ng-click="delProject(project, $index)" id="project-btn-delete-{{project.id}}"

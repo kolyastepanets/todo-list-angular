@@ -5,8 +5,8 @@ feature 'create attachment', %q{
 } do
 
   given(:user) { create(:user) }
-  given(:project) { create(:project, user: user) }
-  given(:task) { create(:task, project: project) }
+  given!(:project) { create(:project, user: user) }
+  given!(:task) { create(:task, project: project) }
   given!(:comment) { create(:comment, task: task) }
 
   scenario 'create attachment', js: true do

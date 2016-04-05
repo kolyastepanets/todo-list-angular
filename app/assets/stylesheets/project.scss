@@ -17,6 +17,10 @@
   color: white;
 }
 
+.the-whole-project:hover .view-project-options {
+  display: block;
+}
+
 .project-name {
   float: left;
 }
@@ -24,6 +28,7 @@
 .view-project-options {
   float: right;
   margin-right: 1.5em;
+  display: none;
 }
 
 .btn-for-project {

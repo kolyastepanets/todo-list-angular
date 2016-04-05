@@ -1,0 +1,58 @@
+<div class="task-stuff" ng-controller="TaskCtrl">
+  <div class="new-task">
+    <div class="plus-picture">
+      <img src="/assets/plus-290f6959bab7f8b20c596258521b1f2d815186f33b7f883a818b596d3deb5b13.png" alt="Plus" />
+    </div>
+    <form id="new-task-form" ng-submit="addTask(project)">
+      <div class="input-group add-task-div">
+        <input class="form-control input-for-task" id="input-new-task" name="new_task" ng-model="newTask.title" placeholder="Start typing here to create a task..." type="text" /><button class="add-task" type="submit">Add Task</button>
+      </div>
+    </form>
+  </div>
+  <div class="list-of-tasks">
+    <ul class="all-task-in-projects" ng-model="project.tasks" ui-sortable="sortableOptions">
+      <li class="task-title" id="task-title-{{task.id}}" ng-repeat="task in project.tasks">
+        <div class="completed">
+          <input id="complete-checkbox" name="completed" ng-click="completeTask(project, task)" ng-model="task.completed" type="checkbox" />
+        </div>
+        <div class="task" id="task-{{task.id}}" ng-class="{complete: task.completed}">
+          <p class="text-task-title">
+            {{ task.title | limitTo:50 }}
+          </p>
+          <p class="end-date-inline" ng-class="{complete: task.completed}">
+            {{ task.end_date | date: "dd MMMM, yyyy" }}
+          </p>
+        </div>
+        <div class="action-stuff">
+          <div class="view-task-options" ng-hide="task.showEdit">
+            <div class="btn-for-task">
+              <img src="/assets/up-down-c237e916e9a7abea2a64d523da677b57d4eca8666fdf81fec118c990b3e4457c.png" alt="Up down" />
+            </div>
+            <div class="btn-for-task task-edit" id="task-edit-btn-{{task.id}}" ng-click="showForm(task); sortableOptions.disabled = !sortableOptions.disabled">
+              <img src="/assets/edit-task-9b8b7d39f27f99f62c9c449a1d260ff1ec9f3be323b33ba8fd4136bc3587b91d.png" alt="Edit task" />
+            </div>
+            <div class="btn-for-task" id="destroy-task-{{task.id}}" ng-click="delTask(task, project)" ng-model="task.destroy">
+              <img src="/assets/delete-task-07bce8e6b09ef5542f4c79357dc33de722de85f066629a6f49e7d670397179a5.png" alt="Delete task" />
+            </div>
+          </div>
+        </div>
+        <div class="edit-task" ng-if="task.showEdit">
+          <form class="edit-task-form" ng-submit="updateTitle(project, task, taskData)">
+            <div class="input-group">
+              <textarea class="form-control input-edit-task" name="task_title" ng-model="taskData.title"></textarea><button class="btn btn-primary update-name-task" type="submit">Update task</button>
+            </div>
+          </form>
+          <form class="edit-task-form" ng-submit="updateDate(project, task, taskData)">
+            <uib-datepicker class="input-date-form" datepicker-options="dateOptions" ng-model="taskData.end_date"></uib-datepicker><button class="btn btn-primary update-date-task" type="submit">Update date</button>
+          </form>
+          <button class="btn btn-danger delete-date-task" ng-click="deleteDate(project, task, taskData)" type="submit">Remove date</button>
+          <div style="clear:both;"></div>
+          <div class="comments-stuff" ng-include="&#39;angular-app/comment/_comments_and_attachments.html&#39;"></div>
+          <div class="cancel-update" ng-click="task.showEdit = undefined; sortableOptions.disabled = false">
+            <img class="cancel-task" src="/assets/cross-80788d09d4e9c7096aea078664cd0ddb573d291ec004619ea44628661bddaa24.png" alt="Cross" />
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
