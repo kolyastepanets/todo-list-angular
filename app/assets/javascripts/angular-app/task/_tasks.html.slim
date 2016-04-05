@@ -32,15 +32,15 @@
             .input-group
               textarea ng-model="taskData.title" class="form-control input-edit-task" name="task_title"
 
-              button type="submit" class="btn btn-primary update-name-task"
+              button type="submit" class="btn btn-primary update-name-task" ng-click="sortableOptions.disabled = false"
                 | Update task
 
           form ng-submit="updateDate(project, task, taskData)" class="edit-task-form"
             uib-datepicker ng-model="taskData.end_date" datepicker-options="dateOptions" class="input-date-form"
-            button type="submit" class="btn btn-primary update-date-task"
+            button type="submit" class="btn btn-primary update-date-task" ng-click="sortableOptions.disabled = false"
               | Update date
 
-          button type="submit" class="btn btn-danger delete-date-task" ng-click="deleteDate(project, task, taskData)"
+          button type="submit" class="btn btn-danger delete-date-task" ng-click="deleteDate(project, task, taskData); sortableOptions.disabled = false"
             | Remove date
 
           div style="clear:both;"
