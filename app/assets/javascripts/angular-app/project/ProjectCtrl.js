@@ -7,6 +7,7 @@ app.controller('ProjectCtrl', ['$scope', 'Project', 'toastr', function($scope, P
       $scope.projects.push(resource);
       $scope.newProject = {};
     });
+    toastr.success('Todo list added!');
   };
 
   $scope.updateProject = function(project, projectData){
@@ -31,6 +32,7 @@ app.controller('ProjectCtrl', ['$scope', 'Project', 'toastr', function($scope, P
       Project.delete({id: project.id});
       $scope.projects.splice(index, 1);
     };
+    toastr.warning('Todo list deleted!');
   };
 
   $scope.showEditProject = function(project) {

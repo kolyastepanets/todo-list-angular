@@ -9,15 +9,17 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
       if ($scope.project.tasks.length === 0) {
         var lastIndex = 0;
         task = Task.save({title: $scope.newTask.title, project_id: project.id, position: lastIndex});
-          $scope.project.tasks.push(task);
-          $scope.newTask = {};
+        $scope.project.tasks.push(task);
+        $scope.newTask = {};
+        toastr.success('Task added!');
       } else {
         var lastTask = $scope.project.tasks.slice(-1)[0]
         var lastIndex = $scope.project.tasks.lastIndexOf(lastTask);
         lastIndex = lastIndex + 1;
         task = Task.save({title: $scope.newTask.title, project_id: project.id, position: lastIndex});
-          $scope.project.tasks.push(task);
-          $scope.newTask = {};
+        $scope.project.tasks.push(task);
+        $scope.newTask = {};
+        toastr.success('Task added!');
       }
     }
   };
@@ -74,7 +76,7 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
         project.tasks.splice(index, 1);
       };
     });
-    toastr.success('Task deleted successfully!');
+    toastr.warning('Task deleted successfully!');
   };
 
   $scope.dateOptions = {

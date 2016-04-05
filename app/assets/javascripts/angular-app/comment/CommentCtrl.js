@@ -17,7 +17,7 @@ app.controller('CommentCtrl', ["$scope", 'Comment', 'toastr', function($scope, C
         task.comments.splice(index, 1);
       };
     });
-    toastr.success('Comment successfully removed!');
+    toastr.warning('Comment successfully removed!');
   };
 
 }]);
