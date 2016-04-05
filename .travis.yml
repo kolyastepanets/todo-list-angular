@@ -2,7 +2,6 @@ language: ruby
 addons:
   postgresql: "9.4"
 bundler_args: --without production
-gemfile: Gemfile
 before_install:
   - "echo 'gem: --no-document' > ~/.gemrc"
   - "echo '--colour' > ~/.rspec"
@@ -14,6 +13,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
   - bundle exec rake bower:install
+  - bundle exec rake assets:precompile
   - RAILS_ENV=test bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
   - bundle exec rake spec
