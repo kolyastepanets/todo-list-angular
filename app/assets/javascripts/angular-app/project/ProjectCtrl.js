@@ -1,6 +1,7 @@
-app.controller('ProjectCtrl', ['$scope', 'Project', 'toastr', function($scope, Project, toastr){
+app.controller('ProjectCtrl', ['$scope', '$window', 'Project', 'toastr', function($scope, $window, Project, toastr){
   $scope.projects = Project.query();
   $scope.projectData = {};
+  $window.location.href = '/#/';
 
   $scope.addProject = function(){
     Project.save({project: $scope.newProject}, function(resource){

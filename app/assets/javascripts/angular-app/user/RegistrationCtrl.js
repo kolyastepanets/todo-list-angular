@@ -17,9 +17,5 @@ app.controller('RegistrationCtrl', ['$scope', '$state', '$auth', 'toastr',
           toastr.success('Registered successfully!');
         });
     };
-
-    $scope.$on('auth:oauth-registration', function(ev, user) {
-    });
-
   }
 ]);

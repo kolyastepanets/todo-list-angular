@@ -11,6 +11,9 @@ app = angular.module('app',
        ]);
 
 app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", function($stateProvider, $urlRouterProvider, $authProvider) {
+    $urlRouterProvider.otherwise("/sign_in");
+    // $urlRouterProvider.when('/?access_token&code&expires_in#/', '/');
+
     $stateProvider
       .state("/",
         {
@@ -44,11 +47,10 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", function($s
 
       );
 
-    $urlRouterProvider.otherwise("sign_in");
 
     $authProvider.configure({
       apiUrl: ''
-    });
+    })
   }
 ]);
 
