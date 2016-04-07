@@ -56,7 +56,7 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
   describe "PATCH #update" do
     context "updates project" do
       it "updates successfully" do
-        patch :update, id: project.id, project: attributes_for(:project, name: "new name"), format: :json
+        patch :update, id: project.id, name: "new name", format: :json
         project.reload
         expect(assigns(:project)).to eq project
         expect(project.name).to eq "new name"

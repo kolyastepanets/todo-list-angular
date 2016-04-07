@@ -1,7 +1,15 @@
-app.factory('Comment', ['$resource', function($resource){
-  return $resource('/api/v1/tasks/:task_id/comments/:id', { task_id: '@task_id', id: '@id' },
-    {
-      'destroy': { method: 'DELETE' }
+app.factory('commentFactory', ['$http', function($http) {
+  return {
+    createComment: function(commentData) {
+      return $http({
+        method: 'POST',
+        url: '/api/v1/tasks/' + taskId + '/comments',
+        params: commentData
+      })
+    },
+
+    destroyComment: function(commentData) {
+      return $http.delete('/api/v1/comments/' + commentId);
     }
-  );
+  }
 }]);

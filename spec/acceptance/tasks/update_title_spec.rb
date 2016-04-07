@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'update task', %q{
+feature 'update title', %q{
   in order to correct task title
   i want to be able to update my task
 } do
@@ -9,13 +9,14 @@ feature 'update task', %q{
   given!(:project) { create(:project, user: user) }
   given!(:task) { create(:task, project: project) }
 
-  scenario 'update task', js: true do
+  scenario 'update title', js: true do
     sign_in(user)
 
     find(".task-title:first-child").hover
     find("#task-edit-btn-#{task.id}").click
     fill_in "task_title", with: 'new task'
     click_on "Update task"
+    sleep 1
 
     expect(page).to have_content "Task updated successfully!"
   end

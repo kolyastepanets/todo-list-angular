@@ -43,7 +43,7 @@
   margin-top: 1em;
 }
 
-.add-comment-btn {
+button.btn.btn-primary.add-comment-btn {
   border-radius: 0 5px 5px 0;
   margin-top: 0.5em;
 }
@@ -58,4 +58,17 @@
   float: left;
   width: 34em;
   text-align: justify;
+}
+
+#input-new-comment {
+  border-left: 2px solid #9A8A8A;
+  resize: none;
+  width: 29.5em;
+  height: 2.5em;
+  margin-top: 0.5em;
+  padding-left: 1em;
+  border-top: 2px solid #9A8A8A;
+  border-bottom: none;
+  margin-left: 1.5em;
+  position: initial;
 }

@@ -2,7 +2,6 @@ module Api
   module V1
     class ProjectsController < ApplicationController
       load_and_authorize_resource :project
-      respond_to :json
 
       def index
         respond_with(:api, :v1, @projects = current_user.projects)
@@ -23,7 +22,7 @@ module Api
       private
 
         def project_params
-          params.require(:project).permit(:name)
+          params.permit(:name)
         end
     end
   end

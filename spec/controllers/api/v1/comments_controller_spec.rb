@@ -37,12 +37,13 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
   describe 'DELETE #destroy' do
     it 'forbids to destroy comment' do
       @ability.cannot :destroy, Comment
-      delete :destroy, id: comment.id, task_id: task, format: :json
+      delete :destroy, id: comment.id, format: :json
       expect(response).to be_forbidden
     end
 
     it 'deletes a task' do
-      expect{ delete :destroy, format: :json, id: comment, task_id: task }.
+      # byebug
+      expect{ delete :destroy, format: :json, id: comment }.
         to change(Comment, :count).by(-1)
     end
   end

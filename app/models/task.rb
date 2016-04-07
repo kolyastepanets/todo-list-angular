@@ -6,4 +6,5 @@ class Task < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   default_scope { order("position ASC") }
+  default_scope { order("id ASC") }
 end

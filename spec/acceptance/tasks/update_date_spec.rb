@@ -16,6 +16,7 @@ feature 'update date', %q{
     find("#task-edit-btn-#{task.id}").click
     find(".uib-weeks:last-child").find(".uib-day.text-center:last-child").click
     click_on "Update date"
+    sleep 1
 
     expect(page).to have_content "Date changed successfully!"
   end

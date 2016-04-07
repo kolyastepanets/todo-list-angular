@@ -1,8 +1,24 @@
-app.factory('Task', ['$resource', function($resource){
-  return $resource('/api/v1/projects/:project_id/tasks/:id', { project_id: '@project_id', id: '@id' },
-    {
-      'update':  { method: 'PATCH' },
-      'destroy': { method: 'DELETE' }
+app.factory('taskFactory', ['$http', function($http) {
+  return {
+    createTask: function(newData) {
+      return $http({
+        method: 'POST',
+        url: '/api/v1/projects/' + projectId + '/tasks',
+        params: newData
+      })
+    },
+
+    updateTask: function(taskData) {
+      console.log(taskData);
+      return $http({
+        method: 'PATCH',
+        url: '/api/v1/tasks/' + taskId,
+        params: taskData
+      })
+    },
+
+    destroyTask: function(taskData) {
+      return $http.delete('/api/v1/tasks/' + taskId);
     }
-  );
+  }
 }]);

@@ -1,23 +1,26 @@
-app.controller('CommentCtrl', ["$scope", 'Comment', 'toastr', function($scope, Comment, toastr){
-  $scope.addComment = function(task){
-    if ($scope.newComment === undefined || Object.keys($scope.newComment).length === 0) {
+app.controller('CommentCtrl', ["$scope", 'commentFactory', 'toastr', function($scope, commentFactory, toastr){
+  $scope.createComment = function(task){
+    if ($scope.commentData === undefined || Object.keys($scope.commentData).length === 0) {
       toastr.error('Comment can\'t be blank.');
     } else {
-      comment = Comment.save({content: $scope.newComment.content, task_id: task.id});
-      $scope.task.comments.push(comment);
-      $scope.newComment = {};
-      toastr.success('Comment successfully added!');
+      taskId = task.id;
+      commentFactory.createComment($scope.commentData).success(function(data){
+        $scope.task.comments.push(data);
+        $scope.commentData = {};
+        toastr.success('Comment successfully added!');
+      });
     }
   };
 
-  $scope.delComment = function(comment, task){
-    var index = task.comments.indexOf(comment)
-    Comment.remove({id: comment.id, task_id: task.id}, function(resource){
+  $scope.destroyComment = function(comment){
+    commentId = comment.id;
+    var index = $scope.task.comments.indexOf(comment)
+    commentFactory.destroyComment(comment).success(function(data){
       if (index !== -1){
-        task.comments.splice(index, 1);
+        $scope.task.comments.splice(index, 1);
       };
+      toastr.warning('Comment successfully removed!');
     });
-    toastr.warning('Comment successfully removed!');
   };
-
 }]);
+

@@ -7,15 +7,15 @@ Rails.application.routes.draw do
 
     namespace :v1 do
       resources :projects, only: [:index, :create, :update, :destroy] do
-        resources :tasks, only: [:create, :update, :destroy]
+        resources :tasks, only: :create
       end
 
-      resources :tasks, only: [] do
-        resources :comments, only: [:create, :destroy]
+      resources :tasks, only: [:update, :destroy] do
+        resources :comments, only: :create
       end
 
-      resources :comments, only: [] do
-        resources :attachments
+      resources :comments, only: :destroy do
+        resources :attachments, only: [:create]
       end
     end
   end

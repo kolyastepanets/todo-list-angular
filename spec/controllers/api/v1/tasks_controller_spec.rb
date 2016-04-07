@@ -36,7 +36,7 @@ RSpec.describe Api::V1::TasksController, type: :controller do
   describe "PATCH #update" do
     context "updates task" do
       it "updates successfully" do
-        patch :update, id: task.id, project_id: project, task: attributes_for(:task, title: "new name"), format: :json
+        patch :update, id: task.id, title: "new name", project_id: project.id, format: :json
         task.reload
         expect(task.title).to eq "new name"
       end
@@ -45,12 +45,12 @@ RSpec.describe Api::V1::TasksController, type: :controller do
     context "does not update task" do
       it "forbids to update task" do
         @ability.cannot :update, Task
-        patch :update, id: task.id, project_id: project, task: attributes_for(:task, title: "new name"), format: :json
+        patch :update, id: task.id, title: "new name", format: :json
         expect(response).to be_forbidden
       end
 
       it "does not updates with invalid params" do
-        patch :update, id: task.id, project_id: project, task: attributes_for(:task, title: ""), format: :json
+        patch :update, id: task.id, title: "", format: :json
         task.reload
         expect(task.title).to eq task.title
       end
@@ -60,12 +60,12 @@ RSpec.describe Api::V1::TasksController, type: :controller do
   describe 'DELETE #destroy' do
     it 'forbids to destroy task' do
       @ability.cannot :destroy, Task
-      delete :destroy, id: task.id, project_id: project, format: :json
+      delete :destroy, id: task.id, format: :json
       expect(response).to be_forbidden
     end
 
     it 'deletes a task' do
-      expect{ delete :destroy, format: :json, id: task, project_id: project }.
+      expect{ delete :destroy, format: :json, id: task }.
         to change(Task, :count).by(-1)
     end
   end

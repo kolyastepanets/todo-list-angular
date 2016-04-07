@@ -16,6 +16,7 @@ feature 'create comment', %q{
     find("#task-edit-btn-#{task.id}").click
     fill_in "new_comment", with: 'new comment'
     click_on "Add Comment"
+    sleep 1
 
     expect(page).to have_content "Comment successfully added!"
   end

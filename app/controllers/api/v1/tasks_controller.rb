@@ -3,10 +3,9 @@ module Api
     class TasksController < ApplicationController
       load_and_authorize_resource :project
       load_and_authorize_resource :task
-      respond_to :json
 
       def create
-        respond_with(:api, :v1, @project, @project.tasks.create(task_params))
+        respond_with(:api, :v1, @project.tasks.create(task_params))
       end
 
       def update
@@ -20,7 +19,7 @@ module Api
       private
 
         def task_params
-          params.require(:task).permit(:id, :title, :position, :project_id, :completed, :end_date)
+          params.permit(:id, :title, :position, :project_id, :completed, :end_date)
         end
     end
   end

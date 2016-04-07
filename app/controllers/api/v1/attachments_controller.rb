@@ -3,10 +3,10 @@ module Api
     class AttachmentsController < ApplicationController
       load_and_authorize_resource :comment
       load_and_authorize_resource :attachment, through: :comment
-      respond_to :json
 
       def create
-        respond_with(:api, :v1, @comment, @comment.attachments.create(attachment_params))
+        @attachment.save
+        render json: @attachment
       end
 
       private

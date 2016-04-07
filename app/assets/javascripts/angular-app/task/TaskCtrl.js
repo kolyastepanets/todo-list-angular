@@ -1,82 +1,72 @@
-app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, toastr){
-  $scope.project.tasks = $scope.project.tasks || [];
+app.controller('TaskCtrl', ['$scope', 'taskFactory', 'toastr', function($scope, taskFactory, toastr){
   $scope.taskData = {};
 
-  $scope.addTask = function(project){
-    if ($scope.newTask === undefined || Object.keys($scope.newTask).length === 0) {
+  $scope.createTask = function(project){
+    if ($scope.newData === undefined || Object.keys($scope.newData).length === 0) {
       toastr.error('Task can\'t be blank.');
     } else {
-      if ($scope.project.tasks.length === 0) {
-        var lastIndex = 0;
-        task = Task.save({title: $scope.newTask.title, project_id: project.id, position: lastIndex});
-        $scope.project.tasks.push(task);
-        $scope.newTask = {};
+      projectId = project.id;
+      taskFactory.createTask($scope.newData).success(function(data){
+        $scope.project.tasks.push(data);
+        $scope.newData = {};
         toastr.success('Task added!');
-      } else {
-        var lastTask = $scope.project.tasks.slice(-1)[0]
-        var lastIndex = $scope.project.tasks.lastIndexOf(lastTask);
-        lastIndex = lastIndex + 1;
-        task = Task.save({title: $scope.newTask.title, project_id: project.id, position: lastIndex});
-        $scope.project.tasks.push(task);
-        $scope.newTask = {};
-        toastr.success('Task added!');
-      }
+      });
     }
   };
 
-  $scope.completeTask = function(project, task, taskData){
-    Task.update({project_id: project.id,
-                 id: task.id,
-                 completed: task.completed
-               });
-      toastr.success('Task updated!');
+  $scope.completeTask = function(task){
+    taskId = task.id;
+    taskFactory.updateTask(task)
+    toastr.success('Task updated!');
   };
 
-  $scope.updateTitle = function(project, task, taskData){
+  $scope.updateTitle = function(task){
     if ($scope.taskData.title === '') {
       toastr.error('Task can\'t be blank.');
-      taskData.title = task.title;
+      $scope.taskData.title = task.title;
     } else {
-      task.title = taskData.title;
-      Task.update({project_id: project.id,
-                   id: task.id,
-                   title: taskData.title});
-      toastr.success('Task updated successfully!');
-      task.showEdit = !task.showEdit;
+      taskId = task.id;
+      taskFactory.updateTask($scope.taskData).success(function(data){
+        task.title = $scope.taskData.title;
+        $scope.taskData.title = {};
+        toastr.success('Task updated successfully!');
+        task.showEdit = !task.showEdit;
+      });
     };
   };
 
-  $scope.updateDate = function(project, task, taskData){
-    if (taskData.end_date === undefined) {
-      task.showEdit = !task.showEdit;
-      toastr.warning('Date didn\'t change!');
+  $scope.updateDate = function(task){
+    if ($scope.taskData.end_date === undefined) {
+      toastr.warning('Select date!');
     } else {
-      task.end_date = taskData.end_date;
-      Task.update({project_id: project.id,
-                   id: task.id,
-                   end_date: task.end_date + "T03:00:00.000Z"});
-      task.showEdit = !task.showEdit;
-      toastr.success('Date changed successfully!');
+      taskId = task.id;
+      taskFactory.updateTask($scope.taskData).success(function(data){
+        task.end_date = $scope.taskData.end_date;
+        toastr.success('Date changed successfully!');
+        task.showEdit = !task.showEdit;
+      });
     }
   };
 
-  $scope.deleteDate = function(project, task){
-    Task.update({project_id: project.id,
-                   id: task.id,
-                   end_date: null});
+  $scope.deleteDate = function(task){
+    taskId = task.id;
+    $scope.taskData.end_date = "";
+    taskFactory.updateTask($scope.taskData).success(function(data){
       task.end_date = undefined;
       task.showEdit = !task.showEdit;
-      toastr.success('Date deleted successfully!');
+      toastr.warning('Date deleted successfully!');
+    });
   };
 
-  $scope.delTask = function(task, project){
-    var index = project.tasks.indexOf(task)
-    Task.remove({id: task.id, project_id: project.id}, function(resource){
+  $scope.destroyTask = function(task){
+    taskId = task.id;
+    var index = $scope.project.tasks.indexOf(task)
+    taskFactory.destroyTask(task).success(function(data){
       if (index !== -1){
-        project.tasks.splice(index, 1);
+        $scope.project.tasks.splice(index, 1);
       };
+      toastr.warning('Task deleted successfully!');
     });
-    toastr.warning('Task deleted successfully!');
   };
 
   $scope.dateOptions = {
@@ -91,10 +81,9 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
     stop: function (e, ui) {
       $scope.project.tasks.map(function(task){
         index = $scope.project.tasks.indexOf(task)
-        // debugger
-        Task.update({id: task.id,
-                     position: index,
-                     project_id: $scope.project.id})
+        taskId = task.id
+        task.position = index
+        taskFactory.updateTask(task)
       });
     },
     axis: 'y'
@@ -113,4 +102,38 @@ app.controller('TaskCtrl', ["$scope", 'Task', 'toastr', function($scope, Task, t
     });
   }
 
+
+}]);
+
+app.directive('datepickerLocaldate', ['$parse', function ($parse) {
+  var directive = {
+      restrict: 'A',
+      require: ['ngModel'],
+      link: link
+  };
+  return directive;
+
+  function link(scope, element, attr, ctrls) {
+      var ngModelController = ctrls[0];
+
+      // called with a JavaScript Date object when picked from the datepicker
+      ngModelController.$parsers.push(function (viewValue) {
+          // undo the timezone adjustment we did during the formatting
+          viewValue.setMinutes(viewValue.getMinutes() - viewValue.getTimezoneOffset());
+          // we just want a local date in ISO format
+          return viewValue.toISOString().substring(0, 10);
+      });
+
+      // called with a 'yyyy-mm-dd' string to format
+      ngModelController.$formatters.push(function (modelValue) {
+          if (!modelValue) {
+              return undefined;
+          }
+          // date constructor will apply timezone deviations from UTC (i.e. if locale is behind UTC 'dt' will be one day behind)
+          var dt = new Date(modelValue);
+          // 'undo' the timezone offset again (so we end up on the original date again)
+          dt.setMinutes(dt.getMinutes() + dt.getTimezoneOffset());
+          return dt;
+      });
+  }
 }]);

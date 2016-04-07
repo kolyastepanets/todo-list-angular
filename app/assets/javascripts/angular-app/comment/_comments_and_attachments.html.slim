@@ -7,7 +7,7 @@
         div.content
           p.text-content ng-init="getCommentId(comment)"
             | {{ comment.content }}
-          div class="btn-for-delete-comment" ng-click="delComment(comment, task)" ng-model="comment.destroy"
+          div class="btn-for-delete-comment" ng-click="destroyComment(comment)" ng-model="comment.destroy"
             = image_tag("delete-comment.png")
 
         div style="clear:both;"
@@ -27,8 +27,8 @@
             button type="button" class="btn btn-primary upload-file" ng-click="uploadFile(file); showFileForm = false"
               | Upload file
 
-  form id="new-comment-form" ng-submit="addComment(task)"
+  form id="new-comment-form" ng-submit="createComment(task)"
     .input-group
-      input type="text" id="input-new-task" placeholder="Start typing here to create a comment..." ng-model="newComment.content" class="form-control input-for-task" name="new_comment"
+      input type="text" id="input-new-comment" placeholder="Start typing here to create a comment..." ng-model="commentData.content" class="form-control input-for-task" name="new_comment"
       button type="submit" class="btn btn-primary add-comment-btn"
         | Add Comment
