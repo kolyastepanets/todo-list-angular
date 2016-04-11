@@ -1,0 +1,55 @@
+ru:
+  main:
+    head-title: ПРОСТОЙ СПИСОК ЗАДАЧ
+    sub-title: ОТ РУБИ ГАРАЖ
+    sign-out: Выйти
+    add_project: Новый список
+    create_project: Создать
+  project:
+    update: Обновить
+    cancel: Отменить
+    input: Заголовок для нового списка задач...
+    create_error: Заголовок списка задач не может быть пустым!
+  task:
+    create_task: Создать
+    update_task: Обновить задачу
+    update_date: Обновить дату
+    remove_date: Удалить дату
+    input: Текст для задачи...
+  comment:
+    title: Комментарии
+    add_file: Добавить файл
+    upload_file: Загрузить файл
+    add_comment: Создать
+    input: Текст для комментария...
+  sign_in:
+    button: Войти
+    button_register: Зарегистрироваться
+    facebook: Войти через Facebook
+    password: Пароль
+    register: Зарегистрироваться
+    confirm_pass: Подтвердите пароль
+  notification:
+    project:
+      create: Лист задач создан успешно!
+      update: Лист задач обновлен успешно!
+      destroy: Лист задач удален успешно!
+    task:
+      create: Задача успешно добавлена!
+      done: Задача обновлена!
+      updated_title: Задача успешно обновлена!
+      updated_date: Дата успешно изменена!
+      destroy_date: Дата успешно удалена!
+      destroyed: Задача успешно удалена!
+      create_error: Заголовок не может быть пустым.
+      no_date: Выберите дату!
+    comment:
+      create: Комментарий успешно создан!
+      destroyed: Комментарий успешно удален!
+    attachment:
+      uploaded: Файл успешно загружен!
+      not_uploaded: Файл не загружен!
+    main:
+      signed_in: Вы успешно авторизовались!
+      signed_out: Вы успешно вышли, до свидания!
+      registered: Вы успешно зарегистрировались!

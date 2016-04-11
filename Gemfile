@@ -22,6 +22,7 @@ gem 'omniauth'
 gem 'responders', '~> 2.0'
 gem 'omniauth-facebook'
 gem 'cancancan', '~> 1.10'
+gem "i18n-js", ">= 3.0.0.rc11"
 
 group :development, :test do
   gem 'byebug'

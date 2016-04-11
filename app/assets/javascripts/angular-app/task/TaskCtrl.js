@@ -1,15 +1,24 @@
-app.controller('TaskCtrl', ['$scope', 'taskFactory', 'toastr', function($scope, taskFactory, toastr){
+app.controller('TaskCtrl', ['$translate', '$scope', 'taskFactory', 'toastr',
+  function($translate, $scope, taskFactory, toastr){
   $scope.taskData = {};
 
   $scope.createTask = function(project){
     if ($scope.newData === undefined || Object.keys($scope.newData).length === 0) {
-      toastr.error('Task can\'t be blank.');
+      if ($translate.use() === 'en') {
+        toastr.error(I18n.translations.en.notification.task.create_error);
+      } else if ($translate.use() === 'ru') {
+        toastr.error(I18n.translations.ru.notification.task.create_error);
+      }
     } else {
       projectId = project.id;
       taskFactory.createTask($scope.newData).success(function(data){
         $scope.project.tasks.push(data);
         $scope.newData = {};
-        toastr.success('Task added!');
+        if ($translate.use() === 'en') {
+          toastr.success(I18n.translations.en.notification.task.create);
+        } else if ($translate.use() === 'ru') {
+          toastr.success(I18n.translations.ru.notification.task.create);
+        }
       });
     }
   };
@@ -17,19 +26,32 @@ app.controller('TaskCtrl', ['$scope', 'taskFactory', 'toastr', function($scope, 
   $scope.completeTask = function(task){
     taskId = task.id;
     taskFactory.updateTask(task)
-    toastr.success('Task updated!');
+    if ($translate.use() === 'en') {
+      toastr.success(I18n.translations.en.notification.task.done);
+    } else if ($translate.use() === 'ru') {
+      toastr.success(I18n.translations.ru.notification.task.done);
+    }
+      console.log(I18n)
   };
 
   $scope.updateTitle = function(task){
     if ($scope.taskData.title === '') {
-      toastr.error('Task can\'t be blank.');
+      if ($translate.use() === 'en') {
+        toastr.error(I18n.translations.en.notification.task.create_error);
+      } else if ($translate.use() === 'ru') {
+        toastr.error(I18n.translations.ru.notification.task.create_error);
+      }
       $scope.taskData.title = task.title;
     } else {
       taskId = task.id;
       taskFactory.updateTask($scope.taskData).success(function(data){
         task.title = $scope.taskData.title;
         $scope.taskData.title = {};
-        toastr.success('Task updated successfully!');
+        if ($translate.use() === 'en') {
+          toastr.success(I18n.translations.en.notification.task.updated_title);
+        } else if ($translate.use() === 'ru') {
+          toastr.success(I18n.translations.ru.notification.task.updated_title);
+        }
         task.showEdit = !task.showEdit;
       });
     };
@@ -37,12 +59,20 @@ app.controller('TaskCtrl', ['$scope', 'taskFactory', 'toastr', function($scope, 
 
   $scope.updateDate = function(task){
     if ($scope.taskData.end_date === undefined) {
-      toastr.warning('Select date!');
+      if ($translate.use() === 'en') {
+        toastr.warning(I18n.translations.en.notification.task.no_date);
+      } else if ($translate.use() === 'ru') {
+        toastr.warning(I18n.translations.ru.notification.task.no_date);
+      }
     } else {
       taskId = task.id;
       taskFactory.updateTask($scope.taskData).success(function(data){
         task.end_date = $scope.taskData.end_date;
-        toastr.success('Date changed successfully!');
+        if ($translate.use() === 'en') {
+          toastr.success(I18n.translations.en.notification.task.updated_date);
+        } else if ($translate.use() === 'ru') {
+          toastr.success(I18n.translations.ru.notification.task.updated_date);
+        }
         task.showEdit = !task.showEdit;
       });
     }
@@ -54,7 +84,11 @@ app.controller('TaskCtrl', ['$scope', 'taskFactory', 'toastr', function($scope, 
     taskFactory.updateTask($scope.taskData).success(function(data){
       task.end_date = undefined;
       task.showEdit = !task.showEdit;
-      toastr.warning('Date deleted successfully!');
+      if ($translate.use() === 'en') {
+        toastr.warning(I18n.translations.en.notification.task.destroy_date);
+      } else if ($translate.use() === 'ru') {
+        toastr.warning(I18n.translations.ru.notification.task.destroy_date);
+      }
     });
   };
 
@@ -65,7 +99,11 @@ app.controller('TaskCtrl', ['$scope', 'taskFactory', 'toastr', function($scope, 
       if (index !== -1){
         $scope.project.tasks.splice(index, 1);
       };
-      toastr.warning('Task deleted successfully!');
+      if ($translate.use() === 'en') {
+        toastr.warning(I18n.translations.en.notification.task.destroyed);
+      } else if ($translate.use() === 'ru') {
+        toastr.warning(I18n.translations.ru.notification.task.destroyed);
+      }
     });
   };
 

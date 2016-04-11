@@ -1,6 +1,6 @@
 .comments ng-controller="CommentCtrl"
-  h3.comment-title
-    | Comments
+  h3.comment-title translate=""
+    | comment.title
   ul.list-of-comments
     li ng-repeat="comment in task.comments"
       div.content-of-comment ng-controller="AttachmentCtrl"
@@ -19,16 +19,16 @@
           p.date-and-time-comment
             | {{ comment.created_at | date: "MMM d, y HH:mm "}}
 
-        div.add-file-link ng-click="showFileForm = !showFileForm"
-          | Add file
-        form class="form-for-attachment" ng-show="showFileForm"
+        div.add-file-link ng-click="showFileForm(comment)" translate=""
+          | comment.add_file
+        form class="form-for-attachment" ng-show="comment.fileForm"
           .input-group
             input type="file" ngf-select="true" ng-model="newFile.file" class="input-upload-file" name="file"
-            button type="button" class="btn btn-primary upload-file" ng-click="uploadFile(file); showFileForm = false"
-              | Upload file
+            button type="button" class="btn btn-primary upload-file" ng-click="uploadFile(file); comment.fileForm = false" translate=""
+              | comment.upload_file
 
   form id="new-comment-form" ng-submit="createComment(task)"
     .input-group
-      input type="text" id="input-new-comment" placeholder="Start typing here to create a comment..." ng-model="commentData.content" class="form-control input-for-task" name="new_comment"
-      button type="submit" class="btn btn-primary add-comment-btn"
-        | Add Comment
+      input type="text" id="input-new-comment" placeholder="{{ 'comment.input' | translate }}" ng-model="commentData.content" class="form-control input-for-task" name="new_comment"
+      button type="submit" class="btn btn-primary add-comment-btn" translate=""
+        | comment.add_comment

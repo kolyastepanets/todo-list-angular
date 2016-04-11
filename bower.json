@@ -10,7 +10,9 @@
       "angular-ui-sortable": "latest",
       "ng-file-upload": "latest",
       "ng-token-auth": "latest",
-      "angular-toastr": "latest"
+      "angular-toastr": "latest",
+      "angular-translate-loader-static-files": "latest",
+      "angular-translate-storage-cookie": "latest"
       // "threex"      : "git@github.com:rharriso/threex.git",
       // "gsvpano.js"  : "https://github.com/rharriso/GSVPano.js/blob/master/src/GSVPano.js"
     },

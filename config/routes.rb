@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
 
     namespace :v1 do
+      resources :translations, only: :show
+
       resources :projects, only: [:index, :create, :update, :destroy] do
         resources :tasks, only: :create
       end

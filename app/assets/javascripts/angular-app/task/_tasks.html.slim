@@ -4,9 +4,9 @@
       = image_tag "plus.png"
     form id="new-task-form" ng-submit="createTask(project)"
       .input-group.add-task-div
-        input type="text" id="input-new-task" placeholder="Start typing here to create a task..." ng-model="newData.title" class="form-control input-for-task" name="new_task"
-        button type="submit" class="add-task"
-          | Add Task
+        input type="text" id="input-new-task" placeholder="{{ 'task.input' | translate }}" ng-model="newData.title" class="form-control input-for-task" name="new_task"
+        button type="submit" class="add-task" translate=""
+          | task.create_task
 
   div.list-of-tasks
     ul ui-sortable="sortableOptions" ng-model="project.tasks" class="all-task-in-projects"
@@ -32,16 +32,16 @@
             .input-group
               textarea ng-model="taskData.title" class="form-control input-edit-task" name="task_title"
 
-              button type="submit" class="btn btn-primary update-name-task" ng-click="sortableOptions.disabled = false"
-                | Update task
+              button type="submit" class="btn btn-primary update-name-task" ng-click="sortableOptions.disabled = false" translate=""
+                | task.update_task
 
           form ng-submit="updateDate(task)" class="edit-task-form"
             uib-datepicker ng-model="taskData.end_date" datepicker-localdate="" datepicker-options="dateOptions" class="input-date-form"
-            button type="submit" class="btn btn-primary update-date-task" ng-click="sortableOptions.disabled = false"
-              | Update date
+            button type="submit" class="btn btn-primary update-date-task" ng-click="sortableOptions.disabled = false" translate=""
+              | task.update_date
 
-          button type="submit" class="btn btn-danger delete-date-task" ng-click="deleteDate(task); sortableOptions.disabled = false"
-            | Remove date
+          button type="submit" class="btn btn-danger delete-date-task" ng-click="deleteDate(task); sortableOptions.disabled = false" translate=""
+            | task.remove_date
 
           div style="clear:both;"
           .comments-stuff ng-include="'angular-app/comment/_comments_and_attachments.html'"

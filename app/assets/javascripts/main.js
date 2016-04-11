@@ -7,10 +7,13 @@ app = angular.module('app',
        'templates',
        'ui.router',
        'ng-token-auth',
-       'toastr'
+       'toastr',
+       'pascalprecht.translate',
+       'ngCookies'
        ]);
 
-app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", function($stateProvider, $urlRouterProvider, $authProvider) {
+app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translateProvider', 
+    function($stateProvider, $urlRouterProvider, $authProvider, $translateProvider) {
     $urlRouterProvider.otherwise("/sign_in");
     // $urlRouterProvider.when('/?access_token&code&expires_in#/', '/');
 
@@ -61,6 +64,20 @@ app.config(["toastrConfig", function(toastrConfig) {
     timeOut: 15000,
     positionClass: 'toast-top-left'
   });
+}]);
+
+app.config(['$translateProvider', function($translateProvider) {
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'api/v1/translations/',
+    suffix: '.json'
+  });
+
+  $translateProvider.useCookieStorage({
+    prefix: 'api/v1/translations/',
+    suffix: '.json'
+  });
+
+  $translateProvider.preferredLanguage('en');
 }]);
 
 app.run(['$auth', '$state', function($auth, $state) {

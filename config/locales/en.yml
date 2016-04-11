@@ -1,23 +1,55 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  main:
+    head-title: SIMPLE TODO LISTS
+    sub-title: FROM RUBY GARAGE
+    sign-out: Sign out
+    add_project: Add TODO List
+    create_project: Create
+  project:
+    update: Update
+    cancel: Cancel
+    input: Start typing here to create a new Todo list...
+    create_error: Todo list title can't be blank.
+  task:
+    create_task: Add Task
+    update_task: Update task
+    update_date: Update date
+    remove_date: Remove date
+    input: Start typing here to create a task...
+  comment:
+    title: Comments
+    add_file: Add file
+    upload_file: Upload file
+    add_comment: Add Comment
+    input: Start typing here to create a comment...
+  sign_in:
+    button: Sign in
+    button_register: Register
+    facebook: Sign in with Facebook
+    password: Password
+    register: Register
+    confirm_pass: Password confirmation
+  notification:
+    project:
+      create: Todo list successfully created!
+      update: Todo list title successfully updated!
+      destroy: Todo list deleted!
+    task:
+      create: Task added!
+      done: Task updated!
+      updated_title: Task's title updated successfully!
+      updated_date: Date changed successfully!
+      destroy_date: Date deleted successfully!
+      destroyed: Task deleted successfully!
+      create_error: Task can't be blank.
+      no_date: Select date!
+    comment:
+      create: Comment successfully added!
+      destroyed: Comment successfully removed!
+    attachment:
+      uploaded: File successfully uploaded!
+      not_uploaded: File wasn't uploaded!
+    main:
+      signed_in: Signed in successfully!
+      signed_out: Signed out successfully!
+      registered: Registered successfully!

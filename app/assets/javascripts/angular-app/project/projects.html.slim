@@ -1,13 +1,18 @@
 div id="todoapp" ng-controller="ProjectCtrl"
   div class="btn sign-out" ng-controller="SessionCtrl"
-    button class="btn btn-danger" ng-click='handleSignOutBtnClick()'
-      | Sign out
+    button ng-click="changeLanguage('ru')" class="btn btn-primary language"
+      | RU
+    button ng-click="changeLanguage('en')" class="btn btn-primary language"
+      | EN
+
+    button class="btn btn-danger" ng-click='handleSignOutBtnClick()' translate=""
+      | main.sign-out
 
   div id="header"
-    h1.head-title
-      | SIMPLE TODO LISTS
-    h4.sub-title
-      | FROM RUBY GARAGE
+    h1.head-title translate=""
+      | main.head-title
+    h4.sub-title translate=""
+      | main.sub-title
 
   div.all-project-stuff
     ul id="todo-list" ng-repeat="project in projects"
@@ -16,11 +21,11 @@ div id="todoapp" ng-controller="ProjectCtrl"
           .input-group.edit-project-group
             form ng-submit="updateProject(project)" class="edit-project-form"
               input type="text" ng-model="projectData.name" class="form-control input-edit-project" autofocus="true" name="project_name"
-              button type="submit" class="btn btn-default btn-update-project"
-                | Update
+              button type="submit" class="btn btn-default btn-update-project" translate=""
+                | project.update
             div class="cancel-update" ng-click="project.editProject = false"
-              button class="btn btn-default"
-                | Cancel
+              button class="btn btn-default" translate=""
+                | project.cancel
 
         div class="project-name" ng-hide="project.editProject"
           | {{project.name | limitTo:40 }}
@@ -34,15 +39,15 @@ div id="todoapp" ng-controller="ProjectCtrl"
       .task-partial ng-include="'angular-app/task/_tasks.html'"
 
   div ng-click="visible = true" ng-hide="visible" class="btn-add-project"
-    p.add-project
-      | Add TODO List
+    p.add-project translate=""
+      | main.add_project
 
   form id="new-project" ng-submit="createProject()" ng-show="visible"
     div class="form-group"
       .input-group
-        input type="text" id="input-new-project" placeholder="Start typing here to create a new Todo list..." ng-model="projectData.name"
+        input type="text" id="input-new-project" placeholder="{{ 'project.input' | translate }}" ng-model="projectData.name"
 
-        button type="submit" class="btn btn-primary create-btn" ng-click="visible = false"
-         | Create
+        button type="submit" class="btn btn-primary create-btn" ng-click="visible = false" translate=""
+          | main.create_project
     div ng-click="visible = false"
       = image_tag("cross.png", class: "cancel-project")

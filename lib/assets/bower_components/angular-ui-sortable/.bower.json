@@ -15,7 +15,7 @@
     "tag": "v0.14.0",
     "commit": "638ae834b4f05adec7e8be762b41ae2b07db514b"
   },
-  "_source": "git://github.com/angular-ui/ui-sortable.git",
+  "_source": "https://github.com/angular-ui/ui-sortable.git",
   "_target": "*",
   "_originalSource": "angular-ui-sortable"
 }

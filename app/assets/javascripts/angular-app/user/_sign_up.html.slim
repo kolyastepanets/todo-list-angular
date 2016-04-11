@@ -1,3 +1,9 @@
+div class="btns"
+  button ng-click="changeLanguage('ru')" class="btn btn-primary language"
+    | RU
+  button ng-click="changeLanguage('en')" class="btn btn-primary language"
+    | EN
+
 form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}" class="sign-in-up-form"
   div class="form-group"
     label for="email"
@@ -5,22 +11,22 @@ form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}"
     input type="email" name="email" id="email" ng-model="registrationForm.email" required="required" class="form-control email-input"
 
   div class="form-group"
-    label for="password"
-      | Password
+    label for="password" translate=""
+      | sign_in.password
     input type="password" name="password" id="password" ng-model="registrationForm.password" required="required" class="form-control input-password"
 
   div class="form-group"
-    label for="password_confirmation"
-      | Password confirmation
+    label for="password_confirmation" translate=""
+      | sign_in.confirm_pass
     input type="password" name="password_confirmation" id="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control input-password"
 
-  button type="submit" class="btn btn-primary btn-sm"
-    | Register
+  button type="submit" class="btn btn-primary btn-sm" translate=""
+      | sign_in.button_register
 
 div class="link-to-forms"
-  button class="btn btn-primary btn-sm" ng-click="authenticate('facebook')"
-    | Sign in with Facebook
+  button class="btn btn-primary btn-sm" ng-click="authenticate('facebook')" translate=""
+    | sign_in.facebook
 
   div.link-sign-in-up
-    a ng-href="#/sign_in"
-      | Sign in
+    a ng-href="#/sign_in" translate=""
+      | sign_in.button

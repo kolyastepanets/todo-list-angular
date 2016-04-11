@@ -45,7 +45,7 @@
 
 .edit-project {
   float: left;
-  width: 27em;
+  width: 32em;
 }
 
 .edit-project.ng-hide {
@@ -64,3 +64,12 @@ input.form-control.input-edit-project {
   position: absolute;
   right: -25em;
 }
+
+.language:first-child {
+  margin-right: 1em;
+}
+
+.language {
+  margin-right: 5em;
+}
+

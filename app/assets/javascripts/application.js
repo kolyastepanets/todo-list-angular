@@ -11,8 +11,15 @@
 //= require ng-file-upload
 //= require angular-rails-templates
 //= require angular-cookie
+//= require angular-cookies
 //= require ng-token-auth
 //= require angular-toastr
+//= require angular-translate
+//= require angular-translate-loader-static-files
+//= require angular-translate-storage-cookie
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
 //= require main
 //= require_tree ./angular-app/attachment
 //= require_tree ./angular-app/comment

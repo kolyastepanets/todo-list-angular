@@ -1,4 +1,9 @@
-app.controller('ProjectCtrl', ['$scope', '$window', 'projectFactory', 'toastr', function($scope, $window, projectFactory, toastr){
+app.controller('ProjectCtrl', ['$translate',
+                               '$scope',
+                               '$window',
+                               'projectFactory',
+                               'toastr',
+  function($translate, $scope, $window, projectFactory, toastr){
   $scope.projectData = {};
   $window.location.href = '/#/';
 
@@ -12,18 +17,31 @@ app.controller('ProjectCtrl', ['$scope', '$window', 'projectFactory', 'toastr', 
     projectFactory.createProject($scope.projectData).success(function(data){
       $scope.projects.push(data);
       $scope.projectData = {};
-      toastr.success('Todo list added!');
+      if ($translate.use() === 'en') {
+        toastr.success(I18n.translations.en.notification.project.create);
+      } else if ($translate.use() === 'ru') {
+        toastr.success(I18n.translations.ru.notification.project.create);
+      }
     });
   };
 
   $scope.updateProject = function(project){
     if ($scope.projectData.name === '') {
+      if ($translate.use() === 'en') {
+        toastr.error(I18n.translations.en.notification.project.create_error);
+      } else if ($translate.use() === 'ru') {
+        toastr.error(I18n.translations.ru.notification.project.create_error);
+      }
       toastr.error('Todo list title can\'t be blank.');
       $scope.projectData.name = project.name;
     } else {
       project.name = $scope.projectData.name;
       projectFactory.updateProject(project).success(function(data){
-        toastr.success('Todo list title successfully updated!');
+        if ($translate.use() === 'en') {
+          toastr.success(I18n.translations.en.notification.project.update);
+        } else if ($translate.use() === 'ru') {
+          toastr.success(I18n.translations.ru.notification.project.update);
+        }
         project.editProject = !project.editProject
       })
     }
@@ -34,7 +52,11 @@ app.controller('ProjectCtrl', ['$scope', '$window', 'projectFactory', 'toastr', 
     if (confirmation) {
       projectFactory.destroyProject(project).success(function(data){
         $scope.projects.splice(index, 1);
-        toastr.warning('Todo list deleted!');
+        if ($translate.use() === 'en') {
+          toastr.warning(I18n.translations.en.notification.project.destroy);
+        } else if ($translate.use() === 'ru') {
+          toastr.warning(I18n.translations.ru.notification.project.destroy);
+        }
       })
     };
   };
@@ -42,6 +64,10 @@ app.controller('ProjectCtrl', ['$scope', '$window', 'projectFactory', 'toastr', 
   $scope.showEditProject = function(project) {
     $scope.projectData.name = project.name;
     project.editProject = !project.editProject;
+  };
+
+  $scope.changeLanguage = function (langKey) {
+    $translate.use(langKey);
   };
 
   getProjects();

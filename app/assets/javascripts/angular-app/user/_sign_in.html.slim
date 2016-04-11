@@ -1,3 +1,9 @@
+div class="btns"
+  button ng-click="changeLanguage('ru')" class="btn btn-primary language"
+    | RU
+  button ng-click="changeLanguage('en')" class="btn btn-primary language"
+    | EN
+
 form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}" class="sign-in-up-form"
   div class="form-group"
     label for="email"
@@ -5,17 +11,17 @@ form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}" cla
     input type="email" name="email" id="email" ng-model="loginForm.email" required="required" class="form-control email-input"
 
   div class="form-group"
-    label for="password"
-      | Password
+    label for="password" translate=""
+      | sign_in.password
     input type="password" name="password" id="password" ng-model="loginForm.password" required="required" class="form-control input-password"
 
-  button type="submit" class="btn btn-primary btn-sm"
-    | Sign in
+  button type="submit" class="btn btn-primary btn-sm" translate=""
+    | sign_in.button
 
 div class="link-to-forms"
-  button class="btn btn-primary btn-sm" ng-click="authenticate('facebook')"
-    | Sign in with Facebook
+  button class="btn btn-primary btn-sm" ng-click="authenticate('facebook')" translate=""
+    | sign_in.facebook
 
   div.link-sign-in-up
-    a ng-href="#/sign_up"
-      | Register
+    a ui-sref="sign_up" translate=""
+      | sign_in.register
