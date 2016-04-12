@@ -37,13 +37,7 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translate
         {
           url: "/sign_in",
           templateUrl: "angular-app/user/_sign_in.html",
-          controller: "SessionCtrl",
-          abstract: true,
-          resolve: {
-            auth: function($auth) {
-              return $auth.validateUser();
-            }
-          }
+          controller: "SessionCtrl"
         }
       )
 
@@ -51,13 +45,7 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translate
         {
           url: "/sign_up",
           templateUrl: "angular-app/user/_sign_up.html",
-          controller: "RegistrationCtrl",
-          abstract: true,
-          resolve: {
-            auth: function($auth) {
-              return $auth.validateUser();
-            }
-          }
+          controller: "RegistrationCtrl"
         }
       );
 

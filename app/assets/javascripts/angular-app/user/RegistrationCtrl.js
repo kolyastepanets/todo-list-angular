@@ -12,6 +12,8 @@ app.controller('RegistrationCtrl', ['$translate', '$scope', '$state', '$auth', '
             toastr.error("Пароль слишком короткий (минимум 8 букв)")
           } else if (value === "Email already in use") {
             toastr.error("Email уже используется")
+          } else if (value === "Email is not an email") {
+            toastr.error("Не верный тип email")
           }
         }
       })
