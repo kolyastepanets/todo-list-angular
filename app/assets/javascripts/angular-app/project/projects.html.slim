@@ -47,7 +47,8 @@ div id="todoapp" ng-controller="ProjectCtrl"
       .input-group
         input type="text" id="input-new-project" placeholder="{{ 'project.input' | translate }}" ng-model="projectData.name"
 
-        button type="submit" class="btn btn-primary create-btn" ng-click="visible = false" translate=""
-          | main.create_project
+        div class="btn-div" ng-click="visible = false"
+          button type="submit" class="btn btn-primary create-btn" translate=""
+            | main.create_project
     div ng-click="visible = false"
       = image_tag("cross.png", class: "cancel-project")

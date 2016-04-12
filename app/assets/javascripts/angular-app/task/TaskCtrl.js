@@ -31,7 +31,6 @@ app.controller('TaskCtrl', ['$translate', '$scope', 'taskFactory', 'toastr',
     } else if ($translate.use() === 'ru') {
       toastr.success(I18n.translations.ru.notification.task.done);
     }
-      console.log(I18n)
   };
 
   $scope.updateTitle = function(task){
@@ -113,6 +112,12 @@ app.controller('TaskCtrl', ['$translate', '$scope', 'taskFactory', 'toastr',
   };
 
   $scope.format = 'dd MMMM, yyyy';
+
+  $scope.today = function() {
+    $scope.taskData.end_date = new Date();
+  };
+
+  $scope.today();
 
   $scope.sortableOptions = {
     disabled: false,

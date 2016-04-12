@@ -18,7 +18,7 @@ feature 'update title', %q{
     click_on "Update task"
     sleep 1
 
-    expect(page).to have_content "Task updated successfully!"
+    expect(page).to have_content "Task's title updated successfully!"
   end
 
 end

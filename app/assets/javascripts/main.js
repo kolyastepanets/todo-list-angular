@@ -12,10 +12,9 @@ app = angular.module('app',
        'ngCookies'
        ]);
 
-app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translateProvider', 
+app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translateProvider',
     function($stateProvider, $urlRouterProvider, $authProvider, $translateProvider) {
     $urlRouterProvider.otherwise("/sign_in");
-    // $urlRouterProvider.when('/?access_token&code&expires_in#/', '/');
 
     $stateProvider
       .state("/",
@@ -33,23 +32,34 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translate
           }
         }
       )
+
       .state("sign_in",
         {
           url: "/sign_in",
           templateUrl: "angular-app/user/_sign_in.html",
-          controller: "SessionCtrl"
+          controller: "SessionCtrl",
+          abstract: true,
+          resolve: {
+            auth: function($auth) {
+              return $auth.validateUser();
+            }
+          }
         }
-
       )
+
       .state("sign_up",
         {
           url: "/sign_up",
           templateUrl: "angular-app/user/_sign_up.html",
-          controller: "RegistrationCtrl"
+          controller: "RegistrationCtrl",
+          abstract: true,
+          resolve: {
+            auth: function($auth) {
+              return $auth.validateUser();
+            }
+          }
         }
-
       );
-
 
     $authProvider.configure({
       apiUrl: ''
