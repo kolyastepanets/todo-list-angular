@@ -9,7 +9,8 @@ app = angular.module('app',
        'ng-token-auth',
        'toastr',
        'pascalprecht.translate',
-       'ngCookies'
+       'ngCookies',
+       'tmh.dynamicLocale'
        ]);
 
 app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translateProvider',
@@ -83,4 +84,8 @@ app.run(['$auth', '$state', function($auth, $state) {
     .then(function(response) {
       $state.go('/');
     });
+}]);
+
+app.config(['tmhDynamicLocaleProvider', function(tmhDynamicLocaleProvider) {
+  tmhDynamicLocaleProvider.localeLocationPattern("https://code.angularjs.org/1.5.3/i18n/angular-locale_{{locale}}.js");
 }]);

@@ -1,0 +1,62 @@
+<div id="todoapp" ng-controller="ProjectCtrl">
+  <div class="btns-for-language">
+    <button class="btn btn-primary language" ng-click="changeLanguage(&#39;ru&#39;)">RU</button><button class="btn btn-primary language" ng-click="changeLanguage(&#39;en&#39;)">EN</button>
+  </div>
+  <div class="btn sign-out" ng-controller="SessionCtrl">
+    <button class="btn btn-danger" ng-click="handleSignOutBtnClick()" translate="">main.sign-out</button>
+  </div>
+  <div id="header">
+    <h1 class="head-title" translate="">
+      main.head-title
+    </h1>
+    <h4 class="sub-title" translate="">
+      main.sub-title
+    </h4>
+  </div>
+  <div class="all-project-stuff">
+    <ul id="todo-list" ng-repeat="project in projects">
+      <li class="the-whole-project">
+        <div class="edit-project" ng-if="project.editProject">
+          <div class="input-group edit-project-group">
+            <form class="edit-project-form" ng-submit="updateProject(project)">
+              <input autofocus="true" class="form-control input-edit-project" name="project_name" ng-model="projectData.name" type="text" /><button class="btn btn-default btn-update-project" translate="" type="submit">project.update</button>
+            </form>
+            <div class="cancel-update" ng-click="project.editProject = false">
+              <button class="btn btn-default" translate="">project.cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="project-name" ng-hide="project.editProject">
+          {{project.name | limitTo:40 }}
+        </div>
+        <div class="view-project-options" ng-hide="project.editProject">
+          <div class="btn-for-project" id="project-btn-edit-{{project.id}}" ng-click="showEditProject(project)">
+            <img src="/assets/edit-c5fadb7721775151dfff0def532bfb359e55982385b03b1d98fa2d8bfbaee014.jpg" alt="Edit" />
+          </div>
+          <div class="btn-for-project" id="project-btn-delete-{{project.id}}" ng-click="destroyProject(project, $index)">
+            <img src="/assets/delete-13f16a4861241b402fbd4098f2a1897ca6b6ee28d21882cc177ea88f6c40c035.jpg" alt="Delete" />
+          </div>
+        </div>
+      </li>
+      <div class="task-partial" ng-include="&#39;angular-app/task/_tasks.html&#39;"></div>
+    </ul>
+  </div>
+  <div class="btn-add-project" ng-click="visible = true" ng-hide="visible">
+    <p class="add-project" translate="">
+      main.add_project
+    </p>
+  </div>
+  <form id="new-project" ng-show="visible" ng-submit="createProject()">
+    <div class="form-group">
+      <div class="input-group">
+        <input id="input-new-project" ng-model="projectData.name" placeholder="{{ &#39;project.input&#39; | translate }}" type="text" />
+        <div class="btn-div" ng-click="visible = false">
+          <button class="btn btn-primary create-btn" translate="" type="submit">main.create_project</button>
+        </div>
+      </div>
+    </div>
+    <div ng-click="visible = false">
+      <img class="cancel-project" src="/assets/cross-80788d09d4e9c7096aea078664cd0ddb573d291ec004619ea44628661bddaa24.png" alt="Cross" />
+    </div>
+  </form>
+</div>

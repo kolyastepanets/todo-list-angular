@@ -17,6 +17,7 @@
 //= require angular-translate
 //= require angular-translate-loader-static-files
 //= require angular-translate-storage-cookie
+//= require angular-dynamic-locale
 //= require i18n
 //= require i18n.js
 //= require i18n/translations

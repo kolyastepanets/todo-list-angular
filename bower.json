@@ -13,7 +13,8 @@
       "angular-toastr": "latest",
       "angular-translate-loader-static-files": "latest",
       "angular-translate-storage-cookie": "latest",
-      "angular-i18n": "1.4.8"
+      "angular-i18n": "1.4.8",
+      "angular-dynamic-locale": "latest"
       // "threex"      : "git@github.com:rharriso/threex.git",
       // "gsvpano.js"  : "https://github.com/rharriso/GSVPano.js/blob/master/src/GSVPano.js"
     },

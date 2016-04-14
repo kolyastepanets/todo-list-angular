@@ -1,9 +1,10 @@
 div id="todoapp" ng-controller="ProjectCtrl"
-  div class="btn sign-out" ng-controller="SessionCtrl"
+  div class="btns-for-language"
     button ng-click="changeLanguage('ru')" class="btn btn-primary language"
       | RU
     button ng-click="changeLanguage('en')" class="btn btn-primary language"
       | EN
+  div class="btn sign-out" ng-controller="SessionCtrl"
 
     button class="btn btn-danger" ng-click='handleSignOutBtnClick()' translate=""
       | main.sign-out
