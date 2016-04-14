@@ -1,0 +1,21 @@
+<div class="btns">
+  <button class="btn btn-primary language" ng-click="changeLanguage(&#39;ru&#39;)">RU</button><button class="btn btn-primary language" ng-click="changeLanguage(&#39;en&#39;)">EN</button>
+</div>
+<form class="sign-in-up-form" ng-init="registrationForm = {}" ng-submit="handleRegBtnClick()" role="form">
+  <div class="form-group">
+    <label for="email">Email</label><input class="form-control email-input" id="email" name="email" ng-model="registrationForm.email" required="required" type="email" />
+  </div>
+  <div class="form-group">
+    <label for="password" translate="">sign_in.password</label><input class="form-control input-password" id="password" name="password" ng-model="registrationForm.password" required="required" type="password" />
+  </div>
+  <div class="form-group">
+    <label for="password_confirmation" translate="">sign_in.confirm_pass</label><input class="form-control input-password" id="password_confirmation" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" type="password" />
+  </div>
+  <button class="btn btn-primary btn-sm" translate="" type="submit">sign_in.button_register</button>
+</form>
+<div class="link-to-forms">
+  <button class="btn btn-primary btn-sm" ng-click="authenticate(&#39;facebook&#39;)" translate="">sign_in.facebook</button>
+  <div class="link-sign-in-up">
+    <a ng-href="#/sign_in" translate="">sign_in.button</a>
+  </div>
+</div>

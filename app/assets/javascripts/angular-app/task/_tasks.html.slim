@@ -36,7 +36,7 @@
                 | task.update_task
 
           form ng-submit="updateDate(task)" class="edit-task-form"
-            uib-datepicker ng-model="taskData.end_date" datepicker-localdate="" datepicker-options="dateOptions" class="input-date-form"
+            uib-datepicker ng-model="taskData.end_date" datepicker-options="dateOptions" class="input-date-form"
             button type="submit" class="btn btn-primary update-date-task" ng-click="sortableOptions.disabled = false" translate=""
               | task.update_date
 

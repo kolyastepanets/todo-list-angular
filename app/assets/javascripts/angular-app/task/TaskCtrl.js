@@ -1,5 +1,5 @@
-app.controller('TaskCtrl', ['$translate', '$scope', 'taskFactory', 'toastr',
-  function($translate, $scope, taskFactory, toastr){
+app.controller('TaskCtrl', ['$translate', '$scope', 'taskFactory', 'toastr', 'dateFilter',
+  function($translate, $scope, taskFactory, toastr, dateFilter){
   $scope.taskData = {};
 
   $scope.createTask = function(project){

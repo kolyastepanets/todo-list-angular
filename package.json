@@ -2,6 +2,7 @@
   "name": "todo-list-angular",
   "version": "1.0.0",
   "dependencies": {
+    "angular-bootstrap-datetimepicker": "^1.0.1",
     "bower": "~1.2"
   },
   "engine": {

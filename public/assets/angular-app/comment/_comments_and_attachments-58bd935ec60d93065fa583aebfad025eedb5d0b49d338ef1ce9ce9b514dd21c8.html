@@ -1,0 +1,41 @@
+<div class="comments" ng-controller="CommentCtrl">
+  <h3 class="comment-title" translate="">
+    comment.title
+  </h3>
+  <ul class="list-of-comments">
+    <li ng-repeat="comment in task.comments">
+      <div class="content-of-comment" ng-controller="AttachmentCtrl">
+        <div class="content">
+          <p class="text-content" ng-init="getCommentId(comment)">
+            {{ comment.content }}
+          </p>
+          <div class="btn-for-delete-comment" ng-click="destroyComment(comment)" ng-model="comment.destroy">
+            <img src="/assets/delete-comment-c3c8084b5ba015aae2ba615a29b764db711b23c4d4e48975e0f7fe0e53b0deea.png" alt="Delete comment" />
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="link-and-date-comment">
+          <p class="link" ng-repeat="attach in comment.attachments">
+            <a href="{{attach.file.file.url}}">{{attach.file_identifier}}</a> 
+          </p>
+          <p class="date-and-time-comment">
+            {{ comment.created_at | date: "MMM d, y HH:mm "}}
+          </p>
+        </div>
+        <div class="add-file-link" ng-click="showFileForm(comment)" translate="">
+          comment.add_file
+        </div>
+        <form class="form-for-attachment" ng-show="comment.fileForm">
+          <div class="input-group">
+            <input class="input-upload-file" name="file" ng-model="newFile.file" ngf-select="true" type="file" /><button class="btn btn-primary upload-file" ng-click="uploadFile(file); comment.fileForm = false" translate="" type="button">comment.upload_file</button>
+          </div>
+        </form>
+      </div>
+    </li>
+  </ul>
+  <form id="new-comment-form" ng-submit="createComment(task)">
+    <div class="input-group">
+      <input class="form-control input-for-task" id="input-new-comment" name="new_comment" ng-model="commentData.content" placeholder="{{ &#39;comment.input&#39; | translate }}" type="text" /><button class="btn btn-primary add-comment-btn" translate="" type="submit">comment.add_comment</button>
+    </div>
+  </form>
+</div>
