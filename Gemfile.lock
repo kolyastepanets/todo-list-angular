@@ -52,6 +52,8 @@ GEM
       tilt
     angular_rails_csrf (1.0.4)
       rails (>= 3, < 5)
+    apipie-rails (0.3.6)
+      json
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -288,6 +290,7 @@ DEPENDENCIES
   active_model_serializers
   angular-rails-templates
   angular_rails_csrf
+  apipie-rails
   bootstrap-sass (~> 3.3.6)
   bower-rails
   byebug
