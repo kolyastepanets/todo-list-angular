@@ -38,7 +38,8 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translate
         {
           url: "/sign_in",
           templateUrl: "angular-app/user/_sign_in.html",
-          controller: "SessionCtrl"
+          controller: "SessionCtrl",
+          onEnter: restrictAccess
         }
       )
 
@@ -46,7 +47,8 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translate
         {
           url: "/sign_up",
           templateUrl: "angular-app/user/_sign_up.html",
-          controller: "RegistrationCtrl"
+          controller: "RegistrationCtrl",
+          onEnter: restrictAccess
         }
       );
 
@@ -55,6 +57,15 @@ app.config(["$stateProvider", "$urlRouterProvider", "$authProvider", '$translate
     })
   }
 ]);
+
+restrictAccess = function($auth, $state) {
+  $auth.validateUser()
+    .then(function(response) {
+      if (!angular.equals({}, response)) {
+        $state.go('/')
+      }
+    })
+  }
 
 app.config(["toastrConfig", function(toastrConfig) {
   angular.extend(toastrConfig, {
