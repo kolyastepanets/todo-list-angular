@@ -10,15 +10,16 @@ app.controller('ProjectCtrl', ['$translate',
   $window.location.href = '/#/';
   // console.log($translate.use())
   // console.log($translate())
-      // if ($translate.use() === 'en') {
-      // } else if ($translate.use() === 'ru') {
-      //   tmhDynamicLocale.set('ru');
-      // }
 
   getProjects = function() {
     projectFactory.getProjects().success(function(data) {
       $scope.projects = data;
-      // console.log($translate.use());
+      console.log($translate.use());
+      if ($translate.use() === 'en') {
+        tmhDynamicLocale.set('en');
+      } else if ($translate.use() === 'ru') {
+        tmhDynamicLocale.set('ru');
+      }
     })
   };
 

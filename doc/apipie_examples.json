@@ -1,0 +1,400 @@
+{
+  "application#angular": [
+    {
+      "verb": "GET",
+      "path": "/",
+      "versions": [
+
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta content=\"text/html charset=UTF-8\" http-equiv=\"Content-Type\" />\n    <meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\" />\n    <title>TodoMvc</title><link rel=\"stylesheet\" media=\"all\" href=\"/assets/angular-toastr/dist/angular-toastr.self-eec5272b407e29540b9194d344b8a315efdb6a03f2db51b25f5e6fed136a5734.css?body=1\" data-turbolinks-track=\"true\" />\n    <link rel=\"stylesheet\" media=\"all\" href=\"/assets/application.self-98cf8b921d735662ff29abffd752835e67fa08af0765581a78f871251f268794.css?body=1\" data-turbolinks-track=\"true\" />\n    <link rel=\"stylesheet\" media=\"all\" href=\"/assets/attachment.self-738d51d9a194f9acb7cb0ee68f58aac4f990c721cc8e3348573e0e903bd4d947.css?body=1\" data-turbolinks-track=\"true\" />\n    <link rel=\"stylesheet\" media=\"all\" href=\"/assets/comment.self-fad50cf084b6b580f24352fc548f8f3774eeb75e3ef739856e7fc0376c9ee6fe.css?body=1\" data-turbolinks-track=\"true\" />\n    <link rel=\"stylesheet\" media=\"all\" href=\"/assets/custom.self-7a43a786b52347d1d5907d2a333a0b6ea0551a421bb679451aad58cf99134cd2.css?body=1\" data-turbolinks-track=\"true\" />\n    <link rel=\"stylesheet\" media=\"all\" href=\"/assets/project.self-ae9e7538b7082f536bcdbaa64ce0bcba84bc0cd21e8728cb78202b4e8f9eb506.css?body=1\" data-turbolinks-track=\"true\" />\n    <link rel=\"stylesheet\" media=\"all\" href=\"/assets/task.self-a80c2918df12a57bf68abab2ff5b0bc62cfc9206590011ddc6ccb57215786279.css?body=1\" data-turbolinks-track=\"true\" />\n    <link rel=\"stylesheet\" media=\"all\" href=\"/assets/user.self-ca2b646aa944de4690004067e5d27c37081a5c817377f1c643c994a24475cc07.css?body=1\" data-turbolinks-track=\"true\" /><script src=\"/assets/jquery/dist/jquery.self-4e239680527cb2d6016e15eb767e577a5ba6c75055937d62957773e43b8773a9.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/jquery-ui/jquery-ui.self-ef9b962e869a815adb51e633eb7d5cc5ddb8bdad94e97ad2461759d77273e9fa.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular/angular.self-5592af530dae1104bb0e7213d999575dc62b42524c5fc77e1401fbcac313d459.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-ui-router/release/angular-ui-router.self-0c002d1f8115d21a4b7a82980f422bfa3c96f7d704dcc34367283b0fe61c6717.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-animate/angular-animate.self-f1052f95738cf1d20c0baf956f72d73f2e87dec69df812893cb1657047e4f5c3.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-resource/angular-resource.self-c1f038d63d4a7f5c3f49e218cc670132decbbb4049cc722ac83c4d0b2786cad4.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-bootstrap/ui-bootstrap-tpls.self-da77e17689fbd17b1153b70e342678507aa4b1e9aaecf369bd0cce83702ae239.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-ui-sortable/sortable.self-5565db9fe69edfa4caf3c55787804c4ca126c441edbab364bcb104352f340e9f.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/ng-file-upload/ng-file-upload.self-c5408f276a423e599171f6b27aec717715b6ab5b3dbabc4d17a2ba6e4ba6c0b3.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-rails-templates.self-2ec80b15645ee3e635ce91aa66038d570449e5ae89fc715034abbcd44877cc9c.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-cookie/angular-cookie.self-0f7fb19686473accc00652b4579b0f6879dd9aaa777787de5643571af2251394.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-cookies/angular-cookies.self-60d62b817a84e3c8219b178bf426e98cfa9e486405aad414754109ff3e7e7af4.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/ng-token-auth/dist/ng-token-auth.self-3dbdf134d9920edc2472a458f9823cc3896a1e16701a2db2c113d295818ed802.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-toastr/dist/angular-toastr.tpls.self-999563e8525ab2e9a20225a2edeeb40ef90f835fcb97baacea3576963081d615.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-translate/angular-translate.self-be07cd1cd3a98d48ebdc87dc370efa8f5f24d682f5046ad5957e2c5939dbdb2b.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-translate-loader-static-files/angular-translate-loader-static-files.self-084632e8981581919214419f289be47dd2939afdcf8156f1399c73b18234c149.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-translate-storage-cookie/angular-translate-storage-cookie.self-e44e02dd8b5055a39a97425dc94ef4bcf620602b7ee2d7377e0401fd2c2b5bc5.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-dynamic-locale/src/tmhDynamicLocale.self-0cd0b2bf6fdb8441ffbdb0e6b76f0f705e252715fdb8b19dc9abf543d8b3bba0.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/i18n.self-313d99d642990c78cdc5d087efeab00bcf16aa19e0fdedbaa201fca1263ec480.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/i18n/shims.self-d772f2c0ba39520c58e4f17845f1b0c2a7e04eb215fafe34afea3e19a80dc2e8.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/i18n/filtered.self-ad7d24613f3a8b457306e295bdebd3ecc3793e9b6390b5c64d8dd2f6df75d68f.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/i18n/translations.self-6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/main.self-2614050e379fd8989a8fd859e20c04b150a166b4ba973a5450dde92a623a2093.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/attachment/AttachmentCtrl.self-c19f15ba74996ca8cd015a298d9ae365ae4db262b71e124101753429322cb5a6.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/comment/CommentCtrl.self-3b77b7ac729823b62fb0f550ed7216624b0c8315afade1921d544ddaf940635c.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/comment/ServiceComment.self-728a1dbb5e3dc55d82e7b5a4a59a1a2aa5213c6cc3a774265095c01e7c82d1ae.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/comment/_comments_and_attachments.self-cd29ca389f3c138fe563ed7ece78c78d4483beb71954473bb581d8f7942b5217.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/project/ProjectCtrl.self-6c4981b39bf9e70895ed8c0d66906ed28984b7d8ffa64c9beb8e656d3157cc92.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/project/ServiceProject.self-9752ef3acbb8e5e0616f96a77124f8933f65ca16f6805fa6ef6486588269562d.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/project/projects.self-a000be295e45cf1bc94b098f8bf889e1b8337cb53c86300945db31462ea1c611.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/task/ServiceTask.self-07c625dd07587003cb6f887b5aea9bc04d40bb425e7559e75b7d06bc57342eb1.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/task/TaskCtrl.self-56740e7d88329b57ead0f544e3c8173d2354806af9766f922ccc93c8d45a5b22.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/task/_tasks.self-7cfd3083741ea83bb0d6294047d8989f254e2274ba5c1bb089a5a59b728f4dee.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/user/RegistrationCtrl.self-977c04657cecb9e10a4c01699ad830da73595681ea3b447db7b00a9a29ed3400.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/user/SessionCtrl.self-0f1ccc4177159db1fdaa71d64aeb163104d65576509a24f92ed9c4f8e1df2d01.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/user/_sign_in.self-af9399ee0116f19bbfbc2b996d3dd6251aebc4ebf603e06e59a609471ee92b9e.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/angular-app/user/_sign_up.self-9e36e6b3cf33c0fe1307afc9338e109c9c19c5ab6dae6cd4f8d4a944d8bdf878.js?body=1\" data-turbolinks-track=\"true\"></script>\n    <script src=\"/assets/application.self-1374c0ecff9f5520ea4a144c5754ae434cfea5ca52ec9af6e9916f20bd9275ed.js?body=1\" data-turbolinks-track=\"true\"></script><meta name=\"csrf-param\" content=\"authenticity_token\" />\n    <meta name=\"csrf-token\" content=\"mfjXXj9MdtEYWpf4g3LBA+3jg34fuDvzeM3BRnoMhh0chZ8WYxoeHDWjb5Rhuyym3CM5k24TQxyLbUEhsNOZNg==\" /><script src=\"/assets/i18n.self-313d99d642990c78cdc5d087efeab00bcf16aa19e0fdedbaa201fca1263ec480.js?body=1\"></script><script src=\"/javascripts/translations.js\"></script>\n  </head>\n  <body ng-app=\"app\">\n    <div class=\"div\" ui-view=\"\"></div>\n  </body>\n</html>",
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "projects#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects",
+      "versions": [
+        "v1"
+      ],
+      "query": "name=123456789",
+      "request_data": "",
+      "response_data": {
+        "id": 10,
+        "name": "123456789",
+        "tasks": [
+
+        ]
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "projects#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects",
+      "versions": [
+        "v1"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 10,
+          "name": "123456789",
+          "tasks": [
+            {
+              "id": 8,
+              "title": "123456789",
+              "completed": null,
+              "position": null,
+              "end_date": null,
+              "project_id": 10,
+              "comments": [
+
+              ]
+            }
+          ]
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects",
+      "versions": [
+        "v1"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 10,
+          "name": "123456789",
+          "tasks": [
+            {
+              "id": 8,
+              "title": "123456789",
+              "completed": null,
+              "position": null,
+              "end_date": null,
+              "project_id": 10,
+              "comments": [
+
+              ]
+            }
+          ]
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "registrations#create": [
+    {
+      "verb": "POST",
+      "path": "/auth",
+      "versions": [
+
+      ],
+      "query": null,
+      "request_data": {
+        "email": "test@test.com",
+        "password": "12345678",
+        "password_confirmation": "12345678",
+        "confirm_success_url": "http://localhost:3000/#/sign_up",
+        "config_name": "default"
+      },
+      "response_data": {
+        "status": "success",
+        "data": {
+          "id": 14,
+          "provider": "email",
+          "uid": "test@test.com",
+          "name": null,
+          "nickname": null,
+          "image": null,
+          "email": "test@test.com",
+          "created_at": "2016-04-19T11:55:07.661Z",
+          "updated_at": "2016-04-19T11:55:07.877Z"
+        }
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "sessions#create": [
+    {
+      "verb": "POST",
+      "path": "/auth/sign_in",
+      "versions": [
+
+      ],
+      "query": null,
+      "request_data": {
+        "email": "test@test.com",
+        "password": "12345678"
+      },
+      "response_data": {
+        "data": {
+          "id": 14,
+          "provider": "email",
+          "uid": "test@test.com",
+          "name": null,
+          "nickname": null,
+          "image": null,
+          "email": "test@test.com"
+        }
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects/10/tasks",
+      "versions": [
+        "v1"
+      ],
+      "query": "title=123456789",
+      "request_data": "",
+      "response_data": {
+        "id": 8,
+        "title": "123456789",
+        "completed": null,
+        "position": null,
+        "end_date": null,
+        "project_id": 10,
+        "comments": [
+
+        ]
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "tasks#update": [
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/7",
+      "versions": [
+        "v1"
+      ],
+      "query": "end_date=2016-05-04T11:14:46.809Z&title=234",
+      "request_data": null,
+      "response_data": null,
+      "code": 204,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "token_validations#validate_token": [
+    {
+      "verb": "GET",
+      "path": "/auth/validate_token",
+      "versions": [
+
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "success": true,
+        "data": {
+          "id": 14,
+          "provider": "email",
+          "uid": "test@test.com",
+          "name": null,
+          "nickname": null,
+          "image": null,
+          "email": "test@test.com"
+        }
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "translations#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/translations/ru.json",
+      "versions": [
+
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "devise_token_auth": {
+          "sessions": {
+            "not_confirmed": "Письмо с подтверждением Вашей учетной записи '%{email}' отправлено на электронную почту. Вы должны следовать инструкциям, приведенным в письме, прежде чем Ваша учетная запись сможет быть активирована",
+            "bad_credentials": "Неверные логин или пароль. Пожалуйста, попробуйте еще раз.",
+            "not_supported": "Используйте POST /sign_in для входа. GET запросы не поддерживаются.",
+            "user_not_found": "Пользователь не найден или не вошел."
+          },
+          "token_validations": {
+            "invalid": "Неверные логин или пароль."
+          },
+          "registrations": {
+            "missing_confirm_success_url": "Отсутствует параметр 'confirm_success_url'.",
+            "redirect_url_not_allowed": "Переадресация на '%{redirect_url}' не разрешена.",
+            "email_already_exists": "Учетная запись для '%{email}' уже существует",
+            "account_with_uid_destroyed": "Учетная запись с uid '%{uid}' удалена.",
+            "account_to_destroy_not_found": "Не удается найти учетную запись для удаления.",
+            "user_not_found": "Пользователь не найден."
+          },
+          "passwords": {
+            "missing_email": "Вы должны указать адрес электронной почты.",
+            "missing_redirect_url": "Отсутствует адрес переадресации.",
+            "not_allowed_redirect_url": "Переадресация на '%{redirect_url}' не разрешена.",
+            "sended": "Инструкция по восстановлению пароля отправлена на Вашу электронную почту '%{email}'.",
+            "user_not_found": "Не удается найти пользователя с электронной почтой '%{email}'.",
+            "password_not_required": "Эта учетная запись не требует пароля. Войдите используя учетную запись '%{provider}'.",
+            "missing_passwords": "Вы должны заполнить поля 'пароль' и 'повторите пароль'.",
+            "successfully_updated": "Ваш пароль успешно обновлён."
+          }
+        },
+        "errors": {
+          "validate_sign_up_params": "Пожалуйста, укажите надлежащие данные для регистрации в теле запроса.",
+          "validate_account_update_params": "Пожалуйста, укажите надлежащие данные для обновления учетной записи в теле запроса.",
+          "not_email": "не является электронной почтой",
+          "messages": {
+            "already_in_use": "уже используется"
+          }
+        },
+        "devise": {
+          "mailer": {
+            "confirmation_instructions": {
+              "subject": "Инструкции подтверждения",
+              "confirm_link_msg": "Вы можете подтвердить ваш адрес электронной почты через ссылку ниже :",
+              "confirm_account_link": "Подтвердить свою учетную запись"
+            },
+            "reset_password_instructions": {
+              "subject": "Инструкции для восстановления пароля",
+              "request_reset_link_msg": "Кто-то запросил ссылку на изменение пароля. Вы можете сделать это через ссылку ниже.",
+              "password_change_link": "Изменить пароль",
+              "ignore_mail_msg": "Если Вы не запрашивали это, Вы можете проигнорировать это письмо.",
+              "no_changes_msg": "Ваш пароль не изменится, пока вы не откроете ссылку выше и не создадите новый пароль."
+            },
+            "unlock_instructions": {
+              "subject": "Разблокировать Инструкции",
+              "account_lock_msg": "Ваш аккаунт был заблокирован из-за чрезмерного количества неудачных попыток входа.",
+              "unlock_link_msg": "Нажмите на ссылку ниже, чтобы разблокировать свой аккаунт:",
+              "unlock_link": "Разблокировать мою учетную запись"
+            }
+          }
+        },
+        "hello": "Здравствуйте",
+        "welcome": "Добро пожаловать",
+        "apipie": {
+          "resources": "Ресурсы",
+          "resource": "Ресурс",
+          "description": "Описание",
+          "no_docs_found": "Документация не найдена",
+          "no_docs_found_descr": "Мы не нашли никакой документации для вашего API.",
+          "follow_instructions_html": "Перейдите по ссылке %{href}, чтобы узнать как описать ваш API.",
+          "follow_instructions_href": "дополнительные инструкции",
+          "oops": "Ой!!",
+          "resource_not_found_html": "Ресурс %{resource} не найден.",
+          "method_not_found_html": "Метод %{method} для ресурса %{resource} не найден.",
+          "goto_homepage_html": "Перейдите %{href}",
+          "goto_homepage_href": "%{app_name} домашняя страница API документации",
+          "required": "обязательно",
+          "optional": "необязательно",
+          "nil_allowed": "nil разрешен",
+          "param_name": "Имя параметра",
+          "params": "Параметры",
+          "examples": "Примеры",
+          "metadata": "Метаданные",
+          "errors": "Ошибки",
+          "supported_formats": "Поддерживаемые форматы",
+          "enable_javascript_html": "Пожалуйста включите JavaScript, чтобы просматривать %{comments_href}.",
+          "comments_powered_by_disqus": "комментарии представлены %{disqus}",
+          "api_documentation": "API документация",
+          "headers": "Заголовки",
+          "header_name": "Название заголовка"
+        },
+        "main": {
+          "head-title": "ПРОСТОЙ СПИСОК ЗАДАЧ",
+          "sub-title": "ОТ РУБИ ГАРАЖ",
+          "sign-out": "Выйти",
+          "add_project": "Новый список",
+          "create_project": "Создать"
+        },
+        "project": {
+          "update": "Обновить",
+          "cancel": "Отменить",
+          "input": "Заголовок для нового списка задач...",
+          "create_error": "Заголовок списка задач не может быть пустым!"
+        },
+        "task": {
+          "create_task": "Создать",
+          "update_task": "Обновить задачу",
+          "update_date": "Обновить дату",
+          "remove_date": "Удалить дату",
+          "input": "Текст для задачи..."
+        },
+        "comment": {
+          "title": "Комментарии",
+          "add_file": "Добавить файл",
+          "upload_file": "Загрузить файл",
+          "add_comment": "Создать",
+          "input": "Текст для комментария..."
+        },
+        "sign_in": {
+          "button": "Войти",
+          "button_register": "Зарегистрироваться",
+          "facebook": "Войти через Facebook",
+          "password": "Пароль",
+          "register": "Зарегистрироваться",
+          "confirm_pass": "Подтвердите пароль"
+        },
+        "notification": {
+          "project": {
+            "create": "Лист задач создан успешно!",
+            "update": "Лист задач обновлен успешно!",
+            "destroy": "Лист задач удален успешно!"
+          },
+          "task": {
+            "create": "Задача успешно добавлена!",
+            "done": "Задача обновлена!",
+            "updated_title": "Задача успешно обновлена!",
+            "updated_date": "Дата успешно изменена!",
+            "destroy_date": "Дата успешно удалена!",
+            "destroyed": "Задача успешно удалена!",
+            "create_error": "Заголовок не может быть пустым.",
+            "no_date": "Выберите дату!"
+          },
+          "comment": {
+            "create": "Комментарий успешно создан!",
+            "destroyed": "Комментарий успешно удален!"
+          },
+          "attachment": {
+            "uploaded": "Файл успешно загружен!",
+            "not_uploaded": "Файл не загружен!"
+          },
+          "main": {
+            "signed_in": "Вы успешно авторизовались!",
+            "signed_out": "Вы успешно вышли, до свидания!",
+            "registered": "Вы успешно зарегистрировались!"
+          }
+        }
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ]
+}
